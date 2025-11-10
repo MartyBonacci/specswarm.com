@@ -1,0 +1,27 @@
+---
+import { Menu } from 'lucide-react';
+import MobileMenu from './MobileMenu';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-40 w-full backdrop-blur bg-white/80 border-b border-gray-200">
+  <nav class="container mx-auto px-4 h-16 flex items-center justify-between">
+    <a href="/" class="text-2xl font-bold text-gray-900">SpecSwarm</a>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex items-center space-x-8">
+      <a href="/" class={currentPath === '/' ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-gray-900'}>Home</a>
+      <a href="/features" class={currentPath === '/features' ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-gray-900'}>Features</a>
+      <a href="/pricing" class={currentPath === '/pricing' ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-gray-900'}>Pricing</a>
+      <a href="https://github.com/MartyBonacci/specswarm" target="_blank" rel="noopener" class="text-gray-600 hover:text-gray-900">Docs</a>
+    </div>
+
+    <!-- Mobile Menu Trigger -->
+    <button id="mobile-menu-trigger" class="md:hidden p-2" aria-label="Open mobile menu">
+      <Menu className="h-6 w-6" />
+    </button>
+  </nav>
+</header>
+
+<MobileMenu client:load currentPath={currentPath} />

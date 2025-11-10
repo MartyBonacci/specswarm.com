@@ -1,18 +1,103 @@
 ---
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import { Zap, CheckCircle, Shield } from 'lucide-react';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>SpecSwarm - Build it. Fix it. Maintain it. Automate it.</title>
-		<meta name="description" content="SpecSwarm: Complete development toolkit for Claude Code with autonomous workflows, quality gates, and 85-90% time savings." />
-	</head>
-	<body>
-		<h1 class="text-4xl font-bold text-center mt-16">SpecSwarm</h1>
-		<p class="text-center mt-4 text-gray-600">Build it. Fix it. Maintain it. Automate it.</p>
-	</body>
-</html>
+<BaseLayout
+  title="SpecSwarm - Build it. Fix it. Maintain it. | AI Workflows for Claude Code"
+  description="SpecSwarm: Complete development toolkit for Claude Code. Build features, fix bugs, and maintain quality with autonomous workflows. 85-90% time savings."
+>
+  <Header />
+  <main>
+    <Hero />
+
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+          Key Capabilities
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <FeatureCard
+            title="Autonomous Workflows"
+            description="Build complete features with a single command. AI handles specification, planning, implementation, and validation automatically."
+          >
+            <Zap slot="icon" className="h-6 w-6 text-purple-600" />
+          </FeatureCard>
+
+          <FeatureCard
+            title="Quality Validation"
+            description="Automated quality scoring (0-100), performance budgets, and accessibility audits ensure production-ready code."
+          >
+            <CheckCircle slot="icon" className="h-6 w-6 text-purple-600" />
+          </FeatureCard>
+
+          <FeatureCard
+            title="Tech Stack Enforcement"
+            description="Prevent technology drift with enforced tech stack guidelines. Consistency across all features and developers."
+          >
+            <Shield slot="icon" className="h-6 w-6 text-purple-600" />
+          </FeatureCard>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gray-50 py-20">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
+          Proven Results
+        </h2>
+        <p class="text-xl text-center text-gray-600 mb-12">
+          Real-world validation from production projects
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          <div class="text-center">
+            <div class="text-5xl font-bold text-purple-600 mb-2">85-90%</div>
+            <div class="text-gray-600">Time Savings</div>
+          </div>
+
+          <div class="text-center">
+            <div class="text-5xl font-bold text-purple-600 mb-2">76/76</div>
+            <div class="text-gray-600">Tasks Completed</div>
+          </div>
+
+          <div class="text-center">
+            <div class="text-5xl font-bold text-purple-600 mb-2">96.3%</div>
+            <div class="text-gray-600">Test Pass Rate</div>
+          </div>
+
+          <div class="text-center">
+            <div class="text-5xl font-bold text-purple-600 mb-2">3-4hr</div>
+            <div class="text-gray-600">vs 3-5 days manual</div>
+          </div>
+        </div>
+
+        <p class="text-center text-gray-500 mt-8 text-sm">
+          Source: Feature 015 - Testing Infrastructure (customcult2 project)
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Ready to transform your development workflow?
+        </h2>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          Install SpecSwarm in seconds and start building features 85-90% faster with autonomous AI workflows.
+        </p>
+        <a
+          href="/features"
+          class="inline-block bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-purple-700 transition-colors"
+        >
+          Explore Features
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

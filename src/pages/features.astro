@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CodeBlock from '../components/CodeBlock';
+import { codeToHtml } from 'shiki';
+import { Zap, CheckCircle, Shield, Bug, ArrowUpCircle, Workflow } from 'lucide-react';
+
+// Code examples for Before/After section
+const manualCode = `/specswarm:specify "feature"
+/specswarm:clarify
+/specswarm:plan
+/specswarm:tasks
+/specswarm:implement
+/specswarm:analyze-quality
+/specswarm:complete`;
+
+const specswarmCode = `/specswarm:build "feature" --validate
+# [Answer questions]
+/specswarm:ship`;
+
+// Syntax highlight code examples
+const manualHTML = await codeToHtml(manualCode, { lang: 'bash', theme: 'github-dark' });
+const specswarmHTML = await codeToHtml(specswarmCode, { lang: 'bash', theme: 'github-dark' });
+
+// Command examples
+const buildCmd = `/specswarm:build "Add user authentication" --validate`;
+const fixCmd = `/specswarm:fix "Fix login timeout issue"`;
+const upgradeCmd = `/specswarm:upgrade react --minor`;
+const shipCmd = `/specswarm:ship`;
+
+const buildHTML = await codeToHtml(buildCmd, { lang: 'bash', theme: 'github-dark' });
+const fixHTML = await codeToHtml(fixCmd, { lang: 'bash', theme: 'github-dark' });
+const upgradeHTML = await codeToHtml(upgradeCmd, { lang: 'bash', theme: 'github-dark' });
+const shipHTML = await codeToHtml(shipCmd, { lang: 'bash', theme: 'github-dark' });
+---
+
+<BaseLayout
+  title="Features | SpecSwarm - Autonomous Development Workflows"
+  description="Explore SpecSwarm's autonomous workflows, quality validation, and tech stack enforcement. Real command examples and proven results."
+>
+  <Header />
+  <main>
+    <div class="bg-purple-600 text-white py-16">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Features</h1>
+        <p class="text-xl text-purple-100 max-w-2xl mx-auto">
+          Complete development toolkit for Claude Code
+        </p>
+      </div>
+    </div>
+
+    <!-- Feature Cards Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 mb-12">Core Capabilities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Feature 1: Autonomous Workflows -->
+          <div class="p-6 border border-gray-200 rounded-lg">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <Zap className="h-6 w-6 text-purple-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Autonomous Workflows</h3>
+            <p class="text-gray-600 mb-4">Build complete features from specification to deployment with a single command. Handles planning, implementation, testing, and validation automatically.</p>
+            <code class="text-sm text-purple-600">/specswarm:build</code>
+          </div>
+
+          <!-- Feature 2: Quality Validation -->
+          <div class="p-6 border border-gray-200 rounded-lg">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <CheckCircle className="h-6 w-6 text-purple-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Quality Validation</h3>
+            <p class="text-gray-600 mb-4">Automated quality scoring (0-100) with code coverage, test pass rates, and performance budget validation. Ensures production-ready code every time.</p>
+            <code class="text-sm text-purple-600">/specswarm:analyze-quality</code>
+          </div>
+
+          <!-- Feature 3: Tech Stack Enforcement -->
+          <div class="p-6 border border-gray-200 rounded-lg">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <Shield className="h-6 w-6 text-purple-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Tech Stack Enforcement</h3>
+            <p class="text-gray-600 mb-4">Prevent technology drift with automatic validation. Enforces approved libraries, detects prohibited patterns, and maintains consistency across all features.</p>
+            <code class="text-sm text-purple-600">/memory/tech-stack.md</code>
+          </div>
+
+          <!-- Feature 4: Bug Fixing -->
+          <div class="p-6 border border-gray-200 rounded-lg">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <Bug className="h-6 w-6 text-purple-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Intelligent Bug Fixing</h3>
+            <p class="text-gray-600 mb-4">Fix bugs with automated root cause analysis, regression tests, and comprehensive validation. Reduces debugging from hours to minutes.</p>
+            <code class="text-sm text-purple-600">/specswarm:fix</code>
+          </div>
+
+          <!-- Feature 5: Dependency Upgrades -->
+          <div class="p-6 border border-gray-200 rounded-lg">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <ArrowUpCircle className="h-6 w-6 text-purple-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Safe Dependency Upgrades</h3>
+            <p class="text-gray-600 mb-4">Upgrade dependencies with automated breaking change analysis, migration code generation, and comprehensive testing before merge.</p>
+            <code class="text-sm text-purple-600">/specswarm:upgrade</code>
+          </div>
+
+          <!-- Feature 6: Workflow Orchestration -->
+          <div class="p-6 border border-gray-200 rounded-lg">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <Workflow className="h-6 w-6 text-purple-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Workflow Orchestration</h3>
+            <p class="text-gray-600 mb-4">Complete feature lifecycle from specification through deployment. Automated branching, validation gates, and merge workflows ensure quality at every step.</p>
+            <code class="text-sm text-purple-600">/specswarm:ship</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before/After Workflow Comparison -->
+    <section class="bg-gray-50 py-20">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Before & After</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Manual Workflow (7 commands)</h3>
+            <CodeBlock client:visible code={manualCode} highlightedHTML={manualHTML} />
+            <p class="text-gray-600 mt-4">Time: 2-3 hours</p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold text-purple-600 mb-4">SpecSwarm Workflow (2 commands)</h3>
+            <CodeBlock client:visible code={specswarmCode} highlightedHTML={specswarmHTML} />
+            <p class="text-purple-600 font-semibold mt-4">Time: 1.5-3 hours (85-90% less effort)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Command Reference Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 mb-12">Command Reference</h2>
+
+        <div class="space-y-8 max-w-4xl">
+          <!-- /specswarm:build -->
+          <div>
+            <h3 class="text-2xl font-semibold text-gray-900 mb-2">/specswarm:build</h3>
+            <p class="text-gray-600 mb-4">Complete feature development in a single command. Handles specification, planning, implementation, and validation automatically.</p>
+            <CodeBlock client:visible
+              code={buildCmd}
+              highlightedHTML={buildHTML}
+            />
+          </div>
+
+          <!-- /specswarm:fix -->
+          <div>
+            <h3 class="text-2xl font-semibold text-gray-900 mb-2">/specswarm:fix</h3>
+            <p class="text-gray-600 mb-4">Intelligent bug fixing with root cause analysis and automated regression tests.</p>
+            <CodeBlock client:visible
+              code={fixCmd}
+              highlightedHTML={fixHTML}
+            />
+          </div>
+
+          <!-- /specswarm:upgrade -->
+          <div>
+            <h3 class="text-2xl font-semibold text-gray-900 mb-2">/specswarm:upgrade</h3>
+            <p class="text-gray-600 mb-4">Safe dependency upgrades with breaking change analysis and migration code generation.</p>
+            <CodeBlock client:visible
+              code={upgradeCmd}
+              highlightedHTML={upgradeHTML}
+            />
+          </div>
+
+          <!-- /specswarm:ship -->
+          <div>
+            <h3 class="text-2xl font-semibold text-gray-900 mb-2">/specswarm:ship</h3>
+            <p class="text-gray-600 mb-4">Complete the feature lifecycle with final quality checks, merge to main, and cleanup.</p>
+            <CodeBlock client:visible
+              code={shipCmd}
+              highlightedHTML={shipHTML}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Breakdown -->
+    <section class="bg-purple-600 text-white py-20">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Why SpecSwarm?</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div class="text-center">
+            <div class="text-5xl font-bold mb-4">85-90%</div>
+            <h3 class="text-xl font-semibold mb-2">Time Savings</h3>
+            <p class="text-purple-100">Reduce feature development from days to hours</p>
+          </div>
+
+          <div class="text-center">
+            <div class="text-5xl font-bold mb-4">0-100</div>
+            <h3 class="text-xl font-semibold mb-2">Quality Gates</h3>
+            <p class="text-purple-100">Automated scoring ensures production-ready code</p>
+          </div>
+
+          <div class="text-center">
+            <div class="text-5xl font-bold mb-4">100%</div>
+            <h3 class="text-xl font-semibold mb-2">Consistency</h3>
+            <p class="text-purple-100">Enforce tech stack across all features and developers</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
