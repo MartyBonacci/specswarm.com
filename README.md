@@ -1,0 +1,1 @@
+This is a website to promote SpecSwarm, a Claude Code Plugin Marketplace and to educate users about how to get the most out of the SpecSwarm platform.
