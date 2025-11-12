@@ -2,218 +2,548 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import CodeBlock from '../components/CodeBlock';
-import { codeToHtml } from 'shiki';
-import { Zap, CheckCircle, Shield, Bug, ArrowUpCircle, Workflow } from 'lucide-react';
+import Button from '../components/Button.astro';
+import FeatureCard from '../components/FeatureCard.astro';
 
-// Code examples for Before/After section
-const manualCode = `/specswarm:specify "feature"
-/specswarm:clarify
-/specswarm:plan
-/specswarm:tasks
-/specswarm:implement
-/specswarm:analyze-quality
-/specswarm:complete`;
+const capabilities = [
+  {
+    icon: 'shield',
+    title: 'Tech Stack Enforcement',
+    description: 'Define your approved technologies once in tech-stack.md. SpecSwarm validates every feature against your stack during planning, preventing 95% of technology drift.',
+    metric: '95%'
+  },
+  {
+    icon: 'zap',
+    title: 'Simplified Workflow',
+    description: 'Build complete features with 2 commands instead of 7+. /specswarm:build handles spec → plan → tasks → implementation → quality. Then /specswarm:ship merges with quality gates.',
+    metric: '70%'
+  },
+  {
+    icon: 'check-circle',
+    title: 'Quality Validation',
+    description: '0-100 point scoring system with configurable thresholds. Analyzes test coverage, bundle size, code quality, and more. Blocks merges below standards with clear remediation steps.',
+    metric: '85+'
+  },
+  {
+    icon: 'layers',
+    title: 'Autonomous Orchestration',
+    description: 'Natural language feature descriptions become working code. Handles planning, task breakdown, implementation, testing, and quality analysis autonomously with intelligent retry logic.',
+  },
+  {
+    icon: 'target',
+    title: 'Production Validated',
+    description: 'Proven in real-world React 19 + Redux + Three.js application. Feature 015: 76/76 tasks completed, 96.3% test pass rate, 3,500+ lines of test code, 1,530 lines of docs.',
+    metric: '96.3%'
+  },
+  {
+    icon: 'trending-up',
+    title: 'Developer Control',
+    description: 'Choose your level of control. Simplified workflow for speed, granular workflow for complex features. Decision checkpoints, not black box automation. You stay in charge.',
+  },
+];
 
-const specswarmCode = `/specswarm:build "feature" --validate
-# [Answer questions]
-/specswarm:ship`;
-
-// Syntax highlight code examples
-const manualHTML = await codeToHtml(manualCode, { lang: 'bash', theme: 'github-dark' });
-const specswarmHTML = await codeToHtml(specswarmCode, { lang: 'bash', theme: 'github-dark' });
-
-// Command examples
-const buildCmd = `/specswarm:build "Add user authentication" --validate`;
-const fixCmd = `/specswarm:fix "Fix login timeout issue"`;
-const upgradeCmd = `/specswarm:upgrade react --minor`;
-const shipCmd = `/specswarm:ship`;
-
-const buildHTML = await codeToHtml(buildCmd, { lang: 'bash', theme: 'github-dark' });
-const fixHTML = await codeToHtml(fixCmd, { lang: 'bash', theme: 'github-dark' });
-const upgradeHTML = await codeToHtml(upgradeCmd, { lang: 'bash', theme: 'github-dark' });
-const shipHTML = await codeToHtml(shipCmd, { lang: 'bash', theme: 'github-dark' });
+const workflowComparison = [
+  {
+    aspect: 'Commands Required',
+    simplified: '2 commands',
+    granular: '7 commands',
+  },
+  {
+    aspect: 'Time to Complete',
+    simplified: '4-5 hours',
+    granular: '4-5 hours',
+  },
+  {
+    aspect: 'Clarification Phase',
+    simplified: 'Interactive (built-in)',
+    granular: 'Separate step',
+  },
+  {
+    aspect: 'Planning Review',
+    simplified: 'Autonomous',
+    granular: 'Manual review',
+  },
+  {
+    aspect: 'Task Execution',
+    simplified: 'Autonomous',
+    granular: 'Step-by-step',
+  },
+  {
+    aspect: 'Quality Analysis',
+    simplified: 'Built-in',
+    granular: 'Separate command',
+  },
+  {
+    aspect: 'Best For',
+    simplified: 'Most features',
+    granular: 'Complex architectural changes',
+  },
+];
 ---
 
 <BaseLayout
-  title="Features | SpecSwarm - Autonomous Development Workflows"
-  description="Explore SpecSwarm's autonomous workflows, quality validation, and tech stack enforcement. Real command examples and proven results."
+  title="Features - SpecSwarm"
+  description="Explore SpecSwarm's complete feature set: tech stack enforcement, simplified workflows, quality validation, autonomous orchestration, and production-proven results."
 >
   <Header />
+
   <main>
-    <div class="bg-purple-600 text-white py-16">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Features</h1>
-        <p class="text-xl text-purple-100 max-w-2xl mx-auto">
-          Complete development toolkit for Claude Code
-        </p>
+    <!-- Hero Section -->
+    <section class="page-hero section-spacing-md">
+      <div class="content-max">
+        <div class="hero-content">
+          <h1 class="page-title">Complete Feature Set</h1>
+          <p class="page-description">
+            Everything you need to maintain standards while moving fast. Tech stack enforcement, quality gates, and autonomous orchestration.
+          </p>
+        </div>
       </div>
+    </section>
+
+    <!-- Core Capabilities -->
+    <section class="capabilities section-spacing-lg">
+      <div class="content-max">
+        <div class="section-header">
+          <h2 class="section-title">Six Core Capabilities</h2>
+          <p class="section-description">
+            Built for developers who want speed without sacrificing control or quality
+          </p>
+        </div>
+
+        <div class="capabilities-grid">
+          {capabilities.map((capability) => (
+            <FeatureCard
+              icon={capability.icon}
+              title={capability.title}
+              description={capability.description}
+              metric={capability.metric}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Divider -->
+    <div class="section-divider" aria-hidden="true">
+      <img src="/tracks.svg" alt="" loading="lazy" />
     </div>
 
-    <!-- Feature Cards Section -->
-    <section class="py-20">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-gray-900 mb-12">Core Capabilities</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Feature 1: Autonomous Workflows -->
-          <div class="p-6 border border-gray-200 rounded-lg">
-            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-              <Zap className="h-6 w-6 text-purple-600" />
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-3">Autonomous Workflows</h3>
-            <p class="text-gray-600 mb-4">Build complete features from specification to deployment with a single command. Handles planning, implementation, testing, and validation automatically.</p>
-            <code class="text-sm text-purple-600">/specswarm:build</code>
-          </div>
+    <!-- Workflow Comparison -->
+    <section class="comparison section-spacing-lg">
+      <div class="content-max">
+        <div class="section-header">
+          <h2 class="section-title">Simplified vs. Granular Workflow</h2>
+          <p class="section-description">
+            Choose the workflow that fits your needs. Both deliver the same quality results.
+          </p>
+        </div>
 
-          <!-- Feature 2: Quality Validation -->
-          <div class="p-6 border border-gray-200 rounded-lg">
-            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-              <CheckCircle className="h-6 w-6 text-purple-600" />
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-3">Quality Validation</h3>
-            <p class="text-gray-600 mb-4">Automated quality scoring (0-100) with code coverage, test pass rates, and performance budget validation. Ensures production-ready code every time.</p>
-            <code class="text-sm text-purple-600">/specswarm:analyze-quality</code>
-          </div>
+        <div class="comparison-table-container">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Aspect</th>
+                <th>Simplified (Recommended)</th>
+                <th>Granular (Advanced)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {workflowComparison.map((row) => (
+                <tr>
+                  <td class="aspect-cell">{row.aspect}</td>
+                  <td class="simplified-cell">{row.simplified}</td>
+                  <td class="granular-cell">{row.granular}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-          <!-- Feature 3: Tech Stack Enforcement -->
-          <div class="p-6 border border-gray-200 rounded-lg">
-            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-              <Shield className="h-6 w-6 text-purple-600" />
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-3">Tech Stack Enforcement</h3>
-            <p class="text-gray-600 mb-4">Prevent technology drift with automatic validation. Enforces approved libraries, detects prohibited patterns, and maintains consistency across all features.</p>
-            <code class="text-sm text-purple-600">/memory/tech-stack.md</code>
-          </div>
-
-          <!-- Feature 4: Bug Fixing -->
-          <div class="p-6 border border-gray-200 rounded-lg">
-            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-              <Bug className="h-6 w-6 text-purple-600" />
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-3">Intelligent Bug Fixing</h3>
-            <p class="text-gray-600 mb-4">Fix bugs with automated root cause analysis, regression tests, and comprehensive validation. Reduces debugging from hours to minutes.</p>
-            <code class="text-sm text-purple-600">/specswarm:fix</code>
-          </div>
-
-          <!-- Feature 5: Dependency Upgrades -->
-          <div class="p-6 border border-gray-200 rounded-lg">
-            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-              <ArrowUpCircle className="h-6 w-6 text-purple-600" />
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-3">Safe Dependency Upgrades</h3>
-            <p class="text-gray-600 mb-4">Upgrade dependencies with automated breaking change analysis, migration code generation, and comprehensive testing before merge.</p>
-            <code class="text-sm text-purple-600">/specswarm:upgrade</code>
-          </div>
-
-          <!-- Feature 6: Workflow Orchestration -->
-          <div class="p-6 border border-gray-200 rounded-lg">
-            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-              <Workflow className="h-6 w-6 text-purple-600" />
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-3">Workflow Orchestration</h3>
-            <p class="text-gray-600 mb-4">Complete feature lifecycle from specification through deployment. Automated branching, validation gates, and merge workflows ensure quality at every step.</p>
-            <code class="text-sm text-purple-600">/specswarm:ship</code>
-          </div>
+        <div class="comparison-note">
+          <p>
+            <strong>New to SpecSwarm?</strong> Start with the simplified workflow. Switch to granular when you need step-by-step control for complex architectural changes.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Before/After Workflow Comparison -->
-    <section class="bg-gray-50 py-20">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Before & After</h2>
+    <!-- Command Categories -->
+    <section class="commands section-spacing-lg">
+      <div class="content-max">
+        <div class="section-header">
+          <h2 class="section-title">28 Commands Organized by Category</h2>
+          <p class="section-description">
+            Comprehensive toolkit for the complete development lifecycle
+          </p>
+        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">Manual Workflow (7 commands)</h3>
-            <CodeBlock client:visible code={manualCode} highlightedHTML={manualHTML} />
-            <p class="text-gray-600 mt-4">Time: 2-3 hours</p>
+        <div class="commands-grid">
+          <div class="command-category">
+            <h3 class="category-title">High-Level (v3.0)</h3>
+            <ul class="command-list">
+              <li><code>/specswarm:build</code> - Complete feature development</li>
+              <li><code>/specswarm:fix</code> - Test-driven bug fixing with retry</li>
+              <li><code>/specswarm:upgrade</code> - Framework/dependency migrations</li>
+              <li><code>/specswarm:ship</code> - Quality-gated merge</li>
+            </ul>
           </div>
 
-          <div>
-            <h3 class="text-xl font-semibold text-purple-600 mb-4">SpecSwarm Workflow (2 commands)</h3>
-            <CodeBlock client:visible code={specswarmCode} highlightedHTML={specswarmHTML} />
-            <p class="text-purple-600 font-semibold mt-4">Time: 1.5-3 hours (85-90% less effort)</p>
+          <div class="command-category">
+            <h3 class="category-title">New Features</h3>
+            <ul class="command-list">
+              <li><code>/specswarm:specify</code> - Create feature specification</li>
+              <li><code>/specswarm:clarify</code> - Ask clarification questions</li>
+              <li><code>/specswarm:plan</code> - Design implementation</li>
+              <li><code>/specswarm:tasks</code> - Generate task breakdown</li>
+              <li><code>/specswarm:implement</code> - Execute implementation</li>
+              <li><code>/specswarm:complete</code> - Finish and merge</li>
+            </ul>
           </div>
+
+          <div class="command-category">
+            <h3 class="category-title">Bug & Issue Management</h3>
+            <ul class="command-list">
+              <li><code>/specswarm:bugfix</code> - Regression-test-first fixing</li>
+              <li><code>/specswarm:hotfix</code> - Emergency production fixes</li>
+            </ul>
+          </div>
+
+          <div class="command-category">
+            <h3 class="category-title">Code Maintenance</h3>
+            <ul class="command-list">
+              <li><code>/specswarm:modify</code> - Feature modifications</li>
+              <li><code>/specswarm:refactor</code> - Quality improvements</li>
+              <li><code>/specswarm:deprecate</code> - Phased feature sunset</li>
+            </ul>
+          </div>
+
+          <div class="command-category">
+            <h3 class="category-title">Quality & Analysis</h3>
+            <ul class="command-list">
+              <li><code>/specswarm:analyze-quality</code> - 0-100 scoring</li>
+              <li><code>/specswarm:impact</code> - Impact analysis</li>
+              <li><code>/specswarm:suggest</code> - AI workflow recommendations</li>
+            </ul>
+          </div>
+
+          <div class="command-category">
+            <h3 class="category-title">Advanced Orchestration</h3>
+            <ul class="command-list">
+              <li><code>/specswarm:orchestrate-feature</code> - Autonomous lifecycle</li>
+              <li><code>/specswarm:validate</code> - Multi-type validation</li>
+              <li><code>/specswarm:coordinate</code> - Multi-bug debugging</li>
+              <li><code>/specswarm:metrics</code> - Performance analytics</li>
+            </ul>
+          </div>
+
+          <div class="command-category">
+            <h3 class="category-title">Project Setup</h3>
+            <ul class="command-list">
+              <li><code>/specswarm:init</code> - Initialize project (v3.1)</li>
+              <li><code>/specswarm:constitution</code> - Project governance</li>
+              <li><code>/specswarm:checklist</code> - Custom checklists</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="commands-cta">
+          <Button href="/docs" variant="secondary" size="lg">
+            View Full Documentation
+          </Button>
         </div>
       </div>
     </section>
 
-    <!-- Command Reference Section -->
-    <section class="py-20">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-gray-900 mb-12">Command Reference</h2>
-
-        <div class="space-y-8 max-w-4xl">
-          <!-- /specswarm:build -->
-          <div>
-            <h3 class="text-2xl font-semibold text-gray-900 mb-2">/specswarm:build</h3>
-            <p class="text-gray-600 mb-4">Complete feature development in a single command. Handles specification, planning, implementation, and validation automatically.</p>
-            <CodeBlock client:visible
-              code={buildCmd}
-              highlightedHTML={buildHTML}
-            />
-          </div>
-
-          <!-- /specswarm:fix -->
-          <div>
-            <h3 class="text-2xl font-semibold text-gray-900 mb-2">/specswarm:fix</h3>
-            <p class="text-gray-600 mb-4">Intelligent bug fixing with root cause analysis and automated regression tests.</p>
-            <CodeBlock client:visible
-              code={fixCmd}
-              highlightedHTML={fixHTML}
-            />
-          </div>
-
-          <!-- /specswarm:upgrade -->
-          <div>
-            <h3 class="text-2xl font-semibold text-gray-900 mb-2">/specswarm:upgrade</h3>
-            <p class="text-gray-600 mb-4">Safe dependency upgrades with breaking change analysis and migration code generation.</p>
-            <CodeBlock client:visible
-              code={upgradeCmd}
-              highlightedHTML={upgradeHTML}
-            />
-          </div>
-
-          <!-- /specswarm:ship -->
-          <div>
-            <h3 class="text-2xl font-semibold text-gray-900 mb-2">/specswarm:ship</h3>
-            <p class="text-gray-600 mb-4">Complete the feature lifecycle with final quality checks, merge to main, and cleanup.</p>
-            <CodeBlock client:visible
-              code={shipCmd}
-              highlightedHTML={shipHTML}
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Benefits Breakdown -->
-    <section class="bg-purple-600 text-white py-20">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Why SpecSwarm?</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <div class="text-center">
-            <div class="text-5xl font-bold mb-4">85-90%</div>
-            <h3 class="text-xl font-semibold mb-2">Time Savings</h3>
-            <p class="text-purple-100">Reduce feature development from days to hours</p>
-          </div>
-
-          <div class="text-center">
-            <div class="text-5xl font-bold mb-4">0-100</div>
-            <h3 class="text-xl font-semibold mb-2">Quality Gates</h3>
-            <p class="text-purple-100">Automated scoring ensures production-ready code</p>
-          </div>
-
-          <div class="text-center">
-            <div class="text-5xl font-bold mb-4">100%</div>
-            <h3 class="text-xl font-semibold mb-2">Consistency</h3>
-            <p class="text-purple-100">Enforce tech stack across all features and developers</p>
+    <!-- CTA Section -->
+    <section class="cta section-spacing-xl">
+      <div class="content-max">
+        <div class="cta-content">
+          <h2 class="cta-title">Ready to Get Started?</h2>
+          <p class="cta-description">
+            Install SpecSwarm and start building features with tech stack enforcement and quality gates.
+          </p>
+          <div class="cta-buttons">
+            <Button href="/get-started" variant="primary" size="lg">
+              Get Started
+            </Button>
+            <Button href="/use-cases" variant="secondary" size="lg">
+              View Use Cases
+            </Button>
           </div>
         </div>
       </div>
     </section>
   </main>
+
   <Footer />
 </BaseLayout>
+
+<style>
+  /* Page Hero */
+  .page-hero {
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero-content {
+    max-width: 48rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: var(--font-size-display-l);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md);
+  }
+
+  .page-description {
+    font-size: var(--font-size-paragraph-l);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Section Headers */
+  .section-header {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto var(--spacing-xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-display-m);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-sm);
+  }
+
+  .section-description {
+    font-size: var(--font-size-paragraph-m);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Capabilities Grid */
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  /* Visual Divider */
+  .section-divider {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: var(--spacing-xl) 0;
+  }
+
+  .section-divider img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    opacity: 0.1;
+  }
+
+  /* Comparison Table */
+  .comparison {
+    background-color: var(--color-surface);
+  }
+
+  .comparison-table-container {
+    overflow-x: auto;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .comparison-table thead {
+    background-color: var(--color-background);
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .comparison-table th {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .comparison-table td {
+    font-size: 0.9375rem;
+    color: var(--color-secondary);
+  }
+
+  .comparison-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .aspect-cell {
+    font-weight: 600;
+    color: var(--color-primary) !important;
+  }
+
+  .simplified-cell {
+    color: var(--color-accent) !important;
+    font-weight: 500;
+  }
+
+  .comparison-note {
+    padding: var(--spacing-md);
+    background-color: rgba(217, 119, 87, 0.1);
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+
+  .comparison-note p {
+    font-size: 0.9375rem;
+    color: var(--color-secondary);
+    margin: 0;
+  }
+
+  .comparison-note strong {
+    color: var(--color-primary);
+  }
+
+  /* Commands Grid */
+  .commands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .command-category {
+    padding: var(--spacing-lg);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  .category-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .command-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .command-list li {
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+    line-height: 1.6;
+  }
+
+  .command-list code {
+    font-size: 0.8125rem;
+    color: var(--color-accent);
+    background-color: rgba(217, 119, 87, 0.1);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+  }
+
+  .commands-cta {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+  }
+
+  /* CTA Section */
+  .cta {
+    background-color: var(--color-background);
+  }
+
+  .cta-content {
+    max-width: 48rem;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+  }
+
+  .cta-title {
+    font-size: var(--font-size-display-m);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .cta-description {
+    font-size: var(--font-size-paragraph-m);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: var(--font-size-display-m);
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.75rem 1rem;
+      font-size: 0.8125rem;
+    }
+
+    .command-category {
+      padding: var(--spacing-md);
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .cta-buttons :global(a) {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .capabilities-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .commands-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

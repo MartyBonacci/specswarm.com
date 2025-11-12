@@ -1,0 +1,832 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+
+const commandCategories = [
+  {
+    title: 'High-Level Commands (v3.0)',
+    description: 'Simplified workflow - build features in 2 commands',
+    commands: [
+      {
+        name: '/specswarm:build',
+        description: 'Complete feature development from spec to implementation. Handles planning, task breakdown, execution, and quality analysis autonomously.',
+        usage: '/specswarm:build "feature description" [--validate] [--quality-gate N]',
+        flags: [
+          { flag: '--validate', description: 'Run Playwright browser testing during implementation' },
+          { flag: '--quality-gate N', description: 'Set minimum quality score (default: 80)' },
+        ],
+      },
+      {
+        name: '/specswarm:fix',
+        description: 'Test-driven bug fixing with automatic retry logic. Creates regression tests first, then implements and validates fix.',
+        usage: '/specswarm:fix "bug description" [--regression-test] [--hotfix] [--max-retries N]',
+        flags: [
+          { flag: '--regression-test', description: 'Create failing test before fixing (TDD approach)' },
+          { flag: '--hotfix', description: 'Expedited workflow for production emergencies' },
+          { flag: '--max-retries N', description: 'Maximum fix attempts (default: 2)' },
+        ],
+      },
+      {
+        name: '/specswarm:upgrade',
+        description: 'Framework and dependency migrations with breaking change analysis. Automated refactoring with codemods and guided manual tasks.',
+        usage: '/specswarm:upgrade "migration description" [--dry-run]',
+        flags: [
+          { flag: '--dry-run', description: 'Analyze risks without making changes' },
+        ],
+      },
+      {
+        name: '/specswarm:ship',
+        description: 'Quality-gated merge to parent branch. Analyzes quality, enforces thresholds, and provides remediation steps if needed.',
+        usage: '/specswarm:ship [--force-quality N]',
+        flags: [
+          { flag: '--force-quality N', description: 'Override quality threshold for this merge' },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Granular Workflow (Manual Control)',
+    description: 'Step-by-step control for complex features',
+    commands: [
+      {
+        name: '/specswarm:specify',
+        description: 'Create detailed feature specification. Generates spec.md with user scenarios, functional requirements, and success criteria.',
+        usage: '/specswarm:specify "feature description"',
+      },
+      {
+        name: '/specswarm:clarify',
+        description: 'Ask up to 5 targeted clarification questions. Encodes answers back into specification to eliminate ambiguity.',
+        usage: '/specswarm:clarify',
+      },
+      {
+        name: '/specswarm:plan',
+        description: 'Design implementation with tech stack validation. Creates plan.md with phases, design decisions, and tech compliance report.',
+        usage: '/specswarm:plan',
+      },
+      {
+        name: '/specswarm:tasks',
+        description: 'Generate dependency-ordered task breakdown. Creates tasks.md with acceptance criteria and parallelization flags.',
+        usage: '/specswarm:tasks',
+      },
+      {
+        name: '/specswarm:implement',
+        description: 'Execute implementation plan. Processes tasks sequentially with checkpoint updates and error handling.',
+        usage: '/specswarm:implement',
+      },
+      {
+        name: '/specswarm:complete',
+        description: 'Finish feature and merge to parent branch. Shows merge plan before executing, validates branch safety.',
+        usage: '/specswarm:complete',
+      },
+    ],
+  },
+  {
+    title: 'Quality & Analysis',
+    description: 'Validate quality and assess impact',
+    commands: [
+      {
+        name: '/specswarm:analyze-quality',
+        description: 'Comprehensive 0-100 quality scoring. Analyzes test coverage, bundle size, code quality, and more.',
+        usage: '/specswarm:analyze-quality',
+      },
+      {
+        name: '/specswarm:impact',
+        description: 'Standalone impact analysis for features or changes. Assesses affected files, risks, and required tests.',
+        usage: '/specswarm:impact "change description"',
+      },
+      {
+        name: '/specswarm:suggest',
+        description: 'AI-powered workflow recommendations based on context analysis. Suggests simplified vs. granular approach.',
+        usage: '/specswarm:suggest "task description"',
+      },
+    ],
+  },
+  {
+    title: 'Bug & Issue Management',
+    description: 'Fix bugs with regression testing',
+    commands: [
+      {
+        name: '/specswarm:bugfix',
+        description: 'Regression-test-first bug fixing. Creates failing test, implements fix, validates across scenarios.',
+        usage: '/specswarm:bugfix "bug description with reproduction steps"',
+      },
+      {
+        name: '/specswarm:hotfix',
+        description: 'Emergency production fix workflow. Expedited process with critical priority and immediate validation.',
+        usage: '/specswarm:hotfix "production issue description"',
+      },
+    ],
+  },
+  {
+    title: 'Code Maintenance',
+    description: 'Modify, refactor, and deprecate features',
+    commands: [
+      {
+        name: '/specswarm:modify',
+        description: 'Feature modification workflow with impact analysis. Assesses backward compatibility before changes.',
+        usage: '/specswarm:modify "modification description"',
+      },
+      {
+        name: '/specswarm:refactor',
+        description: 'Metrics-driven code quality improvement. Maintains behavior while improving structure and performance.',
+        usage: '/specswarm:refactor "refactoring goals"',
+      },
+      {
+        name: '/specswarm:deprecate',
+        description: 'Phased feature sunset workflow. Provides migration guidance and removes deprecated code safely.',
+        usage: '/specswarm:deprecate "feature to remove"',
+      },
+    ],
+  },
+  {
+    title: 'Project Setup',
+    description: 'Initialize and configure projects',
+    commands: [
+      {
+        name: '/specswarm:init',
+        description: 'Initialize project with constitution, tech stack, and quality standards. Auto-detects from package.json.',
+        usage: '/specswarm:init [--minimal]',
+        flags: [
+          { flag: '--minimal', description: 'Use minimal defaults without interactive questions' },
+        ],
+      },
+      {
+        name: '/specswarm:constitution',
+        description: 'Create or update project constitution. Establishes coding principles and governance rules.',
+        usage: '/specswarm:constitution',
+      },
+      {
+        name: '/specswarm:checklist',
+        description: 'Generate custom requirement checklists based on feature specifications.',
+        usage: '/specswarm:checklist',
+      },
+    ],
+  },
+];
+
+const quickStart = `/plugin https://github.com/MartyBonacci/specswarm
+/plugin install specswarm
+/specswarm:init
+/specswarm:build "your first feature" --validate
+/specswarm:ship`;
+---
+
+<BaseLayout
+  title="Documentation - SpecSwarm"
+  description="Complete command reference for SpecSwarm. 28 commands organized by category with usage examples, flags, and best practices for spec-driven development."
+>
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <section class="page-hero section-spacing-md">
+      <div class="content-max">
+        <div class="hero-content">
+          <h1 class="page-title">Documentation</h1>
+          <p class="page-description">
+            Complete command reference with usage examples and best practices
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Start -->
+    <section class="quick-start section-spacing-md">
+      <div class="content-max">
+        <div class="quick-start-content">
+          <h2 class="quick-start-title">Quick Start</h2>
+          <p class="quick-start-description">
+            Get started in 5 minutes with this copy-paste workflow
+          </p>
+          <CodeBlock
+            code={quickStart}
+            lang="bash"
+            title="Installation to First Feature"
+          />
+          <div class="quick-start-links">
+            <Button href="/get-started" variant="secondary">
+              Full Tutorial
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Command Reference -->
+    <section class="commands-reference section-spacing-xl">
+      <div class="content-max">
+        {commandCategories.map((category, categoryIndex) => (
+          <div class="command-category">
+            <div class="category-header">
+              <h2 class="category-title">{category.title}</h2>
+              <p class="category-description">{category.description}</p>
+            </div>
+
+            <div class="commands-list">
+              {category.commands.map((command) => (
+                <div class="command-item" id={command.name.replace('/', '').replace(':', '-')}>
+                  <div class="command-header">
+                    <h3 class="command-name">
+                      <code>{command.name}</code>
+                    </h3>
+                  </div>
+
+                  <p class="command-description">{command.description}</p>
+
+                  <div class="command-usage">
+                    <div class="usage-label">Usage:</div>
+                    <code class="usage-code">{command.usage}</code>
+                  </div>
+
+                  {command.flags && command.flags.length > 0 && (
+                    <div class="command-flags">
+                      <div class="flags-label">Flags:</div>
+                      <ul class="flags-list">
+                        {command.flags.map((flag) => (
+                          <li>
+                            <code>{flag.flag}</code> - {flag.description}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Configuration Reference -->
+    <section class="configuration section-spacing-lg">
+      <div class="content-max">
+        <div class="section-header">
+          <h2 class="section-title">Configuration Files</h2>
+          <p class="section-description">
+            Optional files to customize SpecSwarm behavior for your project
+          </p>
+        </div>
+
+        <div class="config-grid">
+          <div class="config-item">
+            <h3 class="config-name">.specswarm/tech-stack.md</h3>
+            <p class="config-description">
+              Define approved technologies to prevent 95% of drift. List core technologies, approved libraries, and prohibited patterns.
+            </p>
+            <div class="config-example">
+              <strong>Example:</strong> Enforce React 19 functional components, block Redux in favor of React Router loaders
+            </div>
+          </div>
+
+          <div class="config-item">
+            <h3 class="config-name">.specswarm/quality-standards.md</h3>
+            <p class="config-description">
+              Set quality thresholds and performance budgets. Defines minimum test coverage, quality scores, and bundle size limits.
+            </p>
+            <div class="config-example">
+              <strong>Example:</strong> Require 85% test coverage, 500KB max bundle size, block merges below 80 quality score
+            </div>
+          </div>
+
+          <div class="config-item">
+            <h3 class="config-name">.specswarm/constitution.md</h3>
+            <p class="config-description">
+              Establish project governance and coding principles. Defines architectural patterns, code style rules, and decision-making processes.
+            </p>
+            <div class="config-example">
+              <strong>Example:</strong> Functional programming preferred, composition over inheritance, explicit over implicit
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Practices -->
+    <section class="best-practices section-spacing-lg">
+      <div class="content-max">
+        <div class="section-header">
+          <h2 class="section-title">Best Practices</h2>
+          <p class="section-description">
+            Proven patterns for effective SpecSwarm usage
+          </p>
+        </div>
+
+        <div class="practices-grid">
+          <div class="practice-card">
+            <h3 class="practice-title">1. Define Tech Stack First</h3>
+            <p class="practice-description">
+              Run <code>/specswarm:init</code> before building features. Tech stack enforcement prevents 95% of drift across all features.
+            </p>
+          </div>
+
+          <div class="practice-card">
+            <h3 class="practice-title">2. Use Simplified Workflow</h3>
+            <p class="practice-description">
+              Start with <code>/specswarm:build</code> for 90% of features. Switch to granular only for complex architectural changes.
+            </p>
+          </div>
+
+          <div class="practice-card">
+            <h3 class="practice-title">3. Always Test Manually</h3>
+            <p class="practice-description">
+              Even with <code>--validate</code> flag, manually test features before shipping. AI catches bugs, but human validation is critical.
+            </p>
+          </div>
+
+          <div class="practice-card">
+            <h3 class="practice-title">4. Check Quality Before Merge</h3>
+            <p class="practice-description">
+              Run <code>/specswarm:analyze-quality</code> to catch issues early. Fix before <code>/specswarm:ship</code> blocks the merge.
+            </p>
+          </div>
+
+          <div class="practice-card">
+            <h3 class="practice-title">5. Use Correct Parent Branch</h3>
+            <p class="practice-description">
+              Always checkout parent branch before starting features. SpecSwarm merges back to the branch you started from.
+            </p>
+          </div>
+
+          <div class="practice-card">
+            <h3 class="practice-title">6. Review Planning Artifacts</h3>
+            <p class="practice-description">
+              Check spec.md, plan.md, and tasks.md before implementation. Catch issues during planning, not during code review.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- External Resources -->
+    <section class="resources section-spacing-lg">
+      <div class="content-max">
+        <div class="section-header">
+          <h2 class="section-title">Additional Resources</h2>
+        </div>
+
+        <div class="resources-grid">
+          <a href="https://github.com/MartyBonacci/specswarm" target="_blank" rel="noopener noreferrer" class="resource-card">
+            <h3 class="resource-title">GitHub Repository</h3>
+            <p class="resource-description">
+              Source code, issue tracker, and community discussions
+            </p>
+          </a>
+
+          <a href="https://github.com/MartyBonacci/specswarm/blob/main/docs/WORKFLOW.md" target="_blank" rel="noopener noreferrer" class="resource-card">
+            <h3 class="resource-title">Complete Workflow Guide</h3>
+            <p class="resource-description">
+              Step-by-step guide with real-world examples and troubleshooting
+            </p>
+          </a>
+
+          <a href="https://github.com/MartyBonacci/specswarm/blob/main/docs/CHEATSHEET.md" target="_blank" rel="noopener noreferrer" class="resource-card">
+            <h3 class="resource-title">Quick Reference Cheat Sheet</h3>
+            <p class="resource-description">
+              Visual command reference and configuration templates
+            </p>
+          </a>
+
+          <a href="https://github.com/MartyBonacci/specswarm/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" class="resource-card">
+            <h3 class="resource-title">Changelog</h3>
+            <p class="resource-description">
+              Version history, new features, and Feature 015 validation details
+            </p>
+          </a>
+
+          <a href="https://docs.claude.com/en/docs/claude-code" target="_blank" rel="noopener noreferrer" class="resource-card">
+            <h3 class="resource-title">Claude Code Documentation</h3>
+            <p class="resource-description">
+              Official Claude Code docs for getting started and advanced usage
+            </p>
+          </a>
+
+          <a href="https://github.com/MartyBonacci/specswarm/issues" target="_blank" rel="noopener noreferrer" class="resource-card">
+            <h3 class="resource-title">Report Issues</h3>
+            <p class="resource-description">
+              Bug reports, feature requests, and support questions
+            </p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta section-spacing-xl">
+      <div class="content-max">
+        <div class="cta-content">
+          <h2 class="cta-title">Ready to Get Started?</h2>
+          <p class="cta-description">
+            Install SpecSwarm and build your first feature with tech stack enforcement and quality gates.
+          </p>
+          <div class="cta-buttons">
+            <Button href="/get-started" variant="primary" size="lg">
+              Get Started Now
+            </Button>
+            <Button href="/use-cases" variant="secondary" size="lg">
+              View Use Cases
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Page Hero */
+  .page-hero {
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero-content {
+    max-width: 48rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: var(--font-size-display-l);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md);
+  }
+
+  .page-description {
+    font-size: var(--font-size-paragraph-l);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Quick Start */
+  .quick-start {
+    background-color: var(--color-surface);
+  }
+
+  .quick-start-content {
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .quick-start-title {
+    font-size: var(--font-size-display-m);
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: center;
+    margin: 0 0 var(--spacing-sm);
+  }
+
+  .quick-start-description {
+    font-size: var(--font-size-paragraph-m);
+    color: var(--color-secondary);
+    text-align: center;
+    margin: 0 0 var(--spacing-lg);
+  }
+
+  .quick-start-links {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-md);
+  }
+
+  /* Command Reference */
+  .command-category {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .command-category:last-child {
+    border-bottom: none;
+  }
+
+  .category-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .category-title {
+    font-size: var(--font-size-display-m);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-sm);
+  }
+
+  .category-description {
+    font-size: var(--font-size-paragraph-m);
+    color: var(--color-secondary);
+    margin: 0;
+  }
+
+  .commands-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .command-item {
+    padding: var(--spacing-lg);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  .command-header {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .command-name {
+    margin: 0;
+  }
+
+  .command-name code {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .command-description {
+    font-size: 0.9375rem;
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0 0 var(--spacing-md);
+  }
+
+  .command-usage {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-background);
+    border-radius: 0.375rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .usage-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+
+  .usage-code {
+    font-family: "Fira Code", monospace;
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    display: block;
+  }
+
+  .command-flags {
+    padding-top: var(--spacing-sm);
+  }
+
+  .flags-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .flags-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .flags-list li {
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+  }
+
+  .flags-list code {
+    font-size: 0.8125rem;
+    color: var(--color-accent);
+    background-color: rgba(217, 119, 87, 0.1);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+  }
+
+  /* Section Headers */
+  .section-header {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto var(--spacing-xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-display-m);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-sm);
+  }
+
+  .section-description {
+    font-size: var(--font-size-paragraph-m);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Configuration */
+  .configuration {
+    background-color: var(--color-surface);
+  }
+
+  .config-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .config-item {
+    padding: var(--spacing-lg);
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  .config-name {
+    font-family: "Fira Code", monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin: 0 0 var(--spacing-sm);
+  }
+
+  .config-description {
+    font-size: 0.9375rem;
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0 0 var(--spacing-sm);
+  }
+
+  .config-example {
+    padding: var(--spacing-sm);
+    background-color: rgba(217, 119, 87, 0.1);
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+    line-height: 1.6;
+  }
+
+  .config-example strong {
+    color: var(--color-primary);
+  }
+
+  /* Best Practices */
+  .practices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .practice-card {
+    padding: var(--spacing-lg);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  .practice-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-sm);
+  }
+
+  .practice-description {
+    font-size: 0.9375rem;
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .practice-description code {
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    background-color: rgba(217, 119, 87, 0.1);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+  }
+
+  /* Resources */
+  .resources {
+    background-color: var(--color-surface);
+  }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .resource-card {
+    padding: var(--spacing-lg);
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all var(--duration-fast) ease-out;
+  }
+
+  .resource-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(217, 119, 87, 0.1);
+  }
+
+  .resource-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-xs);
+  }
+
+  .resource-description {
+    font-size: 0.9375rem;
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* CTA Section */
+  .cta {
+    background-color: var(--color-background);
+  }
+
+  .cta-content {
+    max-width: 48rem;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+  }
+
+  .cta-title {
+    font-size: var(--font-size-display-m);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .cta-description {
+    font-size: var(--font-size-paragraph-m);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: var(--font-size-display-m);
+    }
+
+    .command-item {
+      padding: var(--spacing-md);
+    }
+
+    .config-grid,
+    .practices-grid,
+    .resources-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .cta-buttons :global(a) {
+      width: 100%;
+    }
+  }
+
+  /* Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .resource-card:hover {
+      transform: none;
+    }
+  }
+</style>

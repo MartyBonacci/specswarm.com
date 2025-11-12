@@ -2,102 +2,654 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Hero from '../components/Hero.astro';
+import Button from '../components/Button.astro';
+import CodeBlock from '../components/CodeBlock.astro';
 import FeatureCard from '../components/FeatureCard.astro';
-import { Zap, CheckCircle, Shield } from 'lucide-react';
+import AnimatedHero from '../components/AnimatedHero';
+
+const buildCode = `/specswarm:build "Add user authentication" --validate
+# [Answer clarification questions]
+# [Autonomous execution: spec → plan → tasks → implementation]`;
+
+const shipCode = `/specswarm:ship
+# [Quality analysis]
+# [Merge to parent branch]`;
+
+const metrics = [
+  { label: 'Time Savings', value: '85-90%' },
+  { label: 'Tasks Completed', value: '76/76' },
+  { label: 'Test Pass Rate', value: '96.3%' },
+];
 ---
 
 <BaseLayout
-  title="SpecSwarm - Build it. Fix it. Maintain it. | AI Workflows for Claude Code"
-  description="SpecSwarm: Complete development toolkit for Claude Code. Build features, fix bugs, and maintain quality with autonomous workflows. 85-90% time savings."
+  title="SpecSwarm - Keep AI on Track"
+  description="Keep your AI coding assistant on track with tech stack enforcement, quality gates, and 85-90% time savings. Build features in 2 commands instead of 7+."
 >
   <Header />
+
   <main>
-    <Hero />
+    <!-- Hero Section -->
+    <section class="hero section-spacing-xl">
+      <div class="hero-rails" aria-hidden="true">
+        <img src="/tracks.svg" alt="" loading="eager" />
+      </div>
+      <div class="content-max">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            <AnimatedHero
+              text="Keep AI on Track"
+              client:load
+            />
+          </h1>
+          <p class="hero-subtitle">
+            Claude Code plugin for spec-driven automation and tech stack enforcement
+          </p>
+          <div class="hero-cta">
+            <Button href="/get-started" variant="primary" size="lg">
+              Get Started
+            </Button>
+            <Button href="/features" variant="secondary" size="lg">
+              Explore Features
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section class="py-20">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
-          Key Capabilities
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <FeatureCard
-            title="Autonomous Workflows"
-            description="Build complete features with a single command. AI handles specification, planning, implementation, and validation automatically."
-          >
-            <Zap slot="icon" className="h-6 w-6 text-purple-600" />
-          </FeatureCard>
+    <!-- Problem-Solution Section -->
+    <section class="problem-solution section-spacing-lg">
+      <div class="content-max">
+        <div class="section-header">
+          <h2 class="section-title">The Problem with AI Coding Assistants</h2>
+          <p class="section-description">
+            AI is powerful, but without guardrails it drifts from your tech stack, ignores your standards, and creates maintenance nightmares.
+          </p>
+        </div>
 
-          <FeatureCard
-            title="Quality Validation"
-            description="Automated quality scoring (0-100), performance budgets, and accessibility audits ensure production-ready code."
-          >
-            <CheckCircle slot="icon" className="h-6 w-6 text-purple-600" />
-          </FeatureCard>
+        <div class="problem-solution-grid">
+          <div class="problem-card">
+            <h3 class="card-title">❌ Without SpecSwarm</h3>
+            <ul class="card-list">
+              <li>AI suggests deprecated libraries</li>
+              <li>Code quality varies wildly</li>
+              <li>Manual orchestration of 7+ commands</li>
+              <li>No validation or quality gates</li>
+              <li>3-5 days per feature</li>
+            </ul>
+          </div>
 
+          <div class="solution-card">
+            <h3 class="card-title">✅ With SpecSwarm</h3>
+            <ul class="card-list">
+              <li>95% drift prevention via tech stack enforcement</li>
+              <li>Consistent 85+ quality scores</li>
+              <li>Simplified 2-command workflow</li>
+              <li>Automatic quality validation</li>
+              <li>4-5 hours per feature</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Three-Command Workflow Section -->
+    <section class="workflow section-spacing-lg">
+      <div class="workflow-orchestration" aria-hidden="true">
+        <img src="/orchestration.svg" alt="" loading="lazy" />
+      </div>
+      <div class="content-max">
+        <div class="section-header">
+          <h2 class="section-title">Build Features in 2 Commands</h2>
+          <p class="section-description">
+            70% fewer commands, same powerful results. From specification to production-ready code.
+          </p>
+        </div>
+
+        <div class="workflow-steps">
+          <div class="workflow-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3 class="step-title">Build</h3>
+              <p class="step-description">
+                Complete feature development with one command. Handles spec → plan → tasks → implementation → quality analysis.
+              </p>
+              <CodeBlock
+                code={buildCode}
+                lang="bash"
+                title="Build Command"
+              />
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3 class="step-title">Ship</h3>
+              <p class="step-description">
+                Quality-gated merge to parent branch. Enforces thresholds, blocks if quality falls below standards.
+              </p>
+              <CodeBlock
+                code={shipCode}
+                lang="bash"
+                title="Ship Command"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="workflow-note">
+          <p>Need more control? Use the <a href="/docs">granular workflow</a> with 7 step-by-step commands.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 015 Metrics Highlight -->
+    <section class="metrics section-spacing-lg">
+      <div class="content-max">
+        <div class="metrics-container">
+          <div class="metrics-header">
+            <h2 class="section-title">Production Validated</h2>
+            <p class="section-description">
+              Real-world results from Feature 015: Testing Infrastructure (React 19 + Redux + Three.js)
+            </p>
+          </div>
+
+          <div class="metrics-grid">
+            {metrics.map((metric) => (
+              <div class="metric-card">
+                <div class="metric-value">{metric.value}</div>
+                <div class="metric-label">{metric.label}</div>
+              </div>
+            ))}
+          </div>
+
+          <div class="metrics-details">
+            <ul class="metrics-list">
+              <li>✅ 3,500+ lines of test code generated</li>
+              <li>✅ 1,530 lines of documentation created</li>
+              <li>✅ 3.27s test execution time</li>
+              <li>✅ Tech stack drift prevented</li>
+            </ul>
+            <Button href="/use-cases" variant="secondary">
+              Read Full Case Study
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Overview -->
+    <section class="features section-spacing-lg">
+      <div class="content-max">
+        <div class="section-header">
+          <h2 class="section-title">Built for Control & Quality</h2>
+          <p class="section-description">
+            Everything you need to maintain standards while moving fast
+          </p>
+        </div>
+
+        <div class="features-grid">
           <FeatureCard
+            icon="shield"
             title="Tech Stack Enforcement"
-            description="Prevent technology drift with enforced tech stack guidelines. Consistency across all features and developers."
-          >
-            <Shield slot="icon" className="h-6 w-6 text-purple-600" />
-          </FeatureCard>
+            description="95% drift prevention. Define your approved technologies once, SpecSwarm validates every feature against your stack."
+            metric="95%"
+          />
+          <FeatureCard
+            icon="zap"
+            title="Simplified Workflow"
+            description="Build complete features in 2 commands instead of 7+. Autonomous execution with interactive clarification."
+            metric="70%"
+          />
+          <FeatureCard
+            icon="check-circle"
+            title="Quality Validation"
+            description="0-100 point scoring with configurable thresholds. Blocks merges below standards, shows clear remediation steps."
+            metric="85+"
+          />
+          <FeatureCard
+            icon="layers"
+            title="Autonomous Orchestration"
+            description="Natural language to working code. Handles planning, implementation, testing, and quality analysis automatically."
+          />
+          <FeatureCard
+            icon="target"
+            title="Production Validated"
+            description="76/76 tasks completed, 96.3% test pass rate. Proven in real-world React 19 + Redux + Three.js application."
+            metric="96.3%"
+          />
+          <FeatureCard
+            icon="trending-up"
+            title="Developer Control"
+            description="Decision checkpoints, not black box automation. Choose simplified or granular workflow based on your needs."
+          />
+        </div>
+
+        <div class="features-cta">
+          <Button href="/features" variant="secondary" size="lg">
+            Explore All Features
+          </Button>
         </div>
       </div>
     </section>
 
-    <section class="bg-gray-50 py-20">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
-          Proven Results
-        </h2>
-        <p class="text-xl text-center text-gray-600 mb-12">
-          Real-world validation from production projects
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-          <div class="text-center">
-            <div class="text-5xl font-bold text-purple-600 mb-2">85-90%</div>
-            <div class="text-gray-600">Time Savings</div>
-          </div>
-
-          <div class="text-center">
-            <div class="text-5xl font-bold text-purple-600 mb-2">76/76</div>
-            <div class="text-gray-600">Tasks Completed</div>
-          </div>
-
-          <div class="text-center">
-            <div class="text-5xl font-bold text-purple-600 mb-2">96.3%</div>
-            <div class="text-gray-600">Test Pass Rate</div>
-          </div>
-
-          <div class="text-center">
-            <div class="text-5xl font-bold text-purple-600 mb-2">3-4hr</div>
-            <div class="text-gray-600">vs 3-5 days manual</div>
+    <!-- Final CTA Section -->
+    <section class="final-cta section-spacing-xl">
+      <div class="content-max">
+        <div class="cta-content">
+          <h2 class="cta-title">Ready to Keep AI On Track?</h2>
+          <p class="cta-description">
+            Install SpecSwarm in under 5 minutes and build your first feature with tech stack enforcement and quality gates.
+          </p>
+          <div class="cta-buttons">
+            <Button href="/get-started" variant="primary" size="lg">
+              Get Started Now
+            </Button>
+            <Button
+              href="https://github.com/MartyBonacci/specswarm"
+              variant="secondary"
+              size="lg"
+            >
+              View on GitHub
+            </Button>
           </div>
         </div>
-
-        <p class="text-center text-gray-500 mt-8 text-sm">
-          Source: Feature 015 - Testing Infrastructure (customcult2 project)
-        </p>
-      </div>
-    </section>
-
-    <section class="py-20">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          Ready to transform your development workflow?
-        </h2>
-        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-          Install SpecSwarm in seconds and start building features 85-90% faster with autonomous AI workflows.
-        </p>
-        <a
-          href="/features"
-          class="inline-block bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-purple-700 transition-colors"
-        >
-          Explore Features
-        </a>
       </div>
     </section>
   </main>
+
   <Footer />
 </BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--color-background) 0%, var(--color-surface) 100%);
+  }
+
+  .hero-rails {
+    position: absolute;
+    bottom: -15%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-rails img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    opacity: 0.15;
+    filter: blur(0.5px);
+  }
+
+  .hero .content-max {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-content {
+    max-width: 56rem;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+  }
+
+  .hero-title {
+    font-size: var(--font-size-display-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-paragraph-l);
+    color: var(--color-primary);
+    max-width: 48rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Section Headers */
+  .section-header {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto var(--spacing-xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-display-l);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md);
+  }
+
+  .section-description {
+    font-size: var(--font-size-paragraph-m);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Problem-Solution Section */
+  .problem-solution {
+    background-color: var(--color-surface);
+  }
+
+  .problem-solution-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .problem-card,
+  .solution-card {
+    padding: var(--spacing-lg);
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-border);
+  }
+
+  .problem-card {
+    background-color: rgba(217, 119, 87, 0.05);
+  }
+
+  .solution-card {
+    background-color: var(--color-background);
+    border-color: var(--color-accent);
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 var(--spacing-md);
+  }
+
+  .card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .card-list li {
+    font-size: 0.9375rem;
+    color: var(--color-secondary);
+    line-height: 1.6;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .card-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 4px;
+    height: 4px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+  }
+
+  /* Workflow Section */
+  .workflow {
+    position: relative;
+  }
+
+  .workflow-orchestration {
+    //position: absolute;
+    //top: 50%;
+    //right: 5%;
+    //transform: translateY(-50%);
+    //width: 220px;
+    opacity: 1;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .workflow-orchestration img {
+    width: 100%;
+    height: auto;
+  }
+
+  .workflow .content-max {
+    position: relative;
+    z-index: 1;
+  }
+
+  .workflow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .workflow-step {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: flex-start;
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-accent);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 50%;
+  }
+
+  .step-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    max-width: 100%;
+  }
+
+  .step-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .step-description {
+    font-size: 0.9375rem;
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .workflow-note {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+  }
+
+  .workflow-note p {
+    font-size: 0.9375rem;
+    color: var(--color-secondary);
+  }
+
+  .workflow-note a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  /* Metrics Section */
+  .metrics {
+    background-color: var(--color-background);
+  }
+
+  .metrics-container {
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .metrics-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .metric-card {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  .metric-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  .metric-label {
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+    margin-top: 0.5rem;
+  }
+
+  .metrics-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  .metrics-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .metrics-list li {
+    font-size: 0.9375rem;
+    color: var(--color-secondary);
+  }
+
+  /* Features Grid */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .features-cta {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+  }
+
+  /* Final CTA */
+  .final-cta {
+    background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-background) 100%);
+  }
+
+  .cta-content {
+    max-width: 48rem;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+  }
+
+  .cta-title {
+    font-size: var(--font-size-display-l);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .cta-description {
+    font-size: var(--font-size-paragraph-m);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: var(--font-size-display-l);
+    }
+
+    .hero-rails img {
+      width: 120%;
+      opacity: 0.04;
+    }
+
+    .workflow-orchestration {
+      display: none;
+    }
+
+    .workflow-step {
+      flex-direction: column;
+    }
+
+    .step-number {
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.25rem;
+    }
+
+    .hero-cta,
+    .cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .hero-cta :global(a),
+    .cta-buttons :global(a) {
+      width: 100%;
+    }
+  }
+</style>
