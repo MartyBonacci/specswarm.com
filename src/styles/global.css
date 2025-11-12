@@ -1,1 +1,192 @@
 @import "tailwindcss";
+
+/* =========================================
+   Design System - Anthropic-Inspired Light Theme
+   ========================================= */
+
+@theme {
+  /* Color Palette */
+  --color-primary: #131314;        /* Deep charcoal text */
+  --color-accent: #d97757;         /* Terracotta accent */
+  --color-background: #faf9f0;     /* Light cream background */
+  --color-surface: #ffffff;        /* White surfaces */
+  --color-border: #e5e5e0;         /* Subtle warm gray borders */
+  --color-secondary: #87867f;      /* Muted gray secondary text */
+
+  /* Fluid Typography (using clamp for responsive sizing) */
+  --font-size-display-xxl: clamp(3rem, 2.388rem + 2.612vw, 5rem);
+  --font-size-display-xl: clamp(2.5rem, 2.041rem + 1.959vw, 4rem);
+  --font-size-display-l: clamp(2rem, 1.694rem + 1.306vw, 3rem);
+  --font-size-display-m: clamp(1.75rem, 1.673rem + 0.327vw, 2rem);
+  --font-size-paragraph-l: clamp(1.375rem, 1.337rem + 0.163vw, 1.5rem);
+  --font-size-paragraph-m: clamp(1.125rem, 1.087rem + 0.163vw, 1.25rem);
+  --font-size-paragraph-s: 1rem;
+  --font-size-monospace: clamp(0.875rem, 0.531rem + 1.469vw, 2rem);
+
+  /* Spacing System */
+  --spacing-site-margin: clamp(2rem, 1.082rem + 3.918vw, 5rem);
+  --spacing-section-xl: 8rem;
+  --spacing-section-lg: 6rem;
+  --spacing-section-md: 4rem;
+  --spacing-section-sm: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-lg: 2rem;
+  --spacing-md: 1.5rem;
+  --spacing-sm: 1rem;
+  --spacing-xs: 0.5rem;
+
+  /* Animation Durations */
+  --duration-fast: 200ms;
+  --duration-normal: 400ms;
+  --duration-slow: 500ms;
+  --duration-word: 800ms;
+
+  /* Easing Functions */
+  --ease-smooth: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --nav-height: 5rem;
+  --nav-height-mobile: 4.375rem;
+  --content-max-width: 1280px;
+
+  /* Custom Tailwind Utilities */
+  --color-text-primary: var(--color-primary);
+  --color-text-secondary: var(--color-secondary);
+}
+
+/* =========================================
+   Global Styles & Reset
+   ========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Typography Base */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: opacity var(--duration-fast) ease-out;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Code & Monospace */
+code, pre {
+  font-family: "Fira Code", "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, monospace;
+  font-weight: 500;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(217, 119, 87, 0.15);
+  color: var(--color-primary);
+}
+
+/* Focus Outlines */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Remove focus outline on mouse click, keep for keyboard */
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* =========================================
+   Accessibility - Reduced Motion
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* =========================================
+   Utility Classes
+   ========================================= */
+
+.section-spacing-xl {
+  padding-block: var(--spacing-section-xl);
+}
+
+.section-spacing-lg {
+  padding-block: var(--spacing-section-lg);
+}
+
+.section-spacing-md {
+  padding-block: var(--spacing-section-md);
+}
+
+.section-spacing-sm {
+  padding-block: var(--spacing-section-sm);
+}
+
+.content-max {
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding-inline: var(--spacing-site-margin);
+}
+
+/* Visually hidden (for screen readers) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+

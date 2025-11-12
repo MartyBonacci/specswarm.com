@@ -1,0 +1,670 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+import ScenarioCard from '../components/ScenarioCard.astro';
+
+const scenarios = [
+  {
+    title: 'New Feature Development',
+    persona: 'Developer',
+    description: 'Building a complete authentication system with tech stack enforcement. Prevents AI from suggesting deprecated libraries or incompatible patterns.',
+    outcome: 'Feature completed in 4-5 hours instead of 3-5 days, with 85+ quality score and zero tech debt introduced.',
+  },
+  {
+    title: 'Bug Fixing with Regression Tests',
+    persona: 'Team Lead',
+    description: 'Critical production bug affecting cart totals. Need test-first approach to prevent recurrence and validate fix across all scenarios.',
+    outcome: 'Regression test created automatically, bug fixed and verified, merged with confidence in 2 hours.',
+  },
+  {
+    title: 'Framework Migration',
+    persona: 'Architect',
+    description: 'Upgrading from React 18 to React 19. Breaking changes need systematic analysis, codemods, and validation across large codebase.',
+    outcome: 'Automated breaking change analysis, guided migration with automated refactoring, full test suite passing.',
+  },
+  {
+    title: 'Code Quality Improvement',
+    persona: 'Senior Developer',
+    description: 'Authentication module has grown complex over time. Need to refactor while maintaining backwards compatibility and 80%+ test coverage.',
+    outcome: 'Metrics-driven refactoring with behavior preservation, improved quality score from 72 to 89.',
+  },
+];
+
+const caseStudyMetrics = [
+  { label: 'Tasks Completed', value: '76/76', sublabel: '100% completion rate' },
+  { label: 'Test Pass Rate', value: '96.3%', sublabel: '131 of 136 tests passing' },
+  { label: 'Test Execution', value: '3.27s', sublabel: 'Fast feedback loop' },
+  { label: 'Time Savings', value: '85-90%', sublabel: '4-5 hours vs 3-5 days' },
+];
+
+const caseStudyDetails = [
+  '✅ 3,500+ lines of test code generated (unit, integration, browser)',
+  '✅ 1,530 lines of comprehensive documentation created',
+  '✅ Tech stack drift prevented (blocked Jest, enforced Vitest)',
+  '✅ Complex branch hierarchy validated (main → develop → sprint-4 → feature)',
+  '✅ Silent autonomous execution (no mid-phase pausing)',
+  '✅ Production-ready code quality maintained',
+];
+---
+
+<BaseLayout
+  title="Use Cases - SpecSwarm"
+  description="Real-world examples of SpecSwarm in action. Feature 015 case study: 76/76 tasks completed, 96.3% test pass rate, 85-90% time savings in production React + Redux + Three.js application."
+>
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <section class="page-hero section-spacing-md">
+      <div class="content-max">
+        <div class="hero-content">
+          <h1 class="page-title">Real-World Results</h1>
+          <p class="page-description">
+            Production-validated examples showing 85-90% time savings with maintained quality standards
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Case Study -->
+    <section class="case-study section-spacing-xl">
+      <div class="content-max">
+        <div class="case-study-header">
+          <div class="case-study-badge">Featured Case Study</div>
+          <h2 class="case-study-title">Feature 015: Testing Infrastructure</h2>
+          <p class="case-study-subtitle">
+            React 19 + Redux + Three.js snowboard customization app (customcult2)
+          </p>
+        </div>
+
+        <div class="case-study-metrics">
+          {caseStudyMetrics.map((metric) => (
+            <div class="metric-card">
+              <div class="metric-value">{metric.value}</div>
+              <div class="metric-label">{metric.label}</div>
+              <div class="metric-sublabel">{metric.sublabel}</div>
+            </div>
+          ))}
+        </div>
+
+        <div class="case-study-overview">
+          <h3 class="overview-title">What Was Built</h3>
+          <p class="overview-description">
+            Complete testing infrastructure for a complex 3D product configurator. Implemented comprehensive test suite with unit tests (Vitest), integration tests (React Testing Library), and browser automation (Playwright) for Three.js canvas interactions.
+          </p>
+        </div>
+
+        <div class="case-study-details">
+          <h3 class="details-title">What Was Validated</h3>
+          <ul class="details-list">
+            {caseStudyDetails.map((detail) => (
+              <li>{detail}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="case-study-timeline">
+          <h3 class="timeline-title">Time Comparison</h3>
+          <div class="timeline-grid">
+            <div class="timeline-item timeline-manual">
+              <div class="timeline-label">Manual Approach</div>
+              <div class="timeline-breakdown">
+                <div class="timeline-row">
+                  <span>Planning</span>
+                  <span>1-2 hours</span>
+                </div>
+                <div class="timeline-row">
+                  <span>Implementation</span>
+                  <span>2-3 days</span>
+                </div>
+                <div class="timeline-row">
+                  <span>Test Writing</span>
+                  <span>1-2 days</span>
+                </div>
+                <div class="timeline-row">
+                  <span>Documentation</span>
+                  <span>4-6 hours</span>
+                </div>
+              </div>
+              <div class="timeline-total">Total: 3-5 days</div>
+            </div>
+
+            <div class="timeline-item timeline-specswarm">
+              <div class="timeline-label">SpecSwarm Autonomous</div>
+              <div class="timeline-breakdown">
+                <div class="timeline-row">
+                  <span>Planning</span>
+                  <span>15 min</span>
+                </div>
+                <div class="timeline-row">
+                  <span>Implementation</span>
+                  <span>3-4 hours</span>
+                </div>
+                <div class="timeline-row">
+                  <span>Test Writing</span>
+                  <span>Included</span>
+                </div>
+                <div class="timeline-row">
+                  <span>Documentation</span>
+                  <span>Included</span>
+                </div>
+              </div>
+              <div class="timeline-total timeline-total-savings">Total: 4-5 hours (85-90% savings)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-study-commands">
+          <h3 class="commands-title">Commands Used</h3>
+          <div class="commands-code">
+            <code>
+              /specswarm:orchestrate-feature "Implement comprehensive testing..." --validate
+              <br/>
+              # [3-4 hours autonomous execution]
+              <br/>
+              /specswarm:complete
+            </code>
+          </div>
+          <p class="commands-note">
+            <strong>2 commands total</strong> vs. 50+ commands in manual workflow
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Common Scenarios -->
+    <section class="scenarios section-spacing-lg">
+      <div class="content-max">
+        <div class="section-header">
+          <h2 class="section-title">Common Use Cases</h2>
+          <p class="section-description">
+            How developers use SpecSwarm across different types of work
+          </p>
+        </div>
+
+        <div class="scenarios-grid">
+          {scenarios.map((scenario) => (
+            <ScenarioCard
+              title={scenario.title}
+              persona={scenario.persona}
+              description={scenario.description}
+              outcome={scenario.outcome}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow Decision Tree -->
+    <section class="decision-tree section-spacing-lg">
+      <div class="content-max">
+        <div class="section-header">
+          <h2 class="section-title">When to Use Which Workflow</h2>
+          <p class="section-description">
+            Choose the right approach for your situation
+          </p>
+        </div>
+
+        <div class="tree-content">
+          <div class="tree-branch">
+            <h3 class="branch-title">Use Simplified Workflow When:</h3>
+            <ul class="branch-list">
+              <li>Building straightforward features with clear requirements</li>
+              <li>You trust AI with autonomous execution</li>
+              <li>Speed is the priority (70% fewer commands)</li>
+              <li>Feature fits within established patterns</li>
+              <li>Tech stack is well-defined and enforced</li>
+            </ul>
+            <div class="branch-example">
+              <strong>Example:</strong> "Add user profile page with avatar upload"
+              <br/>
+              <code>/specswarm:build "..." --validate</code> → <code>/specswarm:ship</code>
+            </div>
+          </div>
+
+          <div class="tree-branch">
+            <h3 class="branch-title">Use Granular Workflow When:</h3>
+            <ul class="branch-list">
+              <li>Complex architectural changes need review</li>
+              <li>Multiple stakeholders need sign-off at each phase</li>
+              <li>Learning SpecSwarm for the first time</li>
+              <li>Experimental features with high uncertainty</li>
+              <li>Need to review planning before implementation</li>
+            </ul>
+            <div class="branch-example">
+              <strong>Example:</strong> "Migrate from Redux to React Router v7 state management"
+              <br/>
+              <code>/specswarm:specify</code> → <code>/specswarm:clarify</code> → <code>/specswarm:plan</code> → ...
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta section-spacing-xl">
+      <div class="content-max">
+        <div class="cta-content">
+          <h2 class="cta-title">Start Your Own Success Story</h2>
+          <p class="cta-description">
+            See similar results in your own projects. Install SpecSwarm and build your first feature with tech stack enforcement and quality gates.
+          </p>
+          <div class="cta-buttons">
+            <Button href="/get-started" variant="primary" size="lg">
+              Get Started Now
+            </Button>
+            <Button
+              href="https://github.com/MartyBonacci/specswarm/blob/main/CHANGELOG.md"
+              variant="secondary"
+              size="lg"
+            >
+              Read Full Changelog
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Page Hero */
+  .page-hero {
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero-content {
+    max-width: 48rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: var(--font-size-display-l);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md);
+  }
+
+  .page-description {
+    font-size: var(--font-size-paragraph-l);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Case Study */
+  .case-study {
+    background-color: var(--color-surface);
+  }
+
+  .case-study-header {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto var(--spacing-xl);
+  }
+
+  .case-study-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-accent);
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 0.375rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .case-study-title {
+    font-size: var(--font-size-display-m);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-xs);
+  }
+
+  .case-study-subtitle {
+    font-size: var(--font-size-paragraph-m);
+    color: var(--color-secondary);
+    margin: 0;
+  }
+
+  .case-study-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .metric-card {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  .metric-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .metric-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .metric-sublabel {
+    font-size: 0.8125rem;
+    color: var(--color-secondary);
+  }
+
+  .case-study-overview,
+  .case-study-details,
+  .case-study-timeline,
+  .case-study-commands {
+    max-width: 56rem;
+    margin: 0 auto var(--spacing-xl);
+  }
+
+  .overview-title,
+  .details-title,
+  .timeline-title,
+  .commands-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md);
+  }
+
+  .overview-description {
+    font-size: var(--font-size-paragraph-m);
+    color: var(--color-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .details-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 0.75rem;
+  }
+
+  .details-list li {
+    font-size: 0.9375rem;
+    color: var(--color-secondary);
+    line-height: 1.6;
+  }
+
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .timeline-item {
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  .timeline-manual {
+    background-color: rgba(217, 119, 87, 0.05);
+  }
+
+  .timeline-specswarm {
+    background-color: var(--color-background);
+    border-color: var(--color-accent);
+  }
+
+  .timeline-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .timeline-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .timeline-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+  }
+
+  .timeline-row span:last-child {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .timeline-total {
+    padding-top: var(--spacing-sm);
+    border-top: 2px solid var(--color-border);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .timeline-total-savings {
+    color: var(--color-accent);
+  }
+
+  .commands-code {
+    padding: var(--spacing-md);
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .commands-code code {
+    font-family: "Fira Code", monospace;
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    line-height: 1.8;
+  }
+
+  .commands-note {
+    font-size: 0.9375rem;
+    color: var(--color-secondary);
+    text-align: center;
+    margin: 0;
+  }
+
+  .commands-note strong {
+    color: var(--color-accent);
+  }
+
+  /* Section Headers */
+  .section-header {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto var(--spacing-xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-display-m);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-sm);
+  }
+
+  .section-description {
+    font-size: var(--font-size-paragraph-m);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Scenarios Grid */
+  .scenarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  /* Decision Tree */
+  .decision-tree {
+    background-color: var(--color-surface);
+  }
+
+  .tree-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+    gap: var(--spacing-xl);
+  }
+
+  .tree-branch {
+    padding: var(--spacing-lg);
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  .branch-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md);
+  }
+
+  .branch-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .branch-list li {
+    font-size: 0.9375rem;
+    color: var(--color-secondary);
+    line-height: 1.6;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .branch-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .branch-example {
+    padding: var(--spacing-sm);
+    background-color: rgba(217, 119, 87, 0.1);
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+    line-height: 1.6;
+  }
+
+  .branch-example strong {
+    color: var(--color-primary);
+  }
+
+  .branch-example code {
+    color: var(--color-accent);
+    background-color: rgba(217, 119, 87, 0.15);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-size: 0.8125rem;
+  }
+
+  /* CTA Section */
+  .cta {
+    background-color: var(--color-background);
+  }
+
+  .cta-content {
+    max-width: 48rem;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+  }
+
+  .cta-title {
+    font-size: var(--font-size-display-m);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .cta-description {
+    font-size: var(--font-size-paragraph-m);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: var(--font-size-display-m);
+    }
+
+    .case-study-metrics {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .timeline-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tree-content {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .cta-buttons :global(a) {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .scenarios-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .case-study-metrics {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

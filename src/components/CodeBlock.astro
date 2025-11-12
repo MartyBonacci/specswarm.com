@@ -1,0 +1,131 @@
+---
+import { codeToHtml } from 'shiki';
+
+interface Props {
+  code: string;
+  lang?: string;
+  title?: string;
+  showLineNumbers?: boolean;
+  highlightLines?: number[];
+  class?: string;
+}
+
+const {
+  code,
+  lang = 'bash',
+  title,
+  showLineNumbers = false,
+  highlightLines = [],
+  class: className,
+} = Astro.props;
+
+// Render code with Shiki (server-side syntax highlighting)
+const html = await codeToHtml(code.trim(), {
+  lang,
+  theme: 'github-light',
+  transformers: [
+    {
+      pre(node) {
+        // Add custom classes to pre element
+        this.addClassToHast(node, 'shiki-pre');
+      },
+      code(node) {
+        // Add custom classes to code element
+        this.addClassToHast(node, 'shiki-code');
+      },
+    },
+  ],
+});
+---
+
+<div class:list={['code-block', className]}>
+  {title && (
+    <div class="code-block-header">
+      <span class="code-block-title">{title}</span>
+      <span class="code-block-lang">{lang}</span>
+    </div>
+  )}
+  <div class="code-block-content" set:html={html} />
+</div>
+
+<style>
+  .code-block {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .code-block-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .code-block-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .code-block-lang {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .code-block-content {
+    overflow-x: auto;
+  }
+
+  /* Shiki Pre Styles */
+  .code-block-content :global(.shiki-pre) {
+    margin: 0;
+    padding: 1rem;
+    background-color: var(--color-surface) !important;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    overflow-x: auto;
+  }
+
+  .code-block-content :global(.shiki-code) {
+    display: block;
+    font-family: "Fira Code", "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, monospace;
+    font-weight: 500;
+  }
+
+  /* Scrollbar Styling */
+  .code-block-content::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .code-block-content::-webkit-scrollbar-track {
+    background-color: var(--color-background);
+  }
+
+  .code-block-content::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 4px;
+  }
+
+  .code-block-content::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-secondary);
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 640px) {
+    .code-block-content :global(.shiki-pre) {
+      padding: 0.75rem;
+      font-size: 0.8125rem;
+    }
+
+    .code-block-header {
+      padding: 0.5rem 0.75rem;
+    }
+  }
+</style>
