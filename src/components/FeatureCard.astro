@@ -28,9 +28,15 @@ const icons: Record<string, string> = {
 const iconPath = icon ? icons[icon] : null;
 ---
 
-<div class:list={['feature-card', className]}>
+<div class:list={[
+  'flex flex-col gap-[var(--spacing-md)] p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl transition-all duration-[var(--duration-fast)] ease-out hover:border-[var(--color-accent)] hover:shadow-[0_4px_16px_rgba(217,119,87,0.1)] hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:transform-none sm:p-[var(--spacing-md)]',
+  className
+]}>
   {iconPath && (
-    <div class="feature-card-icon" aria-hidden="true">
+    <div
+      class="flex items-center justify-center w-12 h-12 bg-[rgba(217,119,87,0.1)] rounded-xl text-[var(--color-accent)]"
+      aria-hidden="true"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -47,116 +53,14 @@ const iconPath = icon ? icons[icon] : null;
     </div>
   )}
 
-  <div class="feature-card-content">
-    <h3 class="feature-card-title">{title}</h3>
-    <p class="feature-card-description">{description}</p>
+  <div class="flex flex-col gap-[var(--spacing-sm)]">
+    <h3 class="text-xl sm:text-lg font-bold text-[var(--color-primary)] m-0">{title}</h3>
+    <p class="text-[0.9375rem] sm:text-sm text-[var(--color-secondary)] leading-relaxed m-0">{description}</p>
     {metric && (
-      <div class="feature-card-metric">
-        <span class="metric-value">{metric}</span>
-        <span class="metric-label">improvement</span>
+      <div class="inline-flex items-baseline gap-2 px-3 py-2 bg-[rgba(217,119,87,0.1)] rounded-md w-fit mt-[var(--spacing-xs)]">
+        <span class="text-lg font-bold text-[var(--color-accent)]">{metric}</span>
+        <span class="text-[0.8125rem] font-medium text-[var(--color-secondary)]">improvement</span>
       </div>
     )}
   </div>
 </div>
-
-<style>
-  .feature-card {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-    padding: var(--spacing-lg);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
-    transition: all var(--duration-fast) ease-out;
-  }
-
-  .feature-card:hover {
-    border-color: var(--color-accent);
-    box-shadow: 0 4px 16px rgba(217, 119, 87, 0.1);
-    transform: translateY(-2px);
-  }
-
-  /* Icon */
-  .feature-card-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    background-color: rgba(217, 119, 87, 0.1);
-    border-radius: 0.75rem;
-    color: var(--color-accent);
-  }
-
-  /* Content */
-  .feature-card-content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-  }
-
-  .feature-card-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0;
-  }
-
-  .feature-card-description {
-    font-size: 0.9375rem;
-    color: var(--color-secondary);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* Metric Badge */
-  .feature-card-metric {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    padding: 0.5rem 0.75rem;
-    background-color: rgba(217, 119, 87, 0.1);
-    border-radius: 0.375rem;
-    width: fit-content;
-    margin-top: var(--spacing-xs);
-  }
-
-  .metric-value {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--color-accent);
-  }
-
-  .metric-label {
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: var(--color-secondary);
-  }
-
-  /* Reduced Motion */
-  @media (prefers-reduced-motion: reduce) {
-    .feature-card {
-      transition: none;
-    }
-
-    .feature-card:hover {
-      transform: none;
-    }
-  }
-
-  /* Mobile Adjustments */
-  @media (max-width: 640px) {
-    .feature-card {
-      padding: var(--spacing-md);
-    }
-
-    .feature-card-title {
-      font-size: 1.125rem;
-    }
-
-    .feature-card-description {
-      font-size: 0.875rem;
-    }
-  }
-</style>

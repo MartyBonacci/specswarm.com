@@ -64,11 +64,11 @@ const steps = [
 
   <main>
     <!-- Hero Section -->
-    <section class="page-hero section-spacing-md">
+    <section class="bg-[var(--color-background)] border-b border-[var(--color-border)] py-[var(--spacing-section-md)]">
       <div class="content-max">
-        <div class="hero-content">
-          <h1 class="page-title">Get Started in 5 Minutes</h1>
-          <p class="page-description">
+        <div class="max-w-[48rem] mx-auto text-center">
+          <h1 class="text-[var(--font-size-display-l)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)] md:text-[var(--font-size-display-m)]">Get Started in 5 Minutes</h1>
+          <p class="text-[var(--font-size-paragraph-l)] text-[var(--color-secondary)] leading-relaxed m-0">
             From installation to your first shipped feature. Complete tutorial with copy-paste examples.
           </p>
         </div>
@@ -76,43 +76,43 @@ const steps = [
     </section>
 
     <!-- Prerequisites -->
-    <section class="prerequisites section-spacing-md">
+    <section class="py-[var(--spacing-section-md)]">
       <div class="content-max">
-        <div class="prereqs-content">
-          <h2 class="prereqs-title">Before You Start</h2>
-          <div class="prereqs-grid">
-            <div class="prereq-item">
-              <div class="prereq-icon">✅</div>
-              <div class="prereq-text">
-                <strong>Git Repository</strong>
-                <p>Initialized with at least one commit</p>
+        <div class="max-w-[56rem] mx-auto">
+          <h2 class="text-[var(--font-size-display-m)] font-bold text-[var(--color-primary)] text-center m-0 mb-[var(--spacing-xl)]">Before You Start</h2>
+          <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,14rem),1fr))] gap-[var(--spacing-md)] mb-[var(--spacing-lg)] md:grid-cols-1">
+            <div class="flex gap-[var(--spacing-sm)] p-[var(--spacing-md)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg">
+              <div class="text-2xl flex-shrink-0">✅</div>
+              <div>
+                <strong class="block text-[0.9375rem] font-semibold text-[var(--color-primary)] mb-1">Git Repository</strong>
+                <p class="text-sm text-[var(--color-secondary)] m-0">Initialized with at least one commit</p>
               </div>
             </div>
-            <div class="prereq-item">
-              <div class="prereq-icon">✅</div>
-              <div class="prereq-text">
-                <strong>Project Structure</strong>
-                <p>src/, package.json, or your framework's structure</p>
+            <div class="flex gap-[var(--spacing-sm)] p-[var(--spacing-md)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg">
+              <div class="text-2xl flex-shrink-0">✅</div>
+              <div>
+                <strong class="block text-[0.9375rem] font-semibold text-[var(--color-primary)] mb-1">Project Structure</strong>
+                <p class="text-sm text-[var(--color-secondary)] m-0">src/, package.json, or your framework's structure</p>
               </div>
             </div>
-            <div class="prereq-item">
-              <div class="prereq-icon">✅</div>
-              <div class="prereq-text">
-                <strong>Tech Stack</strong>
-                <p>Established framework (React, Vue, Next.js, Astro, etc.)</p>
+            <div class="flex gap-[var(--spacing-sm)] p-[var(--spacing-md)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg">
+              <div class="text-2xl flex-shrink-0">✅</div>
+              <div>
+                <strong class="block text-[0.9375rem] font-semibold text-[var(--color-primary)] mb-1">Tech Stack</strong>
+                <p class="text-sm text-[var(--color-secondary)] m-0">Established framework (React, Vue, Next.js, Astro, etc.)</p>
               </div>
             </div>
-            <div class="prereq-item">
-              <div class="prereq-icon">✅</div>
-              <div class="prereq-text">
-                <strong>Claude Code</strong>
-                <p>Installed and initialized with /init</p>
+            <div class="flex gap-[var(--spacing-sm)] p-[var(--spacing-md)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg">
+              <div class="text-2xl flex-shrink-0">✅</div>
+              <div>
+                <strong class="block text-[0.9375rem] font-semibold text-[var(--color-primary)] mb-1">Claude Code</strong>
+                <p class="text-sm text-[var(--color-secondary)] m-0">Installed and initialized with /init</p>
               </div>
             </div>
           </div>
-          <div class="prereqs-note">
-            <p>
-              <strong>Starting from scratch?</strong> Use your framework's official CLI first (e.g., <code>npm create vite@latest</code>), then return here.
+          <div class="p-[var(--spacing-md)] bg-[rgba(217,119,87,0.1)] rounded-lg text-center">
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] m-0">
+              <strong class="text-[var(--color-primary)]">Starting from scratch?</strong> Use your framework's official CLI first (e.g., <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.15)] px-1.5 py-0.5 rounded">npm create vite@latest</code>), then return here.
             </p>
           </div>
         </div>
@@ -120,19 +120,19 @@ const steps = [
     </section>
 
     <!-- Tutorial Steps -->
-    <section class="tutorial section-spacing-xl">
+    <section class="py-[var(--spacing-section-xl)]">
       <div class="content-max">
-        <div class="tutorial-steps">
+        <div class="max-w-[56rem] mx-auto flex flex-col gap-[var(--spacing-xl)]">
           {steps.map((step) => (
-            <div class="tutorial-step">
-              <div class="step-header">
-                <div class="step-number">{step.number}</div>
-                <div class="step-info">
-                  <h3 class="step-title">{step.title}</h3>
-                  <p class="step-description">{step.description}</p>
+            <div class="flex flex-col gap-[var(--spacing-md)]">
+              <div class="flex gap-[var(--spacing-md)] items-start md:flex-col">
+                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-[var(--color-accent)] text-white text-2xl font-bold rounded-full md:w-10 md:h-10 md:text-xl">{step.number}</div>
+                <div class="flex-1">
+                  <h3 class="text-2xl font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-xs)]">{step.title}</h3>
+                  <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">{step.description}</p>
                 </div>
               </div>
-              <div class="step-code">
+              <div class="pl-[calc(3rem+var(--spacing-md))] md:pl-0">
                 <CodeBlock
                   code={step.code}
                   lang={step.lang}
@@ -145,19 +145,19 @@ const steps = [
     </section>
 
     <!-- What's Next -->
-    <section class="next-steps section-spacing-lg">
+    <section class="bg-[var(--color-surface)] py-[var(--spacing-section-lg)]">
       <div class="content-max">
-        <div class="section-header">
-          <h2 class="section-title">What's Next?</h2>
-          <p class="section-description">
+        <div class="text-center max-w-[48rem] mx-auto mb-[var(--spacing-xl)]">
+          <h2 class="text-[var(--font-size-display-m)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">What's Next?</h2>
+          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
             You've shipped your first feature. Here's where to go from here.
           </p>
         </div>
 
-        <div class="next-steps-grid">
-          <div class="next-step-card">
-            <h3 class="card-title">📚 Explore All Features</h3>
-            <p class="card-description">
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,16rem),1fr))] gap-[var(--spacing-lg)]">
+          <div class="flex flex-col gap-[var(--spacing-sm)] p-[var(--spacing-lg)] bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-lg font-bold text-[var(--color-primary)] m-0">📚 Explore All Features</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0 flex-1">
               Learn about tech stack enforcement, quality validation, autonomous orchestration, and all 28 commands.
             </p>
             <Button href="/features" variant="secondary">
@@ -165,9 +165,9 @@ const steps = [
             </Button>
           </div>
 
-          <div class="next-step-card">
-            <h3 class="card-title">🔧 Read the Documentation</h3>
-            <p class="card-description">
+          <div class="flex flex-col gap-[var(--spacing-sm)] p-[var(--spacing-lg)] bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-lg font-bold text-[var(--color-primary)] m-0">🔧 Read the Documentation</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0 flex-1">
               Comprehensive command reference, configuration options, and advanced workflows for complex features.
             </p>
             <Button href="/docs" variant="secondary">
@@ -175,9 +175,9 @@ const steps = [
             </Button>
           </div>
 
-          <div class="next-step-card">
-            <h3 class="card-title">📖 Learn from Real Examples</h3>
-            <p class="card-description">
+          <div class="flex flex-col gap-[var(--spacing-sm)] p-[var(--spacing-lg)] bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-lg font-bold text-[var(--color-primary)] m-0">📖 Learn from Real Examples</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0 flex-1">
               See how Feature 015 achieved 76/76 tasks completed and 96.3% test pass rate in a production React app.
             </p>
             <Button href="/use-cases" variant="secondary">
@@ -185,9 +185,9 @@ const steps = [
             </Button>
           </div>
 
-          <div class="next-step-card">
-            <h3 class="card-title">⚙️ Configure Your Project</h3>
-            <p class="card-description">
+          <div class="flex flex-col gap-[var(--spacing-sm)] p-[var(--spacing-lg)] bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-lg font-bold text-[var(--color-primary)] m-0">⚙️ Configure Your Project</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0 flex-1">
               Fine-tune quality thresholds, performance budgets, and tech stack rules for your specific needs.
             </p>
             <Button
@@ -202,52 +202,52 @@ const steps = [
     </section>
 
     <!-- Common Questions -->
-    <section class="faq section-spacing-lg">
+    <section class="py-[var(--spacing-section-lg)]">
       <div class="content-max">
-        <div class="section-header">
-          <h2 class="section-title">Common Questions</h2>
+        <div class="text-center max-w-[48rem] mx-auto mb-[var(--spacing-xl)]">
+          <h2 class="text-[var(--font-size-display-m)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">Common Questions</h2>
         </div>
 
-        <div class="faq-grid">
-          <div class="faq-item">
-            <h3 class="faq-question">When should I use simplified vs. granular workflow?</h3>
-            <p class="faq-answer">
-              Use simplified (<code>/specswarm:build</code> → <code>/specswarm:ship</code>) for 90% of features. Switch to granular (<code>/specswarm:specify</code> → <code>/specswarm:clarify</code> → <code>/specswarm:plan</code> → ...) when you need step-by-step review for complex architectural changes.
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-[var(--spacing-lg)]">
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">When should I use simplified vs. granular workflow?</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+              Use simplified (<code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:build</code> → <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:ship</code>) for 90% of features. Switch to granular (<code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:specify</code> → <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:clarify</code> → <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:plan</code> → ...) when you need step-by-step review for complex architectural changes.
             </p>
           </div>
 
-          <div class="faq-item">
-            <h3 class="faq-question">How does tech stack enforcement work?</h3>
-            <p class="faq-answer">
-              Define approved technologies in <code>.specswarm/tech-stack.md</code>. During planning, SpecSwarm validates every library and pattern against your stack. If it detects prohibited technologies or drift, it suggests approved alternatives.
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">How does tech stack enforcement work?</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+              Define approved technologies in <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">.specswarm/tech-stack.md</code>. During planning, SpecSwarm validates every library and pattern against your stack. If it detects prohibited technologies or drift, it suggests approved alternatives.
             </p>
           </div>
 
-          <div class="faq-item">
-            <h3 class="faq-question">What does the --validate flag do?</h3>
-            <p class="faq-answer">
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">What does the --validate flag do?</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
               Adds Playwright browser automation to test your feature in a real browser. Runs alongside implementation to catch UI bugs early. Optional but recommended for features with user interfaces.
             </p>
           </div>
 
-          <div class="faq-item">
-            <h3 class="faq-question">Can I use SpecSwarm with existing projects?</h3>
-            <p class="faq-answer">
-              Yes! SpecSwarm works with any existing git repository. Run <code>/specswarm:init</code> to set up project configuration, then start building features. It integrates with your existing workflow seamlessly.
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">Can I use SpecSwarm with existing projects?</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+              Yes! SpecSwarm works with any existing git repository. Run <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:init</code> to set up project configuration, then start building features. It integrates with your existing workflow seamlessly.
             </p>
           </div>
 
-          <div class="faq-item">
-            <h3 class="faq-question">What if quality score is below threshold?</h3>
-            <p class="faq-answer">
-              <code>/specswarm:ship</code> will block the merge and show clear remediation steps. Common fixes: add missing tests, reduce bundle size, fix TypeScript errors. Re-run <code>/specswarm:ship</code> when ready.
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">What if quality score is below threshold?</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+              <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:ship</code> will block the merge and show clear remediation steps. Common fixes: add missing tests, reduce bundle size, fix TypeScript errors. Re-run <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:ship</code> when ready.
             </p>
           </div>
 
-          <div class="faq-item">
-            <h3 class="faq-question">How do I get help?</h3>
-            <p class="faq-answer">
-              Check the <a href="/docs">documentation</a>, browse <a href="https://github.com/MartyBonacci/specswarm/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a>, or open an <a href="https://github.com/MartyBonacci/specswarm/issues" target="_blank" rel="noopener noreferrer">issue</a>. The community is active and responsive.
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">How do I get help?</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+              Check the <a href="/docs" class="text-[var(--color-accent)] underline">documentation</a>, browse <a href="https://github.com/MartyBonacci/specswarm/discussions" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] underline">GitHub Discussions</a>, or open an <a href="https://github.com/MartyBonacci/specswarm/issues" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] underline">issue</a>. The community is active and responsive.
             </p>
           </div>
         </div>
@@ -255,14 +255,14 @@ const steps = [
     </section>
 
     <!-- CTA Section -->
-    <section class="cta section-spacing-xl">
+    <section class="bg-[var(--color-background)] py-[var(--spacing-section-xl)]">
       <div class="content-max">
-        <div class="cta-content">
-          <h2 class="cta-title">Questions? Feedback?</h2>
-          <p class="cta-description">
+        <div class="max-w-[48rem] mx-auto text-center flex flex-col items-center gap-[var(--spacing-lg)]">
+          <h2 class="text-[var(--font-size-display-m)] font-bold text-[var(--color-primary)] m-0">Questions? Feedback?</h2>
+          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
             Join the community on GitHub to share your experience, ask questions, or contribute to SpecSwarm development.
           </p>
-          <div class="cta-buttons">
+          <div class="flex gap-[var(--spacing-md)] flex-wrap justify-center md:flex-col md:w-full [&>*]:md:w-full">
             <Button
               href="https://github.com/MartyBonacci/specswarm"
               variant="primary"
@@ -285,330 +285,3 @@ const steps = [
 
   <Footer />
 </BaseLayout>
-
-<style>
-  /* Page Hero */
-  .page-hero {
-    background-color: var(--color-background);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .hero-content {
-    max-width: 48rem;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .page-title {
-    font-size: var(--font-size-display-l);
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-md);
-  }
-
-  .page-description {
-    font-size: var(--font-size-paragraph-l);
-    color: var(--color-secondary);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* Prerequisites */
-  .prereqs-content {
-    max-width: 56rem;
-    margin: 0 auto;
-  }
-
-  .prereqs-title {
-    font-size: var(--font-size-display-m);
-    font-weight: 700;
-    color: var(--color-primary);
-    text-align: center;
-    margin: 0 0 var(--spacing-xl);
-  }
-
-  .prereqs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
-  }
-
-  .prereq-item {
-    display: flex;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-md);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 0.5rem;
-  }
-
-  .prereq-icon {
-    font-size: 1.5rem;
-    flex-shrink: 0;
-  }
-
-  .prereq-text strong {
-    display: block;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: 0.25rem;
-  }
-
-  .prereq-text p {
-    font-size: 0.875rem;
-    color: var(--color-secondary);
-    margin: 0;
-  }
-
-  .prereqs-note {
-    padding: var(--spacing-md);
-    background-color: rgba(217, 119, 87, 0.1);
-    border-radius: 0.5rem;
-    text-align: center;
-  }
-
-  .prereqs-note p {
-    font-size: 0.9375rem;
-    color: var(--color-secondary);
-    margin: 0;
-  }
-
-  .prereqs-note strong {
-    color: var(--color-primary);
-  }
-
-  .prereqs-note code {
-    font-size: 0.875rem;
-    color: var(--color-accent);
-    background-color: rgba(217, 119, 87, 0.15);
-    padding: 0.125rem 0.375rem;
-    border-radius: 0.25rem;
-  }
-
-  /* Tutorial Steps */
-  .tutorial-steps {
-    max-width: 56rem;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xl);
-  }
-
-  .tutorial-step {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-  }
-
-  .step-header {
-    display: flex;
-    gap: var(--spacing-md);
-    align-items: flex-start;
-  }
-
-  .step-number {
-    flex-shrink: 0;
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-accent);
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 700;
-    border-radius: 50%;
-  }
-
-  .step-info {
-    flex: 1;
-  }
-
-  .step-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-xs);
-  }
-
-  .step-description {
-    font-size: 0.9375rem;
-    color: var(--color-secondary);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  .step-code {
-    padding-left: calc(3rem + var(--spacing-md));
-  }
-
-  /* Section Headers */
-  .section-header {
-    text-align: center;
-    max-width: 48rem;
-    margin: 0 auto var(--spacing-xl);
-  }
-
-  .section-title {
-    font-size: var(--font-size-display-m);
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-sm);
-  }
-
-  .section-description {
-    font-size: var(--font-size-paragraph-m);
-    color: var(--color-secondary);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* Next Steps */
-  .next-steps {
-    background-color: var(--color-surface);
-  }
-
-  .next-steps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
-    gap: var(--spacing-lg);
-  }
-
-  .next-step-card {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-lg);
-    background-color: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
-  }
-
-  .card-title {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0;
-  }
-
-  .card-description {
-    font-size: 0.9375rem;
-    color: var(--color-secondary);
-    line-height: 1.6;
-    margin: 0;
-    flex: 1;
-  }
-
-  /* FAQ */
-  .faq-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-    gap: var(--spacing-lg);
-  }
-
-  .faq-item {
-    padding: var(--spacing-lg);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
-  }
-
-  .faq-question {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-sm);
-  }
-
-  .faq-answer {
-    font-size: 0.9375rem;
-    color: var(--color-secondary);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  .faq-answer code {
-    font-size: 0.875rem;
-    color: var(--color-accent);
-    background-color: rgba(217, 119, 87, 0.1);
-    padding: 0.125rem 0.375rem;
-    border-radius: 0.25rem;
-  }
-
-  .faq-answer a {
-    color: var(--color-accent);
-    text-decoration: underline;
-  }
-
-  /* CTA Section */
-  .cta {
-    background-color: var(--color-background);
-  }
-
-  .cta-content {
-    max-width: 48rem;
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-lg);
-  }
-
-  .cta-title {
-    font-size: var(--font-size-display-m);
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0;
-  }
-
-  .cta-description {
-    font-size: var(--font-size-paragraph-m);
-    color: var(--color-secondary);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  .cta-buttons {
-    display: flex;
-    gap: var(--spacing-md);
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  /* Mobile Responsive */
-  @media (max-width: 768px) {
-    .page-title {
-      font-size: var(--font-size-display-m);
-    }
-
-    .step-header {
-      flex-direction: column;
-    }
-
-    .step-number {
-      width: 2.5rem;
-      height: 2.5rem;
-      font-size: 1.25rem;
-    }
-
-    .step-code {
-      padding-left: 0;
-    }
-
-    .prereqs-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .cta-buttons {
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .cta-buttons :global(a) {
-      width: 100%;
-    }
-  }
-</style>

@@ -38,52 +38,18 @@ const html = await codeToHtml(code.trim(), {
 });
 ---
 
-<div class:list={['code-block', className]}>
+<div class:list={['bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg overflow-hidden', className]}>
   {title && (
-    <div class="code-block-header">
-      <span class="code-block-title">{title}</span>
-      <span class="code-block-lang">{lang}</span>
+    <div class="flex items-center justify-between py-3 px-4 bg-[var(--color-background)] border-b border-[var(--color-border)] sm:py-2 sm:px-3">
+      <span class="text-sm font-semibold text-[var(--color-primary)]">{title}</span>
+      <span class="text-xs font-medium text-[var(--color-secondary)] uppercase tracking-wide">{lang}</span>
     </div>
   )}
-  <div class="code-block-content" set:html={html} />
+  <div class="code-block-content overflow-x-auto" set:html={html} />
 </div>
 
 <style>
-  .code-block {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 0.5rem;
-    overflow: hidden;
-  }
-
-  .code-block-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.75rem 1rem;
-    background-color: var(--color-background);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .code-block-title {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-primary);
-  }
-
-  .code-block-lang {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--color-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .code-block-content {
-    overflow-x: auto;
-  }
-
-  /* Shiki Pre Styles */
+  /* Shiki Pre Styles - Cannot be expressed in Tailwind utilities */
   .code-block-content :global(.shiki-pre) {
     margin: 0;
     padding: 1rem;
@@ -99,7 +65,7 @@ const html = await codeToHtml(code.trim(), {
     font-weight: 500;
   }
 
-  /* Scrollbar Styling */
+  /* Custom Scrollbar Styling - Cannot be expressed in Tailwind utilities */
   .code-block-content::-webkit-scrollbar {
     height: 8px;
   }
@@ -122,10 +88,6 @@ const html = await codeToHtml(code.trim(), {
     .code-block-content :global(.shiki-pre) {
       padding: 0.75rem;
       font-size: 0.8125rem;
-    }
-
-    .code-block-header {
-      padding: 0.5rem 0.75rem;
     }
   }
 </style>

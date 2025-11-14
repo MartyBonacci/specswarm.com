@@ -30,22 +30,25 @@ const metrics = [
 
   <main>
     <!-- Hero Section -->
-    <section class="hero section-spacing-xl">
-      <div class="hero-rails" aria-hidden="true">
-        <img src="/tracks.svg" alt="" loading="eager" />
-      </div>
-      <div class="content-max">
-        <div class="hero-content">
-          <h1 class="hero-title">
+    <section class=" bg-gradient-to-b from-[var(--color-background)] to-[var(--color-surface)] md:py-[var(--spacing-section-xl)]">
+<div class="container mx-auto md:flex gap-36 items-center">
+
+  <div class="basis-2/5 sm:order-1" aria-hidden="true">
+    <img src="/tracks.svg" alt="" loading="eager" class="" />
+  </div>
+
+      <div class="basis-3/5">
+        <div class=" mx-auto text-center flex flex-col items-center gap-[var(--spacing-lg)]">
+          <h1 class="text-[var(--font-size-display-xl)] font-bold text-[var(--color-primary)] m-0 text-5xl">
             <AnimatedHero
               text="Keep AI on Track"
               client:load
             />
           </h1>
-          <p class="hero-subtitle">
+          <p class="text-[var(--font-size-paragraph-l)] text-[var(--color-primary)] max-w-[48rem] leading-relaxed m-0">
             Claude Code plugin for spec-driven automation and tech stack enforcement
           </p>
-          <div class="hero-cta">
+          <div class="flex gap-[var(--spacing-md)] flex-wrap justify-center md:flex-col md:w-full [&>*]:md:w-full">
             <Button href="/get-started" variant="primary" size="lg">
               Get Started
             </Button>
@@ -55,38 +58,40 @@ const metrics = [
           </div>
         </div>
       </div>
+
+</div>
     </section>
 
     <!-- Problem-Solution Section -->
-    <section class="problem-solution section-spacing-lg">
+    <section class="bg-[var(--color-surface)] py-[var(--spacing-section-lg)]">
       <div class="content-max">
-        <div class="section-header">
-          <h2 class="section-title">The Problem with AI Coding Assistants</h2>
-          <p class="section-description">
+        <div class="text-center max-w-[48rem] mx-auto mb-[var(--spacing-xl)]">
+          <h2 class="text-[var(--font-size-display-l)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">The Problem with AI Coding Assistants</h2>
+          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
             AI is powerful, but without guardrails it drifts from your tech stack, ignores your standards, and creates maintenance nightmares.
           </p>
         </div>
 
-        <div class="problem-solution-grid">
-          <div class="problem-card">
-            <h3 class="card-title">❌ Without SpecSwarm</h3>
-            <ul class="card-list">
-              <li>AI suggests deprecated libraries</li>
-              <li>Code quality varies wildly</li>
-              <li>Manual orchestration of 7+ commands</li>
-              <li>No validation or quality gates</li>
-              <li>3-5 days per feature</li>
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,24rem),1fr))] gap-[var(--spacing-lg)]">
+          <div class="p-[var(--spacing-lg)] rounded-xl border border-[var(--color-border)] bg-[rgba(217,119,87,0.05)]">
+            <h3 class="text-xl font-bold m-0 mb-[var(--spacing-md)]">❌ Without SpecSwarm</h3>
+            <ul class="card-list list-none p-0 m-0 flex flex-col gap-3">
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">AI suggests deprecated libraries</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">Code quality varies wildly</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">Manual orchestration of 7+ commands</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">No validation or quality gates</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">3-5 days per feature</li>
             </ul>
           </div>
 
-          <div class="solution-card">
-            <h3 class="card-title">✅ With SpecSwarm</h3>
-            <ul class="card-list">
-              <li>95% drift prevention via tech stack enforcement</li>
-              <li>Consistent 85+ quality scores</li>
-              <li>Simplified 2-command workflow</li>
-              <li>Automatic quality validation</li>
-              <li>4-5 hours per feature</li>
+          <div class="p-[var(--spacing-lg)] rounded-xl border border-[var(--color-accent)] bg-[var(--color-background)]">
+            <h3 class="text-xl font-bold m-0 mb-[var(--spacing-md)]">✅ With SpecSwarm</h3>
+            <ul class="card-list list-none p-0 m-0 flex flex-col gap-3">
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">95% drift prevention via tech stack enforcement</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">Consistent 85+ quality scores</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">Simplified 2-command workflow</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">Automatic quality validation</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">4-5 hours per feature</li>
             </ul>
           </div>
         </div>
@@ -94,24 +99,24 @@ const metrics = [
     </section>
 
     <!-- Three-Command Workflow Section -->
-    <section class="workflow section-spacing-lg">
-      <div class="workflow-orchestration" aria-hidden="true">
-        <img src="/orchestration.svg" alt="" loading="lazy" />
+    <section class="relative py-[var(--spacing-section-lg)]">
+      <div class="workflow-orchestration opacity-100 z-0 pointer-events-none" aria-hidden="true">
+        <img src="/orchestration.svg" alt="" loading="lazy" class="w-full h-auto" />
       </div>
-      <div class="content-max">
-        <div class="section-header">
-          <h2 class="section-title">Build Features in 2 Commands</h2>
-          <p class="section-description">
+      <div class="content-max relative z-[1]">
+        <div class="text-center max-w-[48rem] mx-auto mb-[var(--spacing-xl)]">
+          <h2 class="text-[var(--font-size-display-l)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">Build Features in 2 Commands</h2>
+          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
             70% fewer commands, same powerful results. From specification to production-ready code.
           </p>
         </div>
 
-        <div class="workflow-steps">
-          <div class="workflow-step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3 class="step-title">Build</h3>
-              <p class="step-description">
+        <div class="flex flex-col gap-[var(--spacing-xl)] max-w-[48rem] mx-auto">
+          <div class="flex gap-[var(--spacing-lg)] items-start md:flex-col">
+            <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-[var(--color-accent)] text-white text-2xl font-bold rounded-full md:w-10 md:h-10 md:text-xl">1</div>
+            <div class="flex-1 flex flex-col gap-[var(--spacing-sm)] max-w-full">
+              <h3 class="text-2xl font-bold text-[var(--color-primary)] m-0">Build</h3>
+              <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
                 Complete feature development with one command. Handles spec → plan → tasks → implementation → quality analysis.
               </p>
               <CodeBlock
@@ -122,11 +127,11 @@ const metrics = [
             </div>
           </div>
 
-          <div class="workflow-step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3 class="step-title">Ship</h3>
-              <p class="step-description">
+          <div class="flex gap-[var(--spacing-lg)] items-start md:flex-col">
+            <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-[var(--color-accent)] text-white text-2xl font-bold rounded-full md:w-10 md:h-10 md:text-xl">2</div>
+            <div class="flex-1 flex flex-col gap-[var(--spacing-sm)] max-w-full">
+              <h3 class="text-2xl font-bold text-[var(--color-primary)] m-0">Ship</h3>
+              <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
                 Quality-gated merge to parent branch. Enforces thresholds, blocks if quality falls below standards.
               </p>
               <CodeBlock
@@ -138,38 +143,38 @@ const metrics = [
           </div>
         </div>
 
-        <div class="workflow-note">
-          <p>Need more control? Use the <a href="/docs">granular workflow</a> with 7 step-by-step commands.</p>
+        <div class="text-center mt-[var(--spacing-lg)]">
+          <p class="text-[0.9375rem] text-[var(--color-secondary)]">Need more control? Use the <a href="/docs" class="text-[var(--color-accent)] underline">granular workflow</a> with 7 step-by-step commands.</p>
         </div>
       </div>
     </section>
 
     <!-- Feature 015 Metrics Highlight -->
-    <section class="metrics section-spacing-lg">
+    <section class="bg-[var(--color-background)] py-[var(--spacing-section-lg)]">
       <div class="content-max">
-        <div class="metrics-container">
-          <div class="metrics-header">
-            <h2 class="section-title">Production Validated</h2>
-            <p class="section-description">
+        <div class="max-w-[48rem] mx-auto">
+          <div class="text-center mb-[var(--spacing-xl)]">
+            <h2 class="text-[var(--font-size-display-l)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">Production Validated</h2>
+            <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
               Real-world results from Feature 015: Testing Infrastructure (React 19 + Redux + Three.js)
             </p>
           </div>
 
-          <div class="metrics-grid">
+          <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,10rem),1fr))] gap-[var(--spacing-md)] mb-[var(--spacing-lg)]">
             {metrics.map((metric) => (
-              <div class="metric-card">
-                <div class="metric-value">{metric.value}</div>
-                <div class="metric-label">{metric.label}</div>
+              <div class="text-center p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+                <div class="text-[2.5rem] font-bold text-[var(--color-accent)] leading-none">{metric.value}</div>
+                <div class="text-sm text-[var(--color-secondary)] mt-2">{metric.label}</div>
               </div>
             ))}
           </div>
 
-          <div class="metrics-details">
-            <ul class="metrics-list">
-              <li>✅ 3,500+ lines of test code generated</li>
-              <li>✅ 1,530 lines of documentation created</li>
-              <li>✅ 3.27s test execution time</li>
-              <li>✅ Tech stack drift prevented</li>
+          <div class="flex flex-col items-center gap-[var(--spacing-md)] p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+            <ul class="list-none p-0 m-0 grid grid-cols-[repeat(auto-fit,minmax(min(100%,16rem),1fr))] gap-3 w-full">
+              <li class="text-[0.9375rem] text-[var(--color-secondary)]">✅ 3,500+ lines of test code generated</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)]">✅ 1,530 lines of documentation created</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)]">✅ 3.27s test execution time</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)]">✅ Tech stack drift prevented</li>
             </ul>
             <Button href="/use-cases" variant="secondary">
               Read Full Case Study
@@ -180,16 +185,16 @@ const metrics = [
     </section>
 
     <!-- Features Overview -->
-    <section class="features section-spacing-lg">
+    <section class="py-[var(--spacing-section-lg)]">
       <div class="content-max">
-        <div class="section-header">
-          <h2 class="section-title">Built for Control & Quality</h2>
-          <p class="section-description">
+        <div class="text-center max-w-[48rem] mx-auto mb-[var(--spacing-xl)]">
+          <h2 class="text-[var(--font-size-display-l)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">Built for Control & Quality</h2>
+          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
             Everything you need to maintain standards while moving fast
           </p>
         </div>
 
-        <div class="features-grid">
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-[var(--spacing-lg)]">
           <FeatureCard
             icon="shield"
             title="Tech Stack Enforcement"
@@ -226,7 +231,7 @@ const metrics = [
           />
         </div>
 
-        <div class="features-cta">
+        <div class="text-center mt-[var(--spacing-xl)]">
           <Button href="/features" variant="secondary" size="lg">
             Explore All Features
           </Button>
@@ -235,14 +240,14 @@ const metrics = [
     </section>
 
     <!-- Final CTA Section -->
-    <section class="final-cta section-spacing-xl">
+    <section class="bg-gradient-to-b from-[var(--color-surface)] to-[var(--color-background)] py-[var(--spacing-section-xl)]">
       <div class="content-max">
-        <div class="cta-content">
-          <h2 class="cta-title">Ready to Keep AI On Track?</h2>
-          <p class="cta-description">
+        <div class="max-w-[48rem] mx-auto text-center flex flex-col items-center gap-[var(--spacing-lg)]">
+          <h2 class="text-[var(--font-size-display-l)] font-bold text-[var(--color-primary)] m-0">Ready to Keep AI On Track?</h2>
+          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
             Install SpecSwarm in under 5 minutes and build your first feature with tech stack enforcement and quality gates.
           </p>
-          <div class="cta-buttons">
+          <div class="flex gap-[var(--spacing-md)] flex-wrap justify-center md:flex-col md:w-full [&>*]:md:w-full">
             <Button href="/get-started" variant="primary" size="lg">
               Get Started Now
             </Button>
@@ -261,395 +266,3 @@ const metrics = [
 
   <Footer />
 </BaseLayout>
-
-<style>
-  /* Hero Section */
-  .hero {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(180deg, var(--color-background) 0%, var(--color-surface) 100%);
-  }
-
-  .hero-rails {
-    position: absolute;
-    bottom: -15%;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .hero-rails img {
-    width: 100%;
-    max-width: 900px;
-    height: auto;
-    opacity: 0.15;
-    filter: blur(0.5px);
-  }
-
-  .hero .content-max {
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-content {
-    max-width: 56rem;
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-lg);
-  }
-
-  .hero-title {
-    font-size: var(--font-size-display-xl);
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0;
-  }
-
-  .hero-subtitle {
-    font-size: var(--font-size-paragraph-l);
-    color: var(--color-primary);
-    max-width: 48rem;
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: var(--spacing-md);
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  /* Section Headers */
-  .section-header {
-    text-align: center;
-    max-width: 48rem;
-    margin: 0 auto var(--spacing-xl);
-  }
-
-  .section-title {
-    font-size: var(--font-size-display-l);
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-md);
-  }
-
-  .section-description {
-    font-size: var(--font-size-paragraph-m);
-    color: var(--color-secondary);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* Problem-Solution Section */
-  .problem-solution {
-    background-color: var(--color-surface);
-  }
-
-  .problem-solution-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
-    gap: var(--spacing-lg);
-  }
-
-  .problem-card,
-  .solution-card {
-    padding: var(--spacing-lg);
-    border-radius: 0.75rem;
-    border: 1px solid var(--color-border);
-  }
-
-  .problem-card {
-    background-color: rgba(217, 119, 87, 0.05);
-  }
-
-  .solution-card {
-    background-color: var(--color-background);
-    border-color: var(--color-accent);
-  }
-
-  .card-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin: 0 0 var(--spacing-md);
-  }
-
-  .card-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .card-list li {
-    font-size: 0.9375rem;
-    color: var(--color-secondary);
-    line-height: 1.6;
-    padding-left: 1.5rem;
-    position: relative;
-  }
-
-  .card-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.5em;
-    width: 4px;
-    height: 4px;
-    background-color: var(--color-accent);
-    border-radius: 50%;
-  }
-
-  /* Workflow Section */
-  .workflow {
-    position: relative;
-  }
-
-  .workflow-orchestration {
-    //position: absolute;
-    //top: 50%;
-    //right: 5%;
-    //transform: translateY(-50%);
-    //width: 220px;
-    opacity: 1;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .workflow-orchestration img {
-    width: 100%;
-    height: auto;
-  }
-
-  .workflow .content-max {
-    position: relative;
-    z-index: 1;
-  }
-
-  .workflow-steps {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xl);
-    max-width: 48rem;
-    margin: 0 auto;
-  }
-
-  .workflow-step {
-    display: flex;
-    gap: var(--spacing-lg);
-    align-items: flex-start;
-  }
-
-  .step-number {
-    flex-shrink: 0;
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-accent);
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 700;
-    border-radius: 50%;
-  }
-
-  .step-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    max-width: 100%;
-  }
-
-  .step-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0;
-  }
-
-  .step-description {
-    font-size: 0.9375rem;
-    color: var(--color-secondary);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  .workflow-note {
-    text-align: center;
-    margin-top: var(--spacing-lg);
-  }
-
-  .workflow-note p {
-    font-size: 0.9375rem;
-    color: var(--color-secondary);
-  }
-
-  .workflow-note a {
-    color: var(--color-accent);
-    text-decoration: underline;
-  }
-
-  /* Metrics Section */
-  .metrics {
-    background-color: var(--color-background);
-  }
-
-  .metrics-container {
-    max-width: 48rem;
-    margin: 0 auto;
-  }
-
-  .metrics-header {
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
-  }
-
-  .metric-card {
-    text-align: center;
-    padding: var(--spacing-lg);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
-  }
-
-  .metric-value {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--color-accent);
-    line-height: 1;
-  }
-
-  .metric-label {
-    font-size: 0.875rem;
-    color: var(--color-secondary);
-    margin-top: 0.5rem;
-  }
-
-  .metrics-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-md);
-    padding: var(--spacing-lg);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
-  }
-
-  .metrics-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
-    gap: 0.75rem;
-    width: 100%;
-  }
-
-  .metrics-list li {
-    font-size: 0.9375rem;
-    color: var(--color-secondary);
-  }
-
-  /* Features Grid */
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-    gap: var(--spacing-lg);
-  }
-
-  .features-cta {
-    text-align: center;
-    margin-top: var(--spacing-xl);
-  }
-
-  /* Final CTA */
-  .final-cta {
-    background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-background) 100%);
-  }
-
-  .cta-content {
-    max-width: 48rem;
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-lg);
-  }
-
-  .cta-title {
-    font-size: var(--font-size-display-l);
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0;
-  }
-
-  .cta-description {
-    font-size: var(--font-size-paragraph-m);
-    color: var(--color-secondary);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  .cta-buttons {
-    display: flex;
-    gap: var(--spacing-md);
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  /* Mobile Responsive */
-  @media (max-width: 768px) {
-    .hero-title {
-      font-size: var(--font-size-display-l);
-    }
-
-    .hero-rails img {
-      width: 120%;
-      opacity: 0.04;
-    }
-
-    .workflow-orchestration {
-      display: none;
-    }
-
-    .workflow-step {
-      flex-direction: column;
-    }
-
-    .step-number {
-      width: 2.5rem;
-      height: 2.5rem;
-      font-size: 1.25rem;
-    }
-
-    .hero-cta,
-    .cta-buttons {
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .hero-cta :global(a),
-    .cta-buttons :global(a) {
-      width: 100%;
-    }
-  }
-</style>
