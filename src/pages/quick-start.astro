@@ -1,0 +1,302 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+
+const installCode = `claude> /plugin https://github.com/MartyBonacci/specswarm
+claude> /plugin install specswarm`;
+
+const initCode = `claude> /specswarm:init
+
+# Creates your project foundation:
+# - .specswarm/constitution.md (coding principles)
+# - .specswarm/tech-stack.md (approved technologies)
+# - .specswarm/quality-standards.md (quality gates)
+#
+# SpecSwarm analyzes your project and asks for any missing context.
+# Tech stack evolves as you build—no crystal ball needed.`;
+
+const buildCode = `claude> /specswarm:build "Add user authentication with email/password" --validate
+
+# Answer clarification questions
+# Autonomous execution: spec → plan → tasks → implementation → quality`;
+
+const shipCode = `claude> /specswarm:ship
+
+# Quality-gated merge to parent branch`;
+
+const steps = [
+  {
+    number: 1,
+    title: 'Install SpecSwarm',
+    description: 'Add SpecSwarm to your Claude Code environment. Takes about 30 seconds.',
+    code: installCode,
+    lang: 'bash',
+  },
+  {
+    number: 2,
+    title: 'Initialize Your Project',
+    description: 'Create foundation files for coding principles, tech stack, and quality standards. SpecSwarm analyzes your project to detect existing technologies and prompts you for missing context.',
+    code: initCode,
+    lang: 'bash',
+  },
+  {
+    number: 3,
+    title: 'Build Your First Feature',
+    description: 'Describe your feature in natural language. SpecSwarm handles everything else with tech stack enforcement.',
+    code: buildCode,
+    lang: 'bash',
+  },
+  {
+    number: 4,
+    title: 'Ship with Quality Gates',
+    description: 'Merge to parent branch with quality validation. Blocks if quality falls below your standards.',
+    code: shipCode,
+    lang: 'bash',
+  },
+];
+---
+
+<BaseLayout
+  title="Quick Start - SpecSwarm"
+  description="Install SpecSwarm in 5 minutes and build your first feature with tech stack enforcement and quality gates. Complete tutorial from installation to first ship."
+>
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-[var(--color-background)] to-[var(--color-surface)] py-[var(--spacing-section-md)]">
+      <div class="container px-8 md:px-0 mx-auto flex-col sm:flex-row flex gap-16 items-center">
+
+        <div class="basis-2/5 sm:order-1" aria-hidden="true">
+          <img src="/orchestration.svg" alt="" loading="eager" class="w-full h-auto max-w-full object-contain"/>
+        </div>
+
+        <div class="basis-3/5">
+          <h1 class="text-[var(--font-size-display-xl)] font-bold text-[var(--color-primary)] m-0 text-5xl mb-[var(--spacing-sm)]">
+            Start orchestrating ...fast
+          </h1>
+          <p class="text-2xl text-[var(--color-primary)] max-w-[48rem] leading-relaxed m-0 font-semibold">
+            From installation to your first shipped feature.
+          </p>
+          <p class="text-xl text-[var(--color-secondary)] max-w-[48rem] leading-relaxed mt-4">
+            Works with new projects or established codebases—start with as little as a README file.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Prerequisites -->
+    <section class="bg-[var(--color-cream)] py-[var(--spacing-section-md)]">
+      <div class="">
+        <div class="container mx-auto">
+          <h2 class="text-[var(--font-size-display-m)] font-bold text-[var(--color-primary)] text-center text-2xl m-0 mb-[var(--spacing-sm)]">Before You Start</h2>
+          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] text-center leading-relaxed m-0 mb-[var(--spacing-xl)]">
+            Make sure you have these basics in place. SpecSwarm is flexible—you can start minimal and evolve as you build.
+          </p>
+          <div class="pt-[var(--spacing-section-md)] grid grid-cols-1 gap-[var(--spacing-lg)] lg:grid-cols-3">
+            <div class="flex gap-[var(--spacing-md)] p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl transition-all duration-[var(--duration-normal)] hover:shadow-[0_8px_30px_rgba(217,119,87,0.12)] hover:-translate-y-1">
+              <div class="flex-shrink-0">
+                <svg class="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="20" cy="20" r="20" fill="rgba(217, 119, 87, 0.1)"/>
+                  <path d="M28 14L17 25L12 20" stroke="var(--color-accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-[var(--color-primary)] mb-2 m-0">Git Repository</h3>
+                <p class="text-[0.9375rem] text-[var(--color-secondary)] m-0">Initialized with at least one commit. We need git because the BUILD command will make a new branch for the feature and the SHIP will merge the approved feature branch back to the orhuhiginal branc.</p>
+              </div>
+            </div>
+            <div class="flex gap-[var(--spacing-md)] p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl transition-all duration-[var(--duration-normal)] hover:shadow-[0_8px_30px_rgba(217,119,87,0.12)] hover:-translate-y-1">
+              <div class="flex-shrink-0">
+                <svg class="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="20" cy="20" r="20" fill="rgba(217, 119, 87, 0.1)"/>
+                  <path d="M28 14L17 25L12 20" stroke="var(--color-accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-[var(--color-primary)] mb-2 m-0">Project Context</h3>
+                <p class="text-[0.9375rem] text-[var(--color-secondary)] m-0">For new projects, add 2-3 sentences to README.md describing your goals and coding standards. For established projects, SpecSwarm analyzes your existing codebase to understand the context—you're ready to go.</p>
+              </div>
+            </div>
+            <div class="flex gap-[var(--spacing-md)] p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl transition-all duration-[var(--duration-normal)] hover:shadow-[0_8px_30px_rgba(217,119,87,0.12)] hover:-translate-y-1">
+              <div class="flex-shrink-0">
+                <svg class="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="20" cy="20" r="20" fill="rgba(217, 119, 87, 0.1)"/>
+                  <path d="M28 14L17 25L12 20" stroke="var(--color-accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-[var(--color-primary)] mb-2 m-0">Claude Code</h3>
+                <p class="text-[0.9375rem] text-[var(--color-secondary)] m-0">Installed and initialized with /init</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tutorial Steps -->
+    <section class="py-[var(--spacing-section-xl)]">
+        <div class="flex flex-col gap-[var(--spacing-xl)] container mx-auto">
+          {steps.map((step) => (
+            <div class="flex flex-col gap-[var(--spacing-md)]">
+              <div class="flex gap-[var(--spacing-md)] items-start">
+                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-[var(--color-accent)] text-white text-2xl font-bold rounded-full md:w-10 md:h-10 md:text-xl">{step.number}</div>
+                <div class="flex-1">
+                  <h3 class="text-2xl font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-xs)]">{step.title}</h3>
+                </div>
+              </div>
+                <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">{step.description}</p>
+
+                <CodeBlock
+                  code={step.code}
+                  lang={step.lang}
+                  title={step.title}
+                />
+            </div>
+          ))}
+        </div>
+    </section>
+
+    <!-- What's Next -->
+    <section class="bg-[var(--color-surface)] py-[var(--spacing-section-lg)]">
+      <div class="content-max">
+        <div class="text-center max-w-[48rem] mx-auto mb-[var(--spacing-xl)]">
+          <h2 class="text-[var(--font-size-display-m)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">What's Next?</h2>
+          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
+            You've shipped your first feature. Here's where to go from here.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,16rem),1fr))] gap-[var(--spacing-lg)]">
+          <div class="flex flex-col gap-[var(--spacing-sm)] p-[var(--spacing-lg)] bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-lg font-bold text-[var(--color-primary)] m-0">📚 Explore All Features</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0 flex-1">
+              Learn about tech stack enforcement, quality validation, autonomous orchestration, and all 28 commands.
+            </p>
+            <Button href="/features" variant="secondary">
+              View Features
+            </Button>
+          </div>
+
+          <div class="flex flex-col gap-[var(--spacing-sm)] p-[var(--spacing-lg)] bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-lg font-bold text-[var(--color-primary)] m-0">🔧 Read the Documentation</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0 flex-1">
+              Comprehensive command reference, configuration options, and advanced workflows for complex features.
+            </p>
+            <Button href="https://github.com/MartyBonacci/specswarm" variant="secondary">
+              Read Docs
+            </Button>
+          </div>
+
+          <div class="flex flex-col gap-[var(--spacing-sm)] p-[var(--spacing-lg)] bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-lg font-bold text-[var(--color-primary)] m-0">⚙️ Configure Your Project</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0 flex-1">
+              Fine-tune quality thresholds, performance budgets, and tech stack rules for your specific needs.
+            </p>
+            <Button
+              href="https://github.com/MartyBonacci/specswarm#configuration-optional"
+              variant="secondary"
+            >
+              Configuration Guide
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Common Questions -->
+    <section class="py-[var(--spacing-section-lg)]">
+      <div class="content-max">
+        <div class="text-center max-w-[48rem] mx-auto mb-[var(--spacing-xl)]">
+          <h2 class="text-[var(--font-size-display-m)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">Common Questions</h2>
+        </div>
+
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-[var(--spacing-lg)]">
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">When should I use simplified vs. granular workflow?</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+              Use simplified (<code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:build</code> → <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:ship</code>) for 90% of features. Switch to granular (<code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:specify</code> → <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:clarify</code> → <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:plan</code> → ...) when you need step-by-step review for complex architectural changes.
+            </p>
+          </div>
+
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">How does tech stack enforcement work?</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+              Define approved technologies in <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">.specswarm/tech-stack.md</code>. During planning, SpecSwarm validates every library and pattern against your stack. If it detects prohibited technologies or drift, it suggests approved alternatives. Your tech stack isn't static—as you build features with new technologies, SpecSwarm checks for conflicts and updates your approved tech stack automatically.
+            </p>
+          </div>
+
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">Do I need to define my entire tech stack upfront?</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+              No! Start with basic context in your README (even 2-3 sentences works). When you build features, you can specify technologies as needed (e.g., 'build a 3D viewer using Three.js'). SpecSwarm automatically checks for conflicts and adds new technologies to your tech stack. Your tech stack evolves naturally as your project grows—no need to predict everything on day one.
+            </p>
+          </div>
+
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">What does the --validate flag do?</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+              Adds Playwright browser automation to test your feature in a real browser. Runs alongside implementation to catch UI bugs early. Optional but recommended for features with user interfaces.
+            </p>
+          </div>
+
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">Can I use SpecSwarm with existing projects?</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+              Yes! SpecSwarm works with any existing git repository. Run <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:init</code> to set up project configuration, then start building features. It integrates with your existing workflow seamlessly.
+            </p>
+          </div>
+
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">What if quality score is below threshold?</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+              <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:ship</code> will block the merge and show clear remediation steps. Common fixes: add missing tests, reduce bundle size, fix TypeScript errors. Re-run <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:ship</code> when ready.
+            </p>
+          </div>
+
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">How do I get help?</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+              Check the <a href="/docs" class="text-[var(--color-accent)] underline">documentation</a>, browse <a href="https://github.com/MartyBonacci/specswarm/discussions" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] underline">GitHub Discussions</a>, or open an <a href="https://github.com/MartyBonacci/specswarm/issues" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] underline">issue</a>. The community is active and responsive.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-[var(--color-background)] py-[var(--spacing-section-xl)]">
+      <div class="content-max">
+        <div class="max-w-[48rem] mx-auto text-center flex flex-col items-center gap-[var(--spacing-lg)]">
+          <h2 class="text-[var(--font-size-display-m)] font-bold text-[var(--color-primary)] m-0">Questions? Feedback?</h2>
+          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
+            Join the community on GitHub to share your experience, ask questions, or contribute to SpecSwarm development.
+          </p>
+          <div class="flex gap-[var(--spacing-md)] flex-wrap justify-center md:flex-col md:w-full [&>*]:md:w-full">
+            <Button
+              href="https://github.com/MartyBonacci/specswarm"
+              variant="primary"
+              size="lg"
+            >
+              View on GitHub
+            </Button>
+            <Button
+              href="https://github.com/MartyBonacci/specswarm/discussions"
+              variant="secondary"
+              size="lg"
+            >
+              Join Discussions
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

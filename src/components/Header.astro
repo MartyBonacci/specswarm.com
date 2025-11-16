@@ -3,349 +3,128 @@ import AnimatedBrand from './AnimatedBrand';
 import MobileMenu from './MobileMenu';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/features', label: 'Features' },
-  { href: '/get-started', label: 'Get Started' },
-  { href: '/docs', label: 'Docs' },
-  { href: '/use-cases', label: 'Use Cases' },
+    {href: '/', label: 'Home'},
+    {href: '/quick-start', label: 'Quick Start'},
+    {href: '/features', label: 'Features'},
+    {href: 'https://github.com/MartyBonacci/specswarm', label: 'Docs', external: true},
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="header">
-  <nav class="nav-container" aria-label="Main navigation">
-    <div class="nav-content">
-      <!-- Logo -->
-      <a href="/" class="logo" aria-label="SpecSwarm Home">
-        <span class="logo-text">
-          <AnimatedBrand client:load />
+<header class="sticky top-0 z-[99999] bg-[var(--color-background)] border-b border-[var(--color-border)]">
+    <nav class="w-full" aria-label="Main navigation">
+        <div class="mx-auto px-[var(--spacing-site-margin)] h-[var(--nav-height)] flex items-center gap-[var(--spacing-lg)] md:h-[var(--nav-height-mobile)] md:gap-[var(--spacing-sm)]">
+            <!-- Logo -->
+            <a href="/"
+               class="text-xl font-bold text-[var(--color-primary)] no-underline transition-opacity duration-[var(--duration-fast)] ease-out hover:opacity-70"
+               aria-label="SpecSwarm Home">
+        <span class="inline-block">
+          <AnimatedBrand client:load/>
         </span>
-      </a>
-
-      <!-- Desktop Navigation Links -->
-      <ul class="nav-links desktop-nav" role="list">
-        {navLinks.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              class:list={['nav-link', { 'nav-link-active': currentPath === link.href }]}
-              aria-current={currentPath === link.href ? 'page' : undefined}
-            >
-              {link.label}
             </a>
-          </li>
-        ))}
-      </ul>
 
-      <!-- Desktop GitHub Link -->
-      <a
-        href="https://github.com/MartyBonacci/specswarm"
-        class="github-link desktop-github"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="View on GitHub"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-        </svg>
-        <span class="github-text">GitHub</span>
-      </a>
+            <!-- Desktop Navigation Links -->
+            <ul class="hidden md:flex items-center gap-[var(--spacing-md)] list-none m-0 p-0 ml-auto" role="list">
+                {navLinks.map((link) => (
+                        <li>
+                            <a
+                                    href={link.href}
+                                    class:list={[
+                                        'relative py-2 text-[0.9375rem] font-medium text-[var(--color-primary)] no-underline transition-colors duration-[var(--duration-fast)] ease-out hover:text-[var(--color-accent)]',
+                                        currentPath === link.href && 'text-[var(--color-primary)] after:content-[""] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[var(--color-accent)]'
+                                    ]}
+                                    target={link.external ? '_blank' : undefined}
+                                    rel={link.external ? 'noopener noreferrer' : undefined}
+                                    aria-current={currentPath === link.href ? 'page' : undefined}
+                            >
+                                {link.label}
+                            </a>
+                        </li>
+                ))}
+            </ul>
 
-      <!-- Mobile Menu Toggle -->
-      <button
-        class="mobile-menu-toggle"
-        aria-label="Toggle menu"
-        aria-expanded="false"
-        id="mobile-menu-toggle"
-      >
-        <span class="hamburger"></span>
-      </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu">
-      <ul class="mobile-nav-links" role="list">
-        {navLinks.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              class:list={['mobile-nav-link', { 'mobile-nav-link-active': currentPath === link.href }]}
+            <!-- Mobile Menu Toggle -->
+            <button
+                    class="mobile-menu-toggle md:hidden bg-transparent border-0 p-2 cursor-pointer ml-auto z-[51]"
+                    aria-label="Toggle menu"
+                    aria-expanded="false"
+                    id="mobile-menu-toggle"
             >
-              {link.label}
-            </a>
-          </li>
-        ))}
-        <li>
-          <a
-            href="https://github.com/MartyBonacci/specswarm"
-            class="mobile-nav-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-              style="display: inline-block; vertical-align: middle; margin-right: 0.5rem;"
-            >
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-            </svg>
-            GitHub
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+                <span class="hamburger"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden fixed top-[var(--nav-height-mobile)] left-0 right-0 bottom-0 bg-[var(--color-background)] z-[9999] overflow-y-auto p-[var(--spacing-lg)]"
+             id="mobile-menu">
+            <ul class="list-none p-0 m-0" role="list">
+                {navLinks.map((link) => (
+                        <li>
+                            <a
+                                    href={link.href}
+                                    class:list={[
+                                        'block py-[var(--spacing-md)] text-[var(--color-primary)] text-lg font-medium no-underline border-b border-[var(--color-border)] transition-colors duration-[var(--duration-fast)] ease-out hover:text-[var(--color-accent)]',
+                                        currentPath === link.href && 'text-[var(--color-accent)] font-semibold'
+                                    ]}
+                                    target={link.external ? '_blank' : undefined}
+                                    rel={link.external ? 'noopener noreferrer' : undefined}
+                            >
+                                {link.label}
+                            </a>
+                        </li>
+                ))}
+            </ul>
+        </div>
+    </nav>
 </header>
 
-<MobileMenu client:load />
+<MobileMenu client:load/>
 
 <style>
-  .header {
-    position: sticky;
-    top: 0;
-    z-index: 99999;
-    background-color: var(--color-background);
-    border-bottom: 1px solid var(--color-border);
-    /* backdrop-filter: blur(8px); REMOVED - creates containing block for fixed children */
-    background-color: var(--color-background);
-  }
-
-  .nav-container {
-    width: 100%;
-  }
-
-  .nav-content {
-    //max-width: var(--content-max-width);
-    margin: 0 auto;
-    padding: 0 var(--spacing-site-margin);
-    height: var(--nav-height);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-lg);
-  }
-
-  /* Logo */
-  .logo {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    text-decoration: none;
-    transition: opacity var(--duration-fast) ease-out;
-  }
-
-  .logo:hover {
-    opacity: 0.7;
-  }
-
-  .logo-text {
-    display: inline-block;
-  }
-
-  /* Navigation Links */
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    margin-left: auto;
-  }
-
-  .nav-link {
-    color: var(--color-secondary);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color var(--duration-fast) ease-out;
-    position: relative;
-    padding: 0.5rem 0;
-  }
-
-  .nav-link:hover {
-    color: var(--color-primary);
-  }
-
-  .nav-link-active {
-    color: var(--color-primary);
-  }
-
-  .nav-link-active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: var(--color-accent);
-  }
-
-  /* GitHub Link */
-  .github-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: 0.5rem;
-    color: var(--color-primary);
-    text-decoration: none;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    transition: all var(--duration-fast) ease-out;
-    margin-left: var(--spacing-sm);
-  }
-
-  .github-link:hover {
-    border-color: var(--color-accent);
-    background-color: var(--color-surface);
-  }
-
-  .github-text {
-    display: inline;
-  }
-
-  /* Mobile Menu Toggle Button */
-  .mobile-menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-    margin-left: auto;
-    z-index: 51;
-  }
-
-  .hamburger {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: var(--color-primary);
-    position: relative;
-    transition: background-color 0.3s ease;
-  }
-
-  .hamburger::before,
-  .hamburger::after {
-    content: '';
-    position: absolute;
-    width: 24px;
-    height: 2px;
-    background-color: var(--color-primary);
-    transition: transform 0.3s ease;
-  }
-
-  .hamburger::before {
-    top: -7px;
-  }
-
-  .hamburger::after {
-    bottom: -7px;
-  }
-
-  /* Animated hamburger when menu is open */
-  .mobile-menu-toggle[aria-expanded="true"] .hamburger {
-    background-color: transparent;
-  }
-
-  .mobile-menu-toggle[aria-expanded="true"] .hamburger::before {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-
-  .mobile-menu-toggle[aria-expanded="true"] .hamburger::after {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
-
-
-  /* Mobile Styles */
-  @media (max-width: 768px) {
-    .nav-content {
-      height: var(--nav-height-mobile);
-      gap: var(--spacing-sm);
+    /* Hamburger Icon Animation (preserve complex pseudo-element animations) */
+    .hamburger {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background-color: var(--color-primary);
+        position: relative;
+        transition: background-color 0.3s ease;
     }
 
-    /* Hide desktop nav on mobile */
-    .desktop-nav,
-    .desktop-github {
-      display: none;
+    .hamburger::before,
+    .hamburger::after {
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        background-color: var(--color-primary);
+        transition: transform 0.3s ease;
     }
 
-    /* Show mobile menu toggle */
-    .mobile-menu-toggle {
-      display: block;
+    .hamburger::before {
+        top: -7px;
     }
 
-  }
-
-  /* MOBILE MENU */
-  /* Hide on desktop */
-  #mobile-menu {
-    display: none !important;
-  }
-
-  /* Show on mobile when toggled */
-  @media (max-width: 768px) {
-    #mobile-menu {
-      display: none;
-      position: fixed;
-      top: var(--nav-height-mobile);
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: var(--color-background);
-      z-index: 9999;
-      overflow-y: auto;
-      padding: var(--spacing-lg);
+    .hamburger::after {
+        bottom: -7px;
     }
 
+    /* Animated hamburger when menu is open */
+    .mobile-menu-toggle[aria-expanded="true"] .hamburger {
+        background-color: transparent;
+    }
+
+    .mobile-menu-toggle[aria-expanded="true"] .hamburger::before {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .mobile-menu-toggle[aria-expanded="true"] .hamburger::after {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Mobile menu visibility */
     #mobile-menu.mobile-menu-open {
-      display: block !important;
+        display: block;
     }
-
-    .mobile-nav-links {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .mobile-nav-link {
-      display: block;
-      padding: var(--spacing-md) 0;
-      color: var(--color-primary);
-      font-size: 1.125rem;
-      font-weight: 500;
-      text-decoration: none;
-      border-bottom: 1px solid var(--color-border);
-      transition: color var(--duration-fast) ease-out;
-    }
-
-    .mobile-nav-link:hover {
-      color: var(--color-accent);
-    }
-
-    .mobile-nav-link-active {
-      color: var(--color-accent);
-      font-weight: 600;
-    }
-  }
 </style>

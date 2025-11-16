@@ -57,11 +57,11 @@ const caseStudyDetails = [
 
   <main>
     <!-- Hero Section -->
-    <section class="page-hero section-spacing-md">
+    <section class="bg-[var(--color-background)] border-b border-[var(--color-border)] py-[var(--spacing-section-md)]">
       <div class="content-max">
-        <div class="hero-content">
-          <h1 class="page-title">Real-World Results</h1>
-          <p class="page-description">
+        <div class="max-w-[48rem] mx-auto text-center">
+          <h1 class="text-[var(--font-size-display-l)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)] md:text-[var(--font-size-display-m)]">Real-World Results</h1>
+          <p class="text-[var(--font-size-paragraph-l)] text-[var(--color-secondary)] leading-relaxed m-0">
             Production-validated examples showing 85-90% time savings with maintained quality standards
           </p>
         </div>
@@ -69,97 +69,97 @@ const caseStudyDetails = [
     </section>
 
     <!-- Featured Case Study -->
-    <section class="case-study section-spacing-xl">
+    <section class="bg-[var(--color-surface)] py-[var(--spacing-section-xl)]">
       <div class="content-max">
-        <div class="case-study-header">
-          <div class="case-study-badge">Featured Case Study</div>
-          <h2 class="case-study-title">Feature 015: Testing Infrastructure</h2>
-          <p class="case-study-subtitle">
+        <div class="text-center max-w-[48rem] mx-auto mb-[var(--spacing-xl)]">
+          <div class="inline-block py-2 px-4 bg-[var(--color-accent)] text-white text-[0.8125rem] font-bold uppercase tracking-wide rounded-md mb-[var(--spacing-md)]">Featured Case Study</div>
+          <h2 class="text-[var(--font-size-display-m)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-xs)]">Feature 015: Testing Infrastructure</h2>
+          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] m-0">
             React 19 + Redux + Three.js snowboard customization app (customcult2)
           </p>
         </div>
 
-        <div class="case-study-metrics">
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,12rem),1fr))] gap-[var(--spacing-md)] mb-[var(--spacing-xl)] md:grid-cols-2 sm:grid-cols-1">
           {caseStudyMetrics.map((metric) => (
-            <div class="metric-card">
-              <div class="metric-value">{metric.value}</div>
-              <div class="metric-label">{metric.label}</div>
-              <div class="metric-sublabel">{metric.sublabel}</div>
+            <div class="text-center p-[var(--spacing-lg)] bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl">
+              <div class="text-[2.5rem] font-bold text-[var(--color-accent)] leading-none mb-2">{metric.value}</div>
+              <div class="text-sm font-semibold text-[var(--color-primary)] mb-1">{metric.label}</div>
+              <div class="text-[0.8125rem] text-[var(--color-secondary)]">{metric.sublabel}</div>
             </div>
           ))}
         </div>
 
-        <div class="case-study-overview">
-          <h3 class="overview-title">What Was Built</h3>
-          <p class="overview-description">
+        <div class="max-w-[56rem] mx-auto mb-[var(--spacing-xl)]">
+          <h3 class="text-2xl font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">What Was Built</h3>
+          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-[1.7] m-0">
             Complete testing infrastructure for a complex 3D product configurator. Implemented comprehensive test suite with unit tests (Vitest), integration tests (React Testing Library), and browser automation (Playwright) for Three.js canvas interactions.
           </p>
         </div>
 
-        <div class="case-study-details">
-          <h3 class="details-title">What Was Validated</h3>
-          <ul class="details-list">
+        <div class="max-w-[56rem] mx-auto mb-[var(--spacing-xl)]">
+          <h3 class="text-2xl font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">What Was Validated</h3>
+          <ul class="list-none p-0 m-0 grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-3">
             {caseStudyDetails.map((detail) => (
-              <li>{detail}</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed">{detail}</li>
             ))}
           </ul>
         </div>
 
-        <div class="case-study-timeline">
-          <h3 class="timeline-title">Time Comparison</h3>
-          <div class="timeline-grid">
-            <div class="timeline-item timeline-manual">
-              <div class="timeline-label">Manual Approach</div>
-              <div class="timeline-breakdown">
-                <div class="timeline-row">
+        <div class="max-w-[56rem] mx-auto mb-[var(--spacing-xl)]">
+          <h3 class="text-2xl font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">Time Comparison</h3>
+          <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-[var(--spacing-lg)] md:grid-cols-1">
+            <div class="p-[var(--spacing-lg)] bg-[rgba(217,119,87,0.05)] border border-[var(--color-border)] rounded-xl">
+              <div class="text-base font-bold text-[var(--color-primary)] mb-[var(--spacing-md)]">Manual Approach</div>
+              <div class="flex flex-col gap-2 mb-[var(--spacing-md)]">
+                <div class="flex justify-between text-sm text-[var(--color-secondary)]">
                   <span>Planning</span>
-                  <span>1-2 hours</span>
+                  <span class="font-semibold text-[var(--color-primary)]">1-2 hours</span>
                 </div>
-                <div class="timeline-row">
+                <div class="flex justify-between text-sm text-[var(--color-secondary)]">
                   <span>Implementation</span>
-                  <span>2-3 days</span>
+                  <span class="font-semibold text-[var(--color-primary)]">2-3 days</span>
                 </div>
-                <div class="timeline-row">
+                <div class="flex justify-between text-sm text-[var(--color-secondary)]">
                   <span>Test Writing</span>
-                  <span>1-2 days</span>
+                  <span class="font-semibold text-[var(--color-primary)]">1-2 days</span>
                 </div>
-                <div class="timeline-row">
+                <div class="flex justify-between text-sm text-[var(--color-secondary)]">
                   <span>Documentation</span>
-                  <span>4-6 hours</span>
+                  <span class="font-semibold text-[var(--color-primary)]">4-6 hours</span>
                 </div>
               </div>
-              <div class="timeline-total">Total: 3-5 days</div>
+              <div class="pt-[var(--spacing-sm)] border-t-2 border-[var(--color-border)] text-base font-bold text-[var(--color-primary)]">Total: 3-5 days</div>
             </div>
 
-            <div class="timeline-item timeline-specswarm">
-              <div class="timeline-label">SpecSwarm Autonomous</div>
-              <div class="timeline-breakdown">
-                <div class="timeline-row">
+            <div class="p-[var(--spacing-lg)] bg-[var(--color-background)] border border-[var(--color-accent)] rounded-xl">
+              <div class="text-base font-bold text-[var(--color-primary)] mb-[var(--spacing-md)]">SpecSwarm Autonomous</div>
+              <div class="flex flex-col gap-2 mb-[var(--spacing-md)]">
+                <div class="flex justify-between text-sm text-[var(--color-secondary)]">
                   <span>Planning</span>
-                  <span>15 min</span>
+                  <span class="font-semibold text-[var(--color-primary)]">15 min</span>
                 </div>
-                <div class="timeline-row">
+                <div class="flex justify-between text-sm text-[var(--color-secondary)]">
                   <span>Implementation</span>
-                  <span>3-4 hours</span>
+                  <span class="font-semibold text-[var(--color-primary)]">3-4 hours</span>
                 </div>
-                <div class="timeline-row">
+                <div class="flex justify-between text-sm text-[var(--color-secondary)]">
                   <span>Test Writing</span>
-                  <span>Included</span>
+                  <span class="font-semibold text-[var(--color-primary)]">Included</span>
                 </div>
-                <div class="timeline-row">
+                <div class="flex justify-between text-sm text-[var(--color-secondary)]">
                   <span>Documentation</span>
-                  <span>Included</span>
+                  <span class="font-semibold text-[var(--color-primary)]">Included</span>
                 </div>
               </div>
-              <div class="timeline-total timeline-total-savings">Total: 4-5 hours (85-90% savings)</div>
+              <div class="pt-[var(--spacing-sm)] border-t-2 border-[var(--color-border)] text-base font-bold text-[var(--color-accent)]">Total: 4-5 hours (85-90% savings)</div>
             </div>
           </div>
         </div>
 
-        <div class="case-study-commands">
-          <h3 class="commands-title">Commands Used</h3>
-          <div class="commands-code">
-            <code>
+        <div class="max-w-[56rem] mx-auto">
+          <h3 class="text-2xl font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">Commands Used</h3>
+          <div class="p-[var(--spacing-md)] bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg mb-[var(--spacing-sm)]">
+            <code class="font-['Fira_Code',monospace] text-sm text-[var(--color-primary)] leading-[1.8]">
               /specswarm:orchestrate-feature "Implement comprehensive testing..." --validate
               <br/>
               # [3-4 hours autonomous execution]
@@ -167,24 +167,24 @@ const caseStudyDetails = [
               /specswarm:complete
             </code>
           </div>
-          <p class="commands-note">
-            <strong>2 commands total</strong> vs. 50+ commands in manual workflow
+          <p class="text-[0.9375rem] text-[var(--color-secondary)] text-center m-0">
+            <strong class="text-[var(--color-accent)]">2 commands total</strong> vs. 50+ commands in manual workflow
           </p>
         </div>
       </div>
     </section>
 
     <!-- Common Scenarios -->
-    <section class="scenarios section-spacing-lg">
+    <section class="py-[var(--spacing-section-lg)]">
       <div class="content-max">
-        <div class="section-header">
-          <h2 class="section-title">Common Use Cases</h2>
-          <p class="section-description">
+        <div class="text-center max-w-[48rem] mx-auto mb-[var(--spacing-xl)]">
+          <h2 class="text-[var(--font-size-display-m)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">Common Use Cases</h2>
+          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
             How developers use SpecSwarm across different types of work
           </p>
         </div>
 
-        <div class="scenarios-grid">
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-[var(--spacing-lg)] sm:grid-cols-1">
           {scenarios.map((scenario) => (
             <ScenarioCard
               title={scenario.title}
@@ -198,45 +198,45 @@ const caseStudyDetails = [
     </section>
 
     <!-- Workflow Decision Tree -->
-    <section class="decision-tree section-spacing-lg">
+    <section class="bg-[var(--color-surface)] py-[var(--spacing-section-lg)]">
       <div class="content-max">
-        <div class="section-header">
-          <h2 class="section-title">When to Use Which Workflow</h2>
-          <p class="section-description">
+        <div class="text-center max-w-[48rem] mx-auto mb-[var(--spacing-xl)]">
+          <h2 class="text-[var(--font-size-display-m)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">When to Use Which Workflow</h2>
+          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
             Choose the right approach for your situation
           </p>
         </div>
 
-        <div class="tree-content">
-          <div class="tree-branch">
-            <h3 class="branch-title">Use Simplified Workflow When:</h3>
-            <ul class="branch-list">
-              <li>Building straightforward features with clear requirements</li>
-              <li>You trust AI with autonomous execution</li>
-              <li>Speed is the priority (70% fewer commands)</li>
-              <li>Feature fits within established patterns</li>
-              <li>Tech stack is well-defined and enforced</li>
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,22rem),1fr))] gap-[var(--spacing-xl)] md:grid-cols-1">
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-xl font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">Use Simplified Workflow When:</h3>
+            <ul class="list-none p-0 m-0 mb-[var(--spacing-md)] flex flex-col gap-3">
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-['→'] before:absolute before:left-0 before:text-[var(--color-accent)] before:font-bold">Building straightforward features with clear requirements</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-['→'] before:absolute before:left-0 before:text-[var(--color-accent)] before:font-bold">You trust AI with autonomous execution</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-['→'] before:absolute before:left-0 before:text-[var(--color-accent)] before:font-bold">Speed is the priority (70% fewer commands)</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-['→'] before:absolute before:left-0 before:text-[var(--color-accent)] before:font-bold">Feature fits within established patterns</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-['→'] before:absolute before:left-0 before:text-[var(--color-accent)] before:font-bold">Tech stack is well-defined and enforced</li>
             </ul>
-            <div class="branch-example">
-              <strong>Example:</strong> "Add user profile page with avatar upload"
+            <div class="p-[var(--spacing-sm)] bg-[rgba(217,119,87,0.1)] rounded-md text-sm text-[var(--color-secondary)] leading-relaxed">
+              <strong class="text-[var(--color-primary)]">Example:</strong> "Add user profile page with avatar upload"
               <br/>
-              <code>/specswarm:build "..." --validate</code> → <code>/specswarm:ship</code>
+              <code class="text-[0.8125rem] text-[var(--color-accent)] bg-[rgba(217,119,87,0.15)] px-1.5 py-0.5 rounded">/specswarm:build "..." --validate</code> → <code class="text-[0.8125rem] text-[var(--color-accent)] bg-[rgba(217,119,87,0.15)] px-1.5 py-0.5 rounded">/specswarm:ship</code>
             </div>
           </div>
 
-          <div class="tree-branch">
-            <h3 class="branch-title">Use Granular Workflow When:</h3>
-            <ul class="branch-list">
-              <li>Complex architectural changes need review</li>
-              <li>Multiple stakeholders need sign-off at each phase</li>
-              <li>Learning SpecSwarm for the first time</li>
-              <li>Experimental features with high uncertainty</li>
-              <li>Need to review planning before implementation</li>
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-xl font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">Use Granular Workflow When:</h3>
+            <ul class="list-none p-0 m-0 mb-[var(--spacing-md)] flex flex-col gap-3">
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-['→'] before:absolute before:left-0 before:text-[var(--color-accent)] before:font-bold">Complex architectural changes need review</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-['→'] before:absolute before:left-0 before:text-[var(--color-accent)] before:font-bold">Multiple stakeholders need sign-off at each phase</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-['→'] before:absolute before:left-0 before:text-[var(--color-accent)] before:font-bold">Learning SpecSwarm for the first time</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-['→'] before:absolute before:left-0 before:text-[var(--color-accent)] before:font-bold">Experimental features with high uncertainty</li>
+              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-['→'] before:absolute before:left-0 before:text-[var(--color-accent)] before:font-bold">Need to review planning before implementation</li>
             </ul>
-            <div class="branch-example">
-              <strong>Example:</strong> "Migrate from Redux to React Router v7 state management"
+            <div class="p-[var(--spacing-sm)] bg-[rgba(217,119,87,0.1)] rounded-md text-sm text-[var(--color-secondary)] leading-relaxed">
+              <strong class="text-[var(--color-primary)]">Example:</strong> "Migrate from Redux to React Router v7 state management"
               <br/>
-              <code>/specswarm:specify</code> → <code>/specswarm:clarify</code> → <code>/specswarm:plan</code> → ...
+              <code class="text-[0.8125rem] text-[var(--color-accent)] bg-[rgba(217,119,87,0.15)] px-1.5 py-0.5 rounded">/specswarm:specify</code> → <code class="text-[0.8125rem] text-[var(--color-accent)] bg-[rgba(217,119,87,0.15)] px-1.5 py-0.5 rounded">/specswarm:clarify</code> → <code class="text-[0.8125rem] text-[var(--color-accent)] bg-[rgba(217,119,87,0.15)] px-1.5 py-0.5 rounded">/specswarm:plan</code> → ...
             </div>
           </div>
         </div>
@@ -244,15 +244,15 @@ const caseStudyDetails = [
     </section>
 
     <!-- CTA Section -->
-    <section class="cta section-spacing-xl">
+    <section class="bg-[var(--color-background)] py-[var(--spacing-section-xl)]">
       <div class="content-max">
-        <div class="cta-content">
-          <h2 class="cta-title">Start Your Own Success Story</h2>
-          <p class="cta-description">
+        <div class="max-w-[48rem] mx-auto text-center flex flex-col items-center gap-[var(--spacing-lg)]">
+          <h2 class="text-[var(--font-size-display-m)] font-bold text-[var(--color-primary)] m-0">Start Your Own Success Story</h2>
+          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
             See similar results in your own projects. Install SpecSwarm and build your first feature with tech stack enforcement and quality gates.
           </p>
-          <div class="cta-buttons">
-            <Button href="/get-started" variant="primary" size="lg">
+          <div class="flex gap-[var(--spacing-md)] flex-wrap justify-center md:flex-col md:w-full [&>*]:md:w-full">
+            <Button href="/quick-start" variant="primary" size="lg">
               Get Started Now
             </Button>
             <Button
@@ -270,401 +270,3 @@ const caseStudyDetails = [
 
   <Footer />
 </BaseLayout>
-
-<style>
-  /* Page Hero */
-  .page-hero {
-    background-color: var(--color-background);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .hero-content {
-    max-width: 48rem;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .page-title {
-    font-size: var(--font-size-display-l);
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-md);
-  }
-
-  .page-description {
-    font-size: var(--font-size-paragraph-l);
-    color: var(--color-secondary);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* Case Study */
-  .case-study {
-    background-color: var(--color-surface);
-  }
-
-  .case-study-header {
-    text-align: center;
-    max-width: 48rem;
-    margin: 0 auto var(--spacing-xl);
-  }
-
-  .case-study-badge {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background-color: var(--color-accent);
-    color: white;
-    font-size: 0.8125rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-radius: 0.375rem;
-    margin-bottom: var(--spacing-md);
-  }
-
-  .case-study-title {
-    font-size: var(--font-size-display-m);
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-xs);
-  }
-
-  .case-study-subtitle {
-    font-size: var(--font-size-paragraph-m);
-    color: var(--color-secondary);
-    margin: 0;
-  }
-
-  .case-study-metrics {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .metric-card {
-    text-align: center;
-    padding: var(--spacing-lg);
-    background-color: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
-  }
-
-  .metric-value {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--color-accent);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
-  .metric-label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: 0.25rem;
-  }
-
-  .metric-sublabel {
-    font-size: 0.8125rem;
-    color: var(--color-secondary);
-  }
-
-  .case-study-overview,
-  .case-study-details,
-  .case-study-timeline,
-  .case-study-commands {
-    max-width: 56rem;
-    margin: 0 auto var(--spacing-xl);
-  }
-
-  .overview-title,
-  .details-title,
-  .timeline-title,
-  .commands-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-md);
-  }
-
-  .overview-description {
-    font-size: var(--font-size-paragraph-m);
-    color: var(--color-secondary);
-    line-height: 1.7;
-    margin: 0;
-  }
-
-  .details-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
-    gap: 0.75rem;
-  }
-
-  .details-list li {
-    font-size: 0.9375rem;
-    color: var(--color-secondary);
-    line-height: 1.6;
-  }
-
-  .timeline-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-    gap: var(--spacing-lg);
-  }
-
-  .timeline-item {
-    padding: var(--spacing-lg);
-    border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
-  }
-
-  .timeline-manual {
-    background-color: rgba(217, 119, 87, 0.05);
-  }
-
-  .timeline-specswarm {
-    background-color: var(--color-background);
-    border-color: var(--color-accent);
-  }
-
-  .timeline-label {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
-  }
-
-  .timeline-breakdown {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: var(--spacing-md);
-  }
-
-  .timeline-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.875rem;
-    color: var(--color-secondary);
-  }
-
-  .timeline-row span:last-child {
-    font-weight: 600;
-    color: var(--color-primary);
-  }
-
-  .timeline-total {
-    padding-top: var(--spacing-sm);
-    border-top: 2px solid var(--color-border);
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--color-primary);
-  }
-
-  .timeline-total-savings {
-    color: var(--color-accent);
-  }
-
-  .commands-code {
-    padding: var(--spacing-md);
-    background-color: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: 0.5rem;
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .commands-code code {
-    font-family: "Fira Code", monospace;
-    font-size: 0.875rem;
-    color: var(--color-primary);
-    line-height: 1.8;
-  }
-
-  .commands-note {
-    font-size: 0.9375rem;
-    color: var(--color-secondary);
-    text-align: center;
-    margin: 0;
-  }
-
-  .commands-note strong {
-    color: var(--color-accent);
-  }
-
-  /* Section Headers */
-  .section-header {
-    text-align: center;
-    max-width: 48rem;
-    margin: 0 auto var(--spacing-xl);
-  }
-
-  .section-title {
-    font-size: var(--font-size-display-m);
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-sm);
-  }
-
-  .section-description {
-    font-size: var(--font-size-paragraph-m);
-    color: var(--color-secondary);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* Scenarios Grid */
-  .scenarios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-    gap: var(--spacing-lg);
-  }
-
-  /* Decision Tree */
-  .decision-tree {
-    background-color: var(--color-surface);
-  }
-
-  .tree-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
-    gap: var(--spacing-xl);
-  }
-
-  .tree-branch {
-    padding: var(--spacing-lg);
-    background-color: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
-  }
-
-  .branch-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-md);
-  }
-
-  .branch-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 var(--spacing-md);
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .branch-list li {
-    font-size: 0.9375rem;
-    color: var(--color-secondary);
-    line-height: 1.6;
-    padding-left: 1.5rem;
-    position: relative;
-  }
-
-  .branch-list li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--color-accent);
-    font-weight: 700;
-  }
-
-  .branch-example {
-    padding: var(--spacing-sm);
-    background-color: rgba(217, 119, 87, 0.1);
-    border-radius: 0.375rem;
-    font-size: 0.875rem;
-    color: var(--color-secondary);
-    line-height: 1.6;
-  }
-
-  .branch-example strong {
-    color: var(--color-primary);
-  }
-
-  .branch-example code {
-    color: var(--color-accent);
-    background-color: rgba(217, 119, 87, 0.15);
-    padding: 0.125rem 0.375rem;
-    border-radius: 0.25rem;
-    font-size: 0.8125rem;
-  }
-
-  /* CTA Section */
-  .cta {
-    background-color: var(--color-background);
-  }
-
-  .cta-content {
-    max-width: 48rem;
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-lg);
-  }
-
-  .cta-title {
-    font-size: var(--font-size-display-m);
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0;
-  }
-
-  .cta-description {
-    font-size: var(--font-size-paragraph-m);
-    color: var(--color-secondary);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  .cta-buttons {
-    display: flex;
-    gap: var(--spacing-md);
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  /* Mobile Responsive */
-  @media (max-width: 768px) {
-    .page-title {
-      font-size: var(--font-size-display-m);
-    }
-
-    .case-study-metrics {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .timeline-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .tree-content {
-      grid-template-columns: 1fr;
-    }
-
-    .cta-buttons {
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .cta-buttons :global(a) {
-      width: 100%;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .scenarios-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .case-study-metrics {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

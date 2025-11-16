@@ -12,6 +12,7 @@
   --color-surface: #ffffff;        /* White surfaces */
   --color-border: #e5e5e0;         /* Subtle warm gray borders */
   --color-secondary: #87867f;      /* Muted gray secondary text */
+  --color-cream: #e3dacc;
 
   /* Fluid Typography (using clamp for responsive sizing) */
   --font-size-display-xxl: clamp(3rem, 2.388rem + 2.612vw, 5rem);
@@ -89,13 +90,16 @@ p {
   margin: 0;
 }
 
-a {
+/* Only apply accent color to content links, not navigation */
+main a,
+footer a:not(nav a) {
   color: var(--color-accent);
   text-decoration: none;
   transition: opacity var(--duration-fast) ease-out;
 }
 
-a:hover {
+main a:hover,
+footer a:not(nav a):hover {
   opacity: 0.8;
 }
 

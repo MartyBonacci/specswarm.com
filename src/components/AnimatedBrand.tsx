@@ -82,6 +82,7 @@ export default function AnimatedBrand() {
           font-weight: 600;
           position: relative;
           display: inline-block;
+          color: var(--color-primary);
         }
 
         .cursor {
