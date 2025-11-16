@@ -18,7 +18,7 @@ const initCode = `claude> /specswarm:init
 # SpecSwarm analyzes your project and asks for any missing context.
 # Tech stack evolves as you build—no crystal ball needed.`;
 
-const buildCode = `claude> /specswarm:build "Add user authentication with email/password" --validate
+const buildCode = `claude> /specswarm:build "Add user authentication with email/password"
 
 # Answer clarification questions
 # Autonomous execution: spec → plan → tasks → implementation → quality`;
@@ -26,6 +26,10 @@ const buildCode = `claude> /specswarm:build "Add user authentication with email/
 const shipCode = `claude> /specswarm:ship
 
 # Quality-gated merge to parent branch`;
+
+const fixCode = `/specswarm:fix "Login fails with special characters in password"
+
+# Automatic retry logic and test verification`;
 
 const steps = [
   {
@@ -51,6 +55,13 @@ const steps = [
   },
   {
     number: 4,
+    title: 'Fix',
+    description: 'Fix issues found during manual user testing. SpecSwarm implements fixes with automatic retry logic and verifies all automated tests still pass.',
+    code: fixCode,
+    lang: 'bash',
+  },
+  {
+    number: 5,
     title: 'Ship with Quality Gates',
     description: 'Merge to parent branch with quality validation. Blocks if quality falls below your standards.',
     code: shipCode,
@@ -107,7 +118,7 @@ const steps = [
               </div>
               <div>
                 <h3 class="text-base font-bold text-[var(--color-primary)] mb-2 m-0">Git Repository</h3>
-                <p class="text-[0.9375rem] text-[var(--color-secondary)] m-0">Initialized with at least one commit. We need git because the BUILD command will make a new branch for the feature and the SHIP will merge the approved feature branch back to the original branch.</p>
+                <p class="text-[0.9375rem] text-[var(--color-secondary)] m-0">Initialized with at least one commit. SpecSwarm creates feature branches automatically and merges them when quality gates pass.</p>
               </div>
             </div>
             <div class="flex gap-[var(--spacing-md)] p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl transition-all duration-[var(--duration-normal)] hover:shadow-[0_8px_30px_rgba(217,119,87,0.12)] hover:-translate-y-1">
@@ -119,7 +130,7 @@ const steps = [
               </div>
               <div>
                 <h3 class="text-base font-bold text-[var(--color-primary)] mb-2 m-0">Project Context</h3>
-                <p class="text-[0.9375rem] text-[var(--color-secondary)] m-0">SpecSwarm reads your README.md to extract project name, description, and goals for better configuration. Supports JavaScript/TypeScript, Python, PHP, Go, Ruby, and Rust. For new projects without code, manual setup mode lets you answer 6 questions—then build features immediately!</p>
+                <p class="text-[0.9375rem] text-[var(--color-secondary)] m-0">SpecSwarm reads your README.md to extract project context. Languages, frameworks, and libraries are derived from available files and follow-up questions. For new projects, answer a few setup questions—then build features immediately!</p>
               </div>
             </div>
             <div class="flex gap-[var(--spacing-md)] p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl transition-all duration-[var(--duration-normal)] hover:shadow-[0_8px_30px_rgba(217,119,87,0.12)] hover:-translate-y-1">
@@ -255,7 +266,7 @@ const steps = [
           <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
             <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">What if quality score is below threshold?</h3>
             <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
-              <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:ship</code> will block the merge and show clear remediation steps. Common fixes: add missing tests, reduce bundle size, fix TypeScript errors. Re-run <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:ship</code> when ready.
+              Use <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:fix</code> to address specific issues with automatic retry logic. This command will implement the fix, verify all tests pass, and re-run quality checks. Then re-run <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">/specswarm:ship</code> when ready. Common fixes: add missing tests, reduce bundle size, fix TypeScript errors.
             </p>
           </div>
 
