@@ -5,22 +5,25 @@ import Footer from '../components/Footer.astro';
 import Button from '../components/Button.astro';
 import CodeBlock from '../components/CodeBlock.astro';
 
-const installCode = `/plugin https://github.com/MartyBonacci/specswarm
-/plugin install specswarm`;
+const installCode = `claude> /plugin https://github.com/MartyBonacci/specswarm
+claude> /plugin install specswarm`;
 
-const initCode = `/specswarm:init
+const initCode = `claude> /specswarm:init
 
-# This creates 3 foundation files:
+# Creates your project foundation:
 # - .specswarm/constitution.md (coding principles)
 # - .specswarm/tech-stack.md (approved technologies)
-# - .specswarm/quality-standards.md (quality gates)`;
+# - .specswarm/quality-standards.md (quality gates)
+#
+# SpecSwarm analyzes your project and asks for any missing context.
+# Tech stack evolves as you build—no crystal ball needed.`;
 
-const buildCode = `/specswarm:build "Add user authentication with email/password" --validate
+const buildCode = `claude> /specswarm:build "Add user authentication with email/password" --validate
 
 # Answer clarification questions
 # Autonomous execution: spec → plan → tasks → implementation → quality`;
 
-const shipCode = `/specswarm:ship
+const shipCode = `claude> /specswarm:ship
 
 # Quality-gated merge to parent branch`;
 
@@ -35,7 +38,7 @@ const steps = [
   {
     number: 2,
     title: 'Initialize Your Project',
-    description: 'Set up project constitution, tech stack, and quality standards. Auto-detects from package.json.',
+    description: 'Create foundation files for coding principles, tech stack, and quality standards. SpecSwarm analyzes your project to detect existing technologies and prompts you for missing context.',
     code: initCode,
     lang: 'bash',
   },
@@ -57,63 +60,80 @@ const steps = [
 ---
 
 <BaseLayout
-  title="Get Started - SpecSwarm"
+  title="Quick Start - SpecSwarm"
   description="Install SpecSwarm in 5 minutes and build your first feature with tech stack enforcement and quality gates. Complete tutorial from installation to first ship."
 >
   <Header />
 
   <main>
     <!-- Hero Section -->
-    <section class="bg-[var(--color-background)] border-b border-[var(--color-border)] py-[var(--spacing-section-md)]">
-      <div class="content-max">
-        <div class="max-w-[48rem] mx-auto text-center">
-          <h1 class="text-[var(--font-size-display-l)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)] md:text-[var(--font-size-display-m)]">Get Started in 5 Minutes</h1>
-          <p class="text-[var(--font-size-paragraph-l)] text-[var(--color-secondary)] leading-relaxed m-0">
-            From installation to your first shipped feature. Complete tutorial with copy-paste examples.
+    <section class="bg-gradient-to-b from-[var(--color-background)] to-[var(--color-surface)] py-[var(--spacing-section-md)]">
+      <div class="container px-8 md:px-0 mx-auto flex-col sm:flex-row flex gap-16 items-center">
+
+        <div class="basis-2/5 sm:order-1" aria-hidden="true">
+          <img src="/orchestration.svg" alt="" loading="eager" class="w-full h-auto max-w-full object-contain"/>
+        </div>
+
+        <div class="basis-3/5">
+          <h1 class="text-[var(--font-size-display-xl)] font-bold text-[var(--color-primary)] m-0 text-5xl mb-[var(--spacing-sm)]">
+            Start orchestrating ...fast
+          </h1>
+          <p class="text-2xl text-[var(--color-primary)] max-w-[48rem] leading-relaxed m-0 font-semibold">
+            From installation to your first shipped feature.
+          </p>
+          <p class="text-xl text-[var(--color-secondary)] max-w-[48rem] leading-relaxed mt-4">
+            Works with new projects or established codebases—start with as little as a README file.
           </p>
         </div>
+
       </div>
     </section>
 
     <!-- Prerequisites -->
-    <section class="py-[var(--spacing-section-md)]">
-      <div class="content-max">
-        <div class="max-w-[56rem] mx-auto">
-          <h2 class="text-[var(--font-size-display-m)] font-bold text-[var(--color-primary)] text-center m-0 mb-[var(--spacing-xl)]">Before You Start</h2>
-          <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,14rem),1fr))] gap-[var(--spacing-md)] mb-[var(--spacing-lg)] md:grid-cols-1">
-            <div class="flex gap-[var(--spacing-sm)] p-[var(--spacing-md)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg">
-              <div class="text-2xl flex-shrink-0">✅</div>
+    <section class="bg-[var(--color-cream)] py-[var(--spacing-section-md)]">
+      <div class="">
+        <div class="container mx-auto">
+          <h2 class="text-[var(--font-size-display-m)] font-bold text-[var(--color-primary)] text-center text-2xl m-0 mb-[var(--spacing-sm)]">Before You Start</h2>
+          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] text-center leading-relaxed m-0 mb-[var(--spacing-xl)]">
+            Make sure you have these basics in place. SpecSwarm is flexible—you can start minimal and evolve as you build.
+          </p>
+          <div class="pt-[var(--spacing-section-md)] grid grid-cols-1 gap-[var(--spacing-lg)] lg:grid-cols-3">
+            <div class="flex gap-[var(--spacing-md)] p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl transition-all duration-[var(--duration-normal)] hover:shadow-[0_8px_30px_rgba(217,119,87,0.12)] hover:-translate-y-1">
+              <div class="flex-shrink-0">
+                <svg class="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="20" cy="20" r="20" fill="rgba(217, 119, 87, 0.1)"/>
+                  <path d="M28 14L17 25L12 20" stroke="var(--color-accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
               <div>
-                <strong class="block text-[0.9375rem] font-semibold text-[var(--color-primary)] mb-1">Git Repository</strong>
-                <p class="text-sm text-[var(--color-secondary)] m-0">Initialized with at least one commit</p>
+                <h3 class="text-base font-bold text-[var(--color-primary)] mb-2 m-0">Git Repository</h3>
+                <p class="text-[0.9375rem] text-[var(--color-secondary)] m-0">Initialized with at least one commit. We need git because the BUILD command will make a new branch for the feature and the SHIP will merge the approved feature branch back to the orhuhiginal branc.</p>
               </div>
             </div>
-            <div class="flex gap-[var(--spacing-sm)] p-[var(--spacing-md)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg">
-              <div class="text-2xl flex-shrink-0">✅</div>
+            <div class="flex gap-[var(--spacing-md)] p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl transition-all duration-[var(--duration-normal)] hover:shadow-[0_8px_30px_rgba(217,119,87,0.12)] hover:-translate-y-1">
+              <div class="flex-shrink-0">
+                <svg class="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="20" cy="20" r="20" fill="rgba(217, 119, 87, 0.1)"/>
+                  <path d="M28 14L17 25L12 20" stroke="var(--color-accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
               <div>
-                <strong class="block text-[0.9375rem] font-semibold text-[var(--color-primary)] mb-1">Project Structure</strong>
-                <p class="text-sm text-[var(--color-secondary)] m-0">src/, package.json, or your framework's structure</p>
+                <h3 class="text-base font-bold text-[var(--color-primary)] mb-2 m-0">Project Context</h3>
+                <p class="text-[0.9375rem] text-[var(--color-secondary)] m-0">For new projects, add 2-3 sentences to README.md describing your goals and coding standards. For established projects, SpecSwarm analyzes your existing codebase to understand the context—you're ready to go.</p>
               </div>
             </div>
-            <div class="flex gap-[var(--spacing-sm)] p-[var(--spacing-md)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg">
-              <div class="text-2xl flex-shrink-0">✅</div>
+            <div class="flex gap-[var(--spacing-md)] p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl transition-all duration-[var(--duration-normal)] hover:shadow-[0_8px_30px_rgba(217,119,87,0.12)] hover:-translate-y-1">
+              <div class="flex-shrink-0">
+                <svg class="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="20" cy="20" r="20" fill="rgba(217, 119, 87, 0.1)"/>
+                  <path d="M28 14L17 25L12 20" stroke="var(--color-accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
               <div>
-                <strong class="block text-[0.9375rem] font-semibold text-[var(--color-primary)] mb-1">Tech Stack</strong>
-                <p class="text-sm text-[var(--color-secondary)] m-0">Established framework (React, Vue, Next.js, Astro, etc.)</p>
+                <h3 class="text-base font-bold text-[var(--color-primary)] mb-2 m-0">Claude Code</h3>
+                <p class="text-[0.9375rem] text-[var(--color-secondary)] m-0">Installed and initialized with /init</p>
               </div>
             </div>
-            <div class="flex gap-[var(--spacing-sm)] p-[var(--spacing-md)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg">
-              <div class="text-2xl flex-shrink-0">✅</div>
-              <div>
-                <strong class="block text-[0.9375rem] font-semibold text-[var(--color-primary)] mb-1">Claude Code</strong>
-                <p class="text-sm text-[var(--color-secondary)] m-0">Installed and initialized with /init</p>
-              </div>
-            </div>
-          </div>
-          <div class="p-[var(--spacing-md)] bg-[rgba(217,119,87,0.1)] rounded-lg text-center">
-            <p class="text-[0.9375rem] text-[var(--color-secondary)] m-0">
-              <strong class="text-[var(--color-primary)]">Starting from scratch?</strong> Use your framework's official CLI first (e.g., <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.15)] px-1.5 py-0.5 rounded">npm create vite@latest</code>), then return here.
-            </p>
           </div>
         </div>
       </div>
@@ -121,27 +141,25 @@ const steps = [
 
     <!-- Tutorial Steps -->
     <section class="py-[var(--spacing-section-xl)]">
-      <div class="content-max">
-        <div class="max-w-[56rem] mx-auto flex flex-col gap-[var(--spacing-xl)]">
+        <div class="flex flex-col gap-[var(--spacing-xl)] container mx-auto">
           {steps.map((step) => (
             <div class="flex flex-col gap-[var(--spacing-md)]">
-              <div class="flex gap-[var(--spacing-md)] items-start md:flex-col">
+              <div class="flex gap-[var(--spacing-md)] items-start">
                 <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-[var(--color-accent)] text-white text-2xl font-bold rounded-full md:w-10 md:h-10 md:text-xl">{step.number}</div>
                 <div class="flex-1">
                   <h3 class="text-2xl font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-xs)]">{step.title}</h3>
-                  <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">{step.description}</p>
                 </div>
               </div>
-              <div class="pl-[calc(3rem+var(--spacing-md))] md:pl-0">
+                <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">{step.description}</p>
+
                 <CodeBlock
                   code={step.code}
                   lang={step.lang}
+                  title={step.title}
                 />
-              </div>
             </div>
           ))}
         </div>
-      </div>
     </section>
 
     <!-- What's Next -->
@@ -170,18 +188,8 @@ const steps = [
             <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0 flex-1">
               Comprehensive command reference, configuration options, and advanced workflows for complex features.
             </p>
-            <Button href="/docs" variant="secondary">
+            <Button href="https://github.com/MartyBonacci/specswarm" variant="secondary">
               Read Docs
-            </Button>
-          </div>
-
-          <div class="flex flex-col gap-[var(--spacing-sm)] p-[var(--spacing-lg)] bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl">
-            <h3 class="text-lg font-bold text-[var(--color-primary)] m-0">📖 Learn from Real Examples</h3>
-            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0 flex-1">
-              See how Feature 015 achieved 76/76 tasks completed and 96.3% test pass rate in a production React app.
-            </p>
-            <Button href="/use-cases" variant="secondary">
-              View Use Cases
             </Button>
           </div>
 
@@ -219,7 +227,14 @@ const steps = [
           <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
             <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">How does tech stack enforcement work?</h3>
             <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
-              Define approved technologies in <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">.specswarm/tech-stack.md</code>. During planning, SpecSwarm validates every library and pattern against your stack. If it detects prohibited technologies or drift, it suggests approved alternatives.
+              Define approved technologies in <code class="text-sm text-[var(--color-accent)] bg-[rgba(217,119,87,0.1)] px-1.5 py-0.5 rounded">.specswarm/tech-stack.md</code>. During planning, SpecSwarm validates every library and pattern against your stack. If it detects prohibited technologies or drift, it suggests approved alternatives. Your tech stack isn't static—as you build features with new technologies, SpecSwarm checks for conflicts and updates your approved tech stack automatically.
+            </p>
+          </div>
+
+          <div class="p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
+            <h3 class="text-base font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-sm)]">Do I need to define my entire tech stack upfront?</h3>
+            <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+              No! Start with basic context in your README (even 2-3 sentences works). When you build features, you can specify technologies as needed (e.g., 'build a 3D viewer using Three.js'). SpecSwarm automatically checks for conflicts and adds new technologies to your tech stack. Your tech stack evolves naturally as your project grows—no need to predict everything on day one.
             </p>
           </div>
 

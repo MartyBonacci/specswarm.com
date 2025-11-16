@@ -15,254 +15,247 @@ const shipCode = `/specswarm:ship
 # [Quality analysis]
 # [Merge to parent branch]`;
 
+const fixCode = `/specswarm:fix "Bug: Login fails with special characters..." --regression-test
+# [Creates failing test]
+# [Implements fix]
+# [Verifies and retries if needed]`;
+
 const metrics = [
-  { label: 'Time Savings', value: '85-90%' },
-  { label: 'Tasks Completed', value: '76/76' },
-  { label: 'Test Pass Rate', value: '96.3%' },
+    {label: 'Time Savings', value: '85-90%'},
+    {label: 'Tasks Completed', value: '76/76'},
+    {label: 'Test Pass Rate', value: '96.3%'},
 ];
 ---
 
 <BaseLayout
-  title="SpecSwarm - Keep AI on Track"
-  description="Keep your AI coding assistant on track with tech stack enforcement, quality gates, and 85-90% time savings. Build features in 2 commands instead of 7+."
+        title="SpecSwarm - Keep AI on Track"
+        description="AI automation that stays on your rails. Build features in 3 commands with tech stack enforcement, quality gates, and 85-90% time savings."
 >
-  <Header />
+    <Header/>
 
-  <main>
-    <!-- Hero Section -->
-    <section class=" bg-gradient-to-b from-[var(--color-background)] to-[var(--color-surface)] md:py-[var(--spacing-section-xl)]">
-<div class="container mx-auto md:flex gap-36 items-center">
+    <main>
+        <!-- Hero Section -->
+        <section
+                class=" bg-gradient-to-b from-[var(--color-background)] to-[var(--color-surface)] py-[var(--spacing-section-md)]">
+            <div class="container px-8 md:px-0 mx-auto flex-col sm:flex-row flex gap-16 items-center">
 
-  <div class="basis-2/5 sm:order-1" aria-hidden="true">
-    <img src="/tracks.svg" alt="" loading="eager" class="" />
-  </div>
+                <div class="basis-2/5 sm:order-1" aria-hidden="true">
+                    <img src="/black-on-orange-tracks.svg" alt="" loading="eager"
+                         class="w-full h-auto max-w-full object-contain"/>
+                </div>
 
-      <div class="basis-3/5">
-        <div class=" mx-auto text-center flex flex-col items-center gap-[var(--spacing-lg)]">
-          <h1 class="text-[var(--font-size-display-xl)] font-bold text-[var(--color-primary)] m-0 text-5xl">
-            <AnimatedHero
-              text="Keep AI on Track"
-              client:load
-            />
-          </h1>
-          <p class="text-[var(--font-size-paragraph-l)] text-[var(--color-primary)] max-w-[48rem] leading-relaxed m-0">
-            Claude Code plugin for spec-driven automation and tech stack enforcement
-          </p>
-          <div class="flex gap-[var(--spacing-md)] flex-wrap justify-center md:flex-col md:w-full [&>*]:md:w-full">
-            <Button href="/get-started" variant="primary" size="lg">
-              Get Started
-            </Button>
-            <Button href="/features" variant="secondary" size="lg">
-              Explore Features
-            </Button>
-          </div>
-        </div>
-      </div>
+                <div class="basis-3/5">
+                    <div class="  gap-[var(--spacing-lg)]">
+                        <h1 class="text-[var(--font-size-display-xl)] font-bold text-[var(--color-primary)] m-0 text-5xl">
+                            <AnimatedHero
+                                    text="Keep AI on Track"
+                                    client:load
+                            />
+                        </h1>
+                        <p class="text-3xl text-[var(--color-primary)] max-w-[48rem] leading-relaxed m-0">
+                            <span class="font-semibold">AI automation that stays on your rails.</span>
+                        </p>
+                        <p class="text-xl text-[var(--color-secondary)] max-w-[48rem] leading-relaxed mt-4">
+                            When AI builds features, does it use your stack? Follow your patterns? Ask before making
+                            decisions?
+                        </p>
+                        <p class="text-xl text-[var(--color-secondary)] max-w-[48rem] leading-relaxed mt-2">
+                            Without guardrails, AI drifts to deprecated libraries, ignores your standards, and creates
+                            maintenance nightmares.
+                        </p>
+                    </div>
+                </div>
 
-</div>
-    </section>
-
-    <!-- Problem-Solution Section -->
-    <section class="bg-[var(--color-surface)] py-[var(--spacing-section-lg)]">
-      <div class="content-max">
-        <div class="text-center max-w-[48rem] mx-auto mb-[var(--spacing-xl)]">
-          <h2 class="text-[var(--font-size-display-l)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">The Problem with AI Coding Assistants</h2>
-          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
-            AI is powerful, but without guardrails it drifts from your tech stack, ignores your standards, and creates maintenance nightmares.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,24rem),1fr))] gap-[var(--spacing-lg)]">
-          <div class="p-[var(--spacing-lg)] rounded-xl border border-[var(--color-border)] bg-[rgba(217,119,87,0.05)]">
-            <h3 class="text-xl font-bold m-0 mb-[var(--spacing-md)]">❌ Without SpecSwarm</h3>
-            <ul class="card-list list-none p-0 m-0 flex flex-col gap-3">
-              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">AI suggests deprecated libraries</li>
-              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">Code quality varies wildly</li>
-              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">Manual orchestration of 7+ commands</li>
-              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">No validation or quality gates</li>
-              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">3-5 days per feature</li>
-            </ul>
-          </div>
-
-          <div class="p-[var(--spacing-lg)] rounded-xl border border-[var(--color-accent)] bg-[var(--color-background)]">
-            <h3 class="text-xl font-bold m-0 mb-[var(--spacing-md)]">✅ With SpecSwarm</h3>
-            <ul class="card-list list-none p-0 m-0 flex flex-col gap-3">
-              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">95% drift prevention via tech stack enforcement</li>
-              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">Consistent 85+ quality scores</li>
-              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">Simplified 2-command workflow</li>
-              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">Automatic quality validation</li>
-              <li class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1 before:h-1 before:bg-[var(--color-accent)] before:rounded-full">4-5 hours per feature</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Three-Command Workflow Section -->
-    <section class="relative py-[var(--spacing-section-lg)]">
-      <div class="workflow-orchestration opacity-100 z-0 pointer-events-none" aria-hidden="true">
-        <img src="/orchestration.svg" alt="" loading="lazy" class="w-full h-auto" />
-      </div>
-      <div class="content-max relative z-[1]">
-        <div class="text-center max-w-[48rem] mx-auto mb-[var(--spacing-xl)]">
-          <h2 class="text-[var(--font-size-display-l)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">Build Features in 2 Commands</h2>
-          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
-            70% fewer commands, same powerful results. From specification to production-ready code.
-          </p>
-        </div>
-
-        <div class="flex flex-col gap-[var(--spacing-xl)] max-w-[48rem] mx-auto">
-          <div class="flex gap-[var(--spacing-lg)] items-start md:flex-col">
-            <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-[var(--color-accent)] text-white text-2xl font-bold rounded-full md:w-10 md:h-10 md:text-xl">1</div>
-            <div class="flex-1 flex flex-col gap-[var(--spacing-sm)] max-w-full">
-              <h3 class="text-2xl font-bold text-[var(--color-primary)] m-0">Build</h3>
-              <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
-                Complete feature development with one command. Handles spec → plan → tasks → implementation → quality analysis.
-              </p>
-              <CodeBlock
-                code={buildCode}
-                lang="bash"
-                title="Build Command"
-              />
             </div>
-          </div>
+        </section>
 
-          <div class="flex gap-[var(--spacing-lg)] items-start md:flex-col">
-            <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-[var(--color-accent)] text-white text-2xl font-bold rounded-full md:w-10 md:h-10 md:text-xl">2</div>
-            <div class="flex-1 flex flex-col gap-[var(--spacing-sm)] max-w-full">
-              <h3 class="text-2xl font-bold text-[var(--color-primary)] m-0">Ship</h3>
-              <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
-                Quality-gated merge to parent branch. Enforces thresholds, blocks if quality falls below standards.
-              </p>
-              <CodeBlock
-                code={shipCode}
-                lang="bash"
-                title="Ship Command"
-              />
+        <!-- Three-Command Hero Section -->
+        <section class="py-[var(--spacing-section-sm)] bg-[var(--color-cream)]">
+
+            <div class="container px-8 md:px-0 mx-auto flex-col sm:flex-row flex gap-16 items-center">
+
+                <div class="basis-2/5 " aria-hidden="true">
+                    <img src="/orchestration.svg" alt="" loading="lazy"
+                         class="w-full h-auto max-w-full object-contain"/>
+                </div>
+
+                <div class="basis-3/5">
+
+
+                    <div class="basis-3/5 mb-[var(--spacing-xl)]">
+                        <h2 class="text-3xl font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">
+                            Build. Fix. Ship.</h2>
+                        <p class="text-xl text-[var(--color-primary)] leading-relaxed m-0">
+                            Orchestrate feature development in three natural steps.
+                        </p>
+                        <p class="text-base text-[var(--color-secondary)] leading-relaxed mt-3">
+                            Follow the rhythm developers know: build features, fix bugs, ship with confidence. SpecSwarm
+                            coordinates planning, implementation, testing, and quality validation—all while keeping you
+                            in control at every decision point.
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
+        </section>
+        <!-- Three-Command Workflow Section -->
+        <section class="py-[var(--spacing-section-sm)] bg-[var(--color-cream)]">
+                <div class="flex flex-col gap-[var(--spacing-xl)] container mx-auto">
+                    <div class="flex flex-col gap-[var(--spacing-md)]">
 
-        <div class="text-center mt-[var(--spacing-lg)]">
-          <p class="text-[0.9375rem] text-[var(--color-secondary)]">Need more control? Use the <a href="/docs" class="text-[var(--color-accent)] underline">granular workflow</a> with 7 step-by-step commands.</p>
-        </div>
-      </div>
-    </section>
+                        <div class="flex gap-[var(--spacing-lg)] items-start ">
+                            <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-[var(--color-accent)] text-white text-2xl font-bold rounded-full md:w-10 md:h-10 md:text-xl">
+                                1
+                            </div>
+                            <div class="flex-1 flex flex-col gap-[var(--spacing-sm)] max-w-full">
+                                <h3 class="text-2xl font-bold text-[var(--color-primary)] m-0">Build</h3>
 
-    <!-- Feature 015 Metrics Highlight -->
-    <section class="bg-[var(--color-background)] py-[var(--spacing-section-lg)]">
-      <div class="content-max">
-        <div class="max-w-[48rem] mx-auto">
-          <div class="text-center mb-[var(--spacing-xl)]">
-            <h2 class="text-[var(--font-size-display-l)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">Production Validated</h2>
-            <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
-              Real-world results from Feature 015: Testing Infrastructure (React 19 + Redux + Three.js)
-            </p>
-          </div>
+                            </div>
+                        </div>
+                        <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+                            Complete feature development with one command. Handles spec → plan → tasks →
+                            implementation → quality analysis.
+                        </p>
+                        <CodeBlock
+                                code={buildCode}
+                                lang="bash"
+                                title="Build Command"
+                        />
+                    </div>
+                    <div class="flex flex-col gap-[var(--spacing-sm)]">
 
-          <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,10rem),1fr))] gap-[var(--spacing-md)] mb-[var(--spacing-lg)]">
-            {metrics.map((metric) => (
-              <div class="text-center p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
-                <div class="text-[2.5rem] font-bold text-[var(--color-accent)] leading-none">{metric.value}</div>
-                <div class="text-sm text-[var(--color-secondary)] mt-2">{metric.label}</div>
-              </div>
-            ))}
-          </div>
+                        <div class="flex gap-[var(--spacing-lg)] items-start">
+                            <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-[var(--color-accent)] text-white text-2xl font-bold rounded-full md:w-10 md:h-10 md:text-xl">
+                                2
+                            </div>
+                            <div class="flex-1 flex flex-col gap-[var(--spacing-sm)] max-w-full">
+                                <h3 class="text-2xl font-bold text-[var(--color-primary)] m-0">Fix</h3>
 
-          <div class="flex flex-col items-center gap-[var(--spacing-md)] p-[var(--spacing-lg)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
-            <ul class="list-none p-0 m-0 grid grid-cols-[repeat(auto-fit,minmax(min(100%,16rem),1fr))] gap-3 w-full">
-              <li class="text-[0.9375rem] text-[var(--color-secondary)]">✅ 3,500+ lines of test code generated</li>
-              <li class="text-[0.9375rem] text-[var(--color-secondary)]">✅ 1,530 lines of documentation created</li>
-              <li class="text-[0.9375rem] text-[var(--color-secondary)]">✅ 3.27s test execution time</li>
-              <li class="text-[0.9375rem] text-[var(--color-secondary)]">✅ Tech stack drift prevented</li>
-            </ul>
-            <Button href="/use-cases" variant="secondary">
-              Read Full Case Study
-            </Button>
-          </div>
-        </div>
-      </div>
-    </section>
+                            </div>
+                        </div>
+                        <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+                            Test-driven bug fixing with automatic retry. Creates regression tests to prevent future
+                            issues.
+                        </p>
+                        <CodeBlock
+                                code={fixCode}
+                                lang="bash"
+                                title="Fix Command"
+                        />
+                    </div>
+                    <div class="flex flex-col gap-[var(--spacing-sm)]">
 
-    <!-- Features Overview -->
-    <section class="py-[var(--spacing-section-lg)]">
-      <div class="content-max">
-        <div class="text-center max-w-[48rem] mx-auto mb-[var(--spacing-xl)]">
-          <h2 class="text-[var(--font-size-display-l)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">Built for Control & Quality</h2>
-          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
-            Everything you need to maintain standards while moving fast
-          </p>
-        </div>
+                        <div class="flex gap-[var(--spacing-lg)] items-start">
+                            <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-[var(--color-accent)] text-white text-2xl font-bold rounded-full md:w-10 md:h-10 md:text-xl">
+                                3
+                            </div>
+                            <div class="flex-1 flex flex-col gap-[var(--spacing-sm)] max-w-full">
+                                <h3 class="text-2xl font-bold text-[var(--color-primary)] m-0">Ship</h3>
 
-        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-[var(--spacing-lg)]">
-          <FeatureCard
-            icon="shield"
-            title="Tech Stack Enforcement"
-            description="95% drift prevention. Define your approved technologies once, SpecSwarm validates every feature against your stack."
-            metric="95%"
-          />
-          <FeatureCard
-            icon="zap"
-            title="Simplified Workflow"
-            description="Build complete features in 2 commands instead of 7+. Autonomous execution with interactive clarification."
-            metric="70%"
-          />
-          <FeatureCard
-            icon="check-circle"
-            title="Quality Validation"
-            description="0-100 point scoring with configurable thresholds. Blocks merges below standards, shows clear remediation steps."
-            metric="85+"
-          />
-          <FeatureCard
-            icon="layers"
-            title="Autonomous Orchestration"
-            description="Natural language to working code. Handles planning, implementation, testing, and quality analysis automatically."
-          />
-          <FeatureCard
-            icon="target"
-            title="Production Validated"
-            description="76/76 tasks completed, 96.3% test pass rate. Proven in real-world React 19 + Redux + Three.js application."
-            metric="96.3%"
-          />
-          <FeatureCard
-            icon="trending-up"
-            title="Developer Control"
-            description="Decision checkpoints, not black box automation. Choose simplified or granular workflow based on your needs."
-          />
-        </div>
+                            </div>
+                        </div>
+                        <p class="text-[0.9375rem] text-[var(--color-secondary)] leading-relaxed m-0">
+                            Quality-gated merge to parent branch. Enforces thresholds, blocks if quality falls below
+                            standards.
+                        </p>
+                        <CodeBlock
+                                code={shipCode}
+                                lang="bash"
+                                title="Ship Command"
+                        />
+                    </div>
+                </div>
 
-        <div class="text-center mt-[var(--spacing-xl)]">
-          <Button href="/features" variant="secondary" size="lg">
-            Explore All Features
-          </Button>
-        </div>
-      </div>
-    </section>
+                <div class="text-center mt-[var(--spacing-lg)]">
+                    <p class="text-[0.9375rem] text-[var(--color-secondary)]">Need more control? Use the <a href="/docs"
+                                                                                                            class="text-[var(--color-accent)] underline">granular
+                        workflow</a> with 7 step-by-step commands.</p>
+                </div>
+        </section>
 
-    <!-- Final CTA Section -->
-    <section class="bg-gradient-to-b from-[var(--color-surface)] to-[var(--color-background)] py-[var(--spacing-section-xl)]">
-      <div class="content-max">
-        <div class="max-w-[48rem] mx-auto text-center flex flex-col items-center gap-[var(--spacing-lg)]">
-          <h2 class="text-[var(--font-size-display-l)] font-bold text-[var(--color-primary)] m-0">Ready to Keep AI On Track?</h2>
-          <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
-            Install SpecSwarm in under 5 minutes and build your first feature with tech stack enforcement and quality gates.
-          </p>
-          <div class="flex gap-[var(--spacing-md)] flex-wrap justify-center md:flex-col md:w-full [&>*]:md:w-full">
-            <Button href="/get-started" variant="primary" size="lg">
-              Get Started Now
-            </Button>
-            <Button
-              href="https://github.com/MartyBonacci/specswarm"
-              variant="secondary"
-              size="lg"
-            >
-              View on GitHub
-            </Button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
 
-  <Footer />
+        <!-- Features Overview -->
+        <section class="py-[var(--spacing-section-lg)]">
+            <div class="content-max">
+                <div class="text-center max-w-[48rem] mx-auto mb-[var(--spacing-xl)]">
+                    <h2 class="text-[var(--font-size-display-l)] font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-md)]">
+                        Built for Control & Quality</h2>
+                    <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
+                        Everything you need to maintain standards while moving fast
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-[var(--spacing-lg)]">
+                    <FeatureCard
+                            icon="shield"
+                            title="Tech Stack Enforcement"
+                            description="95% drift prevention. Define your approved technologies once, SpecSwarm validates every feature against your stack."
+                            metric="95%"
+                    />
+                    <FeatureCard
+                            icon="zap"
+                            title="Simplified Workflow"
+                            description="Build complete features in 2 commands instead of 7+. Autonomous execution with interactive clarification."
+                            metric="70%"
+                    />
+                    <FeatureCard
+                            icon="check-circle"
+                            title="Quality Validation"
+                            description="0-100 point scoring with configurable thresholds. Blocks merges below standards, shows clear remediation steps."
+                            metric="85+"
+                    />
+                    <FeatureCard
+                            icon="layers"
+                            title="Autonomous Orchestration"
+                            description="Natural language to working code. Handles planning, implementation, testing, and quality analysis automatically."
+                    />
+                    <FeatureCard
+                            icon="target"
+                            title="Production Validated"
+                            description="76/76 tasks completed, 96.3% test pass rate. Proven in real-world React 19 + Redux + Three.js application."
+                            metric="96.3%"
+                    />
+                    <FeatureCard
+                            icon="trending-up"
+                            title="Developer Control"
+                            description="Decision checkpoints, not black box automation. Choose simplified or granular workflow based on your needs."
+                    />
+                </div>
+
+                <div class="text-center mt-[var(--spacing-xl)]">
+                    <Button href="/features" variant="secondary" size="lg">
+                        Explore All Features
+                    </Button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section
+                class="bg-gradient-to-b from-[var(--color-surface)] to-[var(--color-background)] py-[var(--spacing-section-xl)]">
+            <div class="content-max">
+                <div class="max-w-[48rem] mx-auto text-center flex flex-col items-center gap-[var(--spacing-lg)]">
+                    <h2 class="text-[var(--font-size-display-l)] font-bold text-[var(--color-primary)] m-0">Ready to
+                        Keep AI On Track?</h2>
+                    <p class="text-[var(--font-size-paragraph-m)] text-[var(--color-secondary)] leading-relaxed m-0">
+                        Install SpecSwarm in under 5 minutes and build your first feature with tech stack enforcement
+                        and quality gates.
+                    </p>
+                    <div class="flex gap-[var(--spacing-md)] flex-wrap justify-center md:flex-col md:w-full [&>*]:md:w-full">
+                        <Button href="/quick-start" variant="primary" size="lg">
+                            Quick Start
+                        </Button>
+                        <Button
+                                href="https://github.com/MartyBonacci/specswarm"
+                                variant="secondary"
+                                size="lg"
+                        >
+                            View on GitHub
+                        </Button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <Footer/>
 </BaseLayout>

@@ -6,15 +6,13 @@ const footerLinks = [
     title: 'Product',
     links: [
       { href: '/features', label: 'Features' },
-      { href: '/get-started', label: 'Get Started' },
-      { href: '/use-cases', label: 'Use Cases' },
-      { href: '/docs', label: 'Documentation' },
+      { href: '/quick-start', label: 'Quick Start' },
+      { href: 'https://github.com/MartyBonacci/specswarm', label: 'Documentation', external: true },
     ],
   },
   {
     title: 'Resources',
     links: [
-      { href: 'https://github.com/MartyBonacci/specswarm', label: 'GitHub', external: true },
       { href: 'https://github.com/MartyBonacci/specswarm/issues', label: 'Issues', external: true },
       { href: 'https://docs.claude.com/en/docs/claude-code', label: 'Claude Code Docs', external: true },
     ],
@@ -32,9 +30,9 @@ const footerLinks = [
 <footer class="bg-[var(--color-surface)] border-t border-[var(--color-border)] py-[var(--spacing-section-md)]">
   <div class="max-w-[var(--content-max-width)] mx-auto px-[var(--spacing-site-margin)]">
     <!-- Footer Grid -->
-    <div class="grid grid-cols-[2fr_repeat(3,1fr)] gap-[var(--spacing-xl)] pb-[var(--spacing-lg)] mb-[var(--spacing-lg)] border-b border-[var(--color-border)] md:grid-cols-1 md:gap-[var(--spacing-lg)]">
+    <div class="grid grid-cols-1 gap-[var(--spacing-lg)] pb-[var(--spacing-lg)] mb-[var(--spacing-lg)] border-b border-[var(--color-border)] md:grid-cols-[2fr_repeat(3,1fr)] md:gap-[var(--spacing-xl)]">
       <!-- Brand Column -->
-      <div class="flex flex-col gap-[var(--spacing-sm)] md:pb-[var(--spacing-md)] md:border-b md:border-[var(--color-border)]">
+      <div class="flex flex-col gap-[var(--spacing-sm)] pb-[var(--spacing-md)] border-b border-[var(--color-border)] md:pb-0 md:border-b-0">
         <a href="/" class="inline-block text-xl font-bold text-[var(--color-primary)] no-underline transition-opacity duration-[var(--duration-fast)] ease-out hover:opacity-70 mb-[var(--spacing-xs)]">
           <span>SpecSwarm</span>
         </a>
@@ -88,7 +86,7 @@ const footerLinks = [
     </div>
 
     <!-- Footer Bottom -->
-    <div class="flex justify-between items-center flex-wrap gap-[var(--spacing-sm)] md:flex-col md:text-center md:gap-2">
+    <div class="flex flex-col text-center gap-2 md:flex-row md:justify-between md:items-center md:text-left md:gap-[var(--spacing-sm)]">
       <p class="text-sm text-[var(--color-secondary)] m-0">
         © {currentYear} SpecSwarm. Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] no-underline transition-opacity duration-[var(--duration-fast)] ease-out hover:opacity-80">Astro</a>.
       </p>
