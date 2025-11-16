@@ -282,7 +282,7 @@ const workflowComparison = [
             <div class="mb-[var(--spacing-lg)]">
               <div class="inline-block px-3 py-1 bg-[#4ade80] text-white text-sm font-bold rounded-full mb-[var(--spacing-md)]">Recommended</div>
               <h3 class="text-xl font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-xs)]">Simplified Workflow</h3>
-              <p class="text-sm text-[var(--color-secondary)] m-0">2 commands • 70% faster</p>
+              <p class="text-sm text-[var(--color-secondary)] m-0">3 commands • 70% faster</p>
             </div>
 
             <div class="flex flex-col gap-[var(--spacing-md)] mb-[var(--spacing-lg)]">
@@ -307,6 +307,22 @@ const workflowComparison = [
                   <span class="text-[var(--color-accent)] font-bold">2</span>
                 </div>
                 <div class="flex-1">
+                  <code class="text-sm text-[var(--color-accent)] font-mono">/specswarm:fix</code>
+                  <p class="text-xs text-[var(--color-secondary)] m-0 mt-1">Fix issues from manual testing</p>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-center">
+                <svg class="w-6 h-6 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </div>
+
+              <div class="flex items-center gap-[var(--spacing-md)]">
+                <div class="flex-shrink-0 w-12 h-12 bg-[var(--color-accent)] bg-opacity-10 rounded-lg flex items-center justify-center">
+                  <span class="text-[var(--color-accent)] font-bold">3</span>
+                </div>
+                <div class="flex-1">
                   <code class="text-sm text-[var(--color-accent)] font-mono">/specswarm:ship</code>
                   <p class="text-xs text-[var(--color-secondary)] m-0 mt-1">Quality gates, test coverage, merge to main</p>
                 </div>
@@ -328,7 +344,7 @@ const workflowComparison = [
             <div class="mb-[var(--spacing-lg)]">
               <div class="inline-block px-3 py-1 bg-[#60a5fa] text-white text-sm font-bold rounded-full mb-[var(--spacing-md)]">Full Control</div>
               <h3 class="text-xl font-bold text-[var(--color-primary)] m-0 mb-[var(--spacing-xs)]">Granular Workflow</h3>
-              <p class="text-sm text-[var(--color-secondary)] m-0">7 commands • Step-by-step</p>
+              <p class="text-sm text-[var(--color-secondary)] m-0">8 commands • Step-by-step</p>
             </div>
 
             <div class="flex flex-col gap-[var(--spacing-sm)] mb-[var(--spacing-lg)]">
@@ -350,6 +366,8 @@ const workflowComparison = [
                 <span class="text-xs font-mono text-[var(--color-accent)]">/tasks</span>
                 <span class="text-xs text-[var(--color-secondary)]">→</span>
                 <span class="text-xs font-mono text-[var(--color-accent)]">/implement</span>
+                <span class="text-xs text-[var(--color-secondary)]">→</span>
+                <span class="text-xs font-mono text-[var(--color-accent)]">/fix</span>
               </div>
 
               <div class="flex items-center justify-center">
